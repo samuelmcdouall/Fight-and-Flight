@@ -100,3 +100,60 @@ Received Import Request.
 Start importing Assets/Red.mat using Guid(6d0af64276c3c9c4da0e640d09bf6c01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de76b70fc36010903ab4640f05da5fc7') in 0.016462 seconds
   Import took 0.020446 seconds .
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.033087 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 9 plugins.
+Preloading 2 native plugins for Editor in 0.45 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x0004c] in C:\Users\Samuel\Desktop\Projects\Fight and Flight\Fight-and-Flight\Fight and Flight\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x000b0] in C:\Users\Samuel\Desktop\Projects\Fight and Flight\Fight-and-Flight\Fight and Flight\Library\PackageCache\com.unity.xr.oculus@1.8.1\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.8.1/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.343 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.57 ms, found 9 plugins.
+Preloading 2 native plugins for Editor in 0.23 ms.
+Unloading 1537 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 78.6 MB.
+System memory in use after: 78.7 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2059.
+Total: 2.132300 ms (FindLiveObjects: 0.174900 ms CreateObjectMapping: 0.052800 ms MarkObjects: 1.684800 ms  DeleteObjects: 0.219000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.021037 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.96 ms, found 14 plugins.
+Preloading 2 native plugins for Editor in 0.27 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.146 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.73 ms, found 14 plugins.
+Preloading 2 native plugins for Editor in 0.22 ms.
+Unloading 1922 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 91.5 MB.
+System memory in use after: 91.6 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2431.
+Total: 2.314900 ms (FindLiveObjects: 0.199600 ms CreateObjectMapping: 0.072700 ms MarkObjects: 1.839700 ms  DeleteObjects: 0.201600 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
