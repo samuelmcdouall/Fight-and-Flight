@@ -48,10 +48,6 @@ public class Player : MonoBehaviour
         {
             Glide();
         }
-        else
-        {
-            //player_rb.velocity = player_rb.velocity;
-        }
     }
 
     private void Glide()
