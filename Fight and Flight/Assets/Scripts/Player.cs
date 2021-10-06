@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -20,6 +21,15 @@ public class Player : MonoBehaviour
     float max_fuel = 100.0f;
     float fuel;
     Vector3 starting_position;
+    public FuelGauge fuel_gauge;
+    public FuelMeter fuel_meter;
+    [SerializeField]
+    [Range(0.0f, 3.0f)]
+    float fuel_recharge_delay = 1.0f;
+    [SerializeField]
+    [Range(0.0f, 50.0f)]
+    float fuel_recharge_rate = 40.0f;
+    float elapsed_fuel_recharge_delay = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +37,8 @@ public class Player : MonoBehaviour
         ground_check = GameObject.FindGameObjectWithTag("GroundCheck").GetComponent<GroundCheck>();
         player_rb = GetComponent<Rigidbody>();
         fuel = max_fuel;
+        fuel_gauge.SetMaxFuelGauge(max_fuel);
+        fuel_meter.SetNonGlidingColour();
     }
 
     public void UpdateDirectionAndThrottleValues(float trigger_amount, Vector3 direction)
@@ -38,6 +50,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //print("elapsed fuel recharge delay: " + elapsed_fuel_recharge_delay);
         CheckIfOutOfBounds();
         CheckIfAbleToRechargeEnergy();
         if (throttle && fuel != 0.0f)
@@ -48,11 +61,16 @@ public class Player : MonoBehaviour
         {
             Glide();
         }
+        else
+        {
+            fuel_meter.SetNonGlidingColour();
+        }
     }
 
     private void Glide()
     {
         player_rb.velocity = new Vector3(current_direction.x * glide_speed, -1.0f, current_direction.z * glide_speed);
+        fuel_meter.SetGlidingColour();
     }
 
     private void Fly()
@@ -63,13 +81,34 @@ public class Player : MonoBehaviour
         {
             fuel = 0.0f;
         }
+        fuel_gauge.SetFuelGauge(fuel);
+        fuel_meter.SetNonGlidingColour();
     }
 
     private void CheckIfAbleToRechargeEnergy()
     {
         if (ground_check.is_grounded)
         {
-            fuel = max_fuel;
+            if (fuel != max_fuel)
+            {
+                if (elapsed_fuel_recharge_delay > fuel_recharge_delay)
+                {
+                    fuel += fuel_recharge_rate * Time.deltaTime;
+                    if (fuel > max_fuel)
+                    {
+                        fuel = max_fuel;
+                    }
+                    fuel_gauge.SetFuelGauge(fuel);
+                }
+                else
+                {
+                    elapsed_fuel_recharge_delay += Time.deltaTime;
+                }
+            }
+        }
+        else
+        {
+            elapsed_fuel_recharge_delay = 0.0f;
         }
     }
 
@@ -85,7 +124,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Floor")
         {
-            transform.position = starting_position;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
