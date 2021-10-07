@@ -19,14 +19,14 @@ public class PlatformSpawner : MonoBehaviour
     [Range(6.0f, 15.0f)]
     float maximum_vertical_spawn_distance = 12.0f;
     [SerializeField]
-    [Range(5.0f, 8.0f)]
-    float minimum_spawn_platform_proximity_distance = 5.0f;
+    [Range(8.0f, 10.0f)]
+    float minimum_spawn_platform_proximity_distance = 8.0f;
     [SerializeField]
-    [Range(10.0f, 15.0f)]
-    float maximum_spawn_platform_proximity_distance = 10.0f;
+    [Range(15.0f, 40.0f)]
+    float maximum_spawn_platform_proximity_distance = 15.0f;
     void Start()
     {
-        for(int platform = 0; platform < starting_platforms; starting_platforms++)
+        for(int platform = 0; platform < starting_platforms; platform++)
         {
             AttemptToSpawnPlatform();
         }
