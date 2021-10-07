@@ -13,27 +13,27 @@ public class Platform : MonoBehaviour
     public Color color_max_life;
     public Color color_min_life;
     float color_lerp_time = 0;
-    //GameObject platform_spawner;
+    GameObject platform_spawner;
+    float y_out_of_bounds = 0.5f;
     // Start is called before the first frame update
 
     void Start()
     {
         current_life_time = max_life_time;
         platform_m = GetComponent<Renderer>().material;
-        //platform_spawner = GameObject.FindGameObjectWithTag("Platform Spawner");
+        platform_spawner = GameObject.FindGameObjectWithTag("Platform Spawner");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y <= y_out_of_bounds)
+        {
+            platform_spawner.GetComponent<PlatformSpawner>().AttemptToSpawnPlatform();
+            Destroy(gameObject);
+        }
         if (deteriorating)
         {   
-            if (!started_deteriorating)
-            {
-                
-                //started_deteriorating = true;
-            }
-
             if (current_life_time > 0.0f)
             {
                 current_life_time -= Time.deltaTime;
@@ -58,11 +58,6 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             deteriorating = true;
-        }
-        else if (collision.gameObject.tag == "Floor")
-        {
-            //platform_spawner.GetComponent<PlatformSpawner>().AttemptToSpawnPlatform();
-            Destroy(gameObject);
         }
     }
 }
