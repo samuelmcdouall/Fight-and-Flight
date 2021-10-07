@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: b13109bc4674dd24ebc04b7c12437ad6, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
+  m_IndirectSpecularColor: {r: 0.029232737, g: 0.04259627, b: 0.031818897, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1272,7 +1272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3413591602286923417, guid: 5e3e2c88550c24e4ba8f863e1fb85757, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.18
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3413591602286923417, guid: 5e3e2c88550c24e4ba8f863e1fb85757, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1319,6 +1319,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1043852688}
+    - target: {fileID: 5029694797540796068, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5029694797540796070, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1390,7 +1394,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7325958809958136661, guid: 86e021e11f53c4246b38d89d84c57a98, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325958809958136661, guid: 86e021e11f53c4246b38d89d84c57a98, type: 3}
+      propertyPath: maximum_spawn_platform_proximity_distance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325958809958136661, guid: 86e021e11f53c4246b38d89d84c57a98, type: 3}
+      propertyPath: minimum_spawn_platform_proximity_distance
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7325958809958136662, guid: 86e021e11f53c4246b38d89d84c57a98, type: 3}
       propertyPath: m_RootOrder
