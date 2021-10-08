@@ -1585,6 +1585,10 @@ PrefabInstance:
       propertyPath: max_fuel
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 5029694797540796069, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: fuel_recharge_rate
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5029694797540796070, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_RootOrder
       value: 2

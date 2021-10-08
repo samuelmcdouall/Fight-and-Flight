@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
     [Range(0.0f, 3.0f)]
     float fuel_recharge_delay = 1.0f;
     [SerializeField]
-    [Range(0.0f, 50.0f)]
-    float fuel_recharge_rate = 40.0f;
+    [Range(0.0f, 250.0f)]
+    float fuel_recharge_rate = 100.0f;
     float elapsed_fuel_recharge_delay = 0.0f;
     public static int score = 0;
     // Start is called before the first frame update
