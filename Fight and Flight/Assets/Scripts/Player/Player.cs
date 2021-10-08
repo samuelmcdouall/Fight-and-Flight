@@ -30,12 +30,16 @@ public class Player : MonoBehaviour
     [Range(0.0f, 250.0f)]
     float fuel_recharge_rate = 100.0f;
     float elapsed_fuel_recharge_delay = 0.0f;
+    AudioSource player_as;
+    public AudioClip flying_sfx;
+    public AudioClip gliding_sfx;
     public static int score = 0;
     // Start is called before the first frame update
     void Start()
     {
         starting_position = transform.position;
         ground_check = GameObject.FindGameObjectWithTag("GroundCheck").GetComponent<GroundCheck>();
+        player_as = GetComponent<AudioSource>();
         player_rb = GetComponent<Rigidbody>();
         fuel = max_fuel;
         fuel_gauge.SetMaxFuelGauge(max_fuel);
@@ -62,10 +66,12 @@ public class Player : MonoBehaviour
         else if (throttle && fuel == 0.0f)
         {
             Glide();
+            player_as.Stop();
         }
         else
         {
             fuel_meter.SetNonGlidingColour();
+            player_as.Stop();
         }
     }
 
@@ -85,6 +91,10 @@ public class Player : MonoBehaviour
         }
         fuel_gauge.SetFuelGauge(fuel);
         fuel_meter.SetNonGlidingColour();
+        if (!player_as.isPlaying)// && !player_ani.GetCurrentAnimatorStateInfo(0).IsName("Light Attack"))
+        {
+            player_as.PlayOneShot(flying_sfx, 1.0f);
+        }
     }
 
     private void CheckIfAbleToRechargeEnergy()

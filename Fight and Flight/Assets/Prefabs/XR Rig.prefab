@@ -777,6 +777,8 @@ MonoBehaviour:
   fuel_meter: {fileID: 5029694797980033272}
   fuel_recharge_delay: 1
   fuel_recharge_rate: 40
+  flying_sfx: {fileID: 0}
+  gliding_sfx: {fileID: 0}
 --- !u!54 &5029694797540796068
 Rigidbody:
   m_ObjectHideFlags: 0
