@@ -1553,6 +1553,14 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1043852688}
+    - target: {fileID: 5029694797540796066, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029694797540796066, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5029694797540796068, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_UseGravity
       value: 1
@@ -1604,6 +1612,14 @@ PrefabInstance:
     - target: {fileID: 5029694797540796072, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_Name
       value: XR Rig
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029694798182267625, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029694798182267625, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_Size.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5029694798611336878, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_InteractionManager
