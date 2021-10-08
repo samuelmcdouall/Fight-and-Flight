@@ -69,8 +69,8 @@ public class Platform : MonoBehaviour
             if (current_life_time > 0.0f)
             {
                 current_life_time -= Time.deltaTime;
-                //platform_m.SetColor("_Color", Color.Lerp(color_max_life, color_min_life, color_lerp_time/max_life_time));
-                //color_lerp_time += Time.deltaTime;
+                platform_m.SetColor("_Color", Color.Lerp(color_max_life, color_min_life, color_lerp_time/max_life_time));
+                color_lerp_time += Time.deltaTime;
             }
 
             else if (current_life_time < 0.0f)

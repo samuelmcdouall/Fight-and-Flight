@@ -112,8 +112,8 @@ MonoBehaviour:
   platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
-  percentage_chance_to_spawn_common_pickup: 50
-  percentage_chance_to_spawn_rare_pickup: 25
+  percentage_chance_to_spawn_common_pickup: 30
+  percentage_chance_to_spawn_rare_pickup: 20
   pickup_spawn_range_limit: 2
   common_pickup: {fileID: 1689830508881278957, guid: 1edaae3579a8c1d4fada9342ad92546d, type: 3}
   rare_pickup: {fileID: 306189006300075459, guid: 05388f5bb4cf81b45b24a0bcba225b76, type: 3}

@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
     [Range(0.0f, 2.0f)]
     float glide_speed = 2.0f;
     [SerializeField]
-    [Range(0.0f, 100.0f)]
-    float max_fuel = 100.0f;
+    [Range(0.0f, 500.0f)]
+    float max_fuel = 200.0f;
     float fuel;
     Vector3 starting_position;
     public FuelGauge fuel_gauge;
