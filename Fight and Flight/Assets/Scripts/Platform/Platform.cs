@@ -37,7 +37,7 @@ public class Platform : MonoBehaviour
             {
                 float pickup_random_x_location = Random.Range(-pickup_spawn_range_limit, pickup_spawn_range_limit);
                 float pickup_random_z_location = Random.Range(-pickup_spawn_range_limit, pickup_spawn_range_limit);
-                Vector3 pick_up_offset = transform.position + new Vector3(pickup_random_x_location, 2.0f, pickup_random_z_location);
+                Vector3 pick_up_offset = transform.position + new Vector3(pickup_random_x_location, 1.0f, pickup_random_z_location);
                 GameObject new_common_pickup = Instantiate(common_pickup, pick_up_offset, common_pickup.transform.rotation);
                 new_common_pickup.transform.SetParent(gameObject.transform);
 
@@ -46,7 +46,7 @@ public class Platform : MonoBehaviour
             {
                 float pickup_random_x_location = Random.Range(-pickup_spawn_range_limit, pickup_spawn_range_limit);
                 float pickup_random_z_location = Random.Range(-pickup_spawn_range_limit, pickup_spawn_range_limit);
-                Vector3 pick_up_offset = transform.position + new Vector3(pickup_random_x_location, 2.0f, pickup_random_z_location);
+                Vector3 pick_up_offset = transform.position + new Vector3(pickup_random_x_location, 1.0f, pickup_random_z_location);
                 GameObject new_rare_pickup = Instantiate(rare_pickup, pick_up_offset, rare_pickup.transform.rotation);
                 new_rare_pickup.transform.SetParent(gameObject.transform);
             }
