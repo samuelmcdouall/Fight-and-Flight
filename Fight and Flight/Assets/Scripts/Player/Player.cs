@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
         fuel = max_fuel;
         fuel_gauge.SetMaxFuelGauge(max_fuel);
         fuel_meter.SetNonGlidingColour();
+        score = 0;
     }
 
     public void UpdateDirectionAndThrottleValues(float trigger_amount, Vector3 direction)
