@@ -116,8 +116,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  lifetime: 60
+  lifetime: 45
   random_chosen_angle_arc: 45
+  reverse_spawner: 0
 --- !u!1 &4759172120919274470
 GameObject:
   m_ObjectHideFlags: 0

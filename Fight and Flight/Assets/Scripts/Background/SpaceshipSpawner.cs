@@ -13,6 +13,8 @@ public class SpaceshipSpawner : MonoBehaviour
     float spawn_max_timer;
     float respawn_rate;
     float elapsed_timer = 0;
+    [SerializeField]
+    public bool reverse_spawner = false;
     void Start()
     {
         respawn_rate = Random.Range(spawn_min_timer, spawn_max_timer);
@@ -34,14 +36,16 @@ public class SpaceshipSpawner : MonoBehaviour
 
     void SpawnSpaceship()
     {
+        GameObject spaceship;
         int randomly_select_spaceship = Random.Range(0, 2);
         if (randomly_select_spaceship == 0)
         {
-            Instantiate(red_spaceship, transform.position, red_spaceship.transform.rotation);
+            spaceship = Instantiate(red_spaceship, transform.position, red_spaceship.transform.rotation);
         }
         else
         {
-            Instantiate(blue_spaceship, transform.position, blue_spaceship.transform.rotation);
+            spaceship = Instantiate(blue_spaceship, transform.position, blue_spaceship.transform.rotation);
         }
+        spaceship.GetComponent<Spaceship>().reverse_spawner = reverse_spawner;
     }
 }
