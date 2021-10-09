@@ -34,6 +34,14 @@ public class Player : MonoBehaviour
     public AudioClip flying_sfx;
     public AudioClip gliding_sfx;
     public static int score = 0;
+    [SerializeField]
+    [Range(0.0f, 3.0f)]
+    float ammo_recharge_interval = 1.0f;
+    float elapsed_ammo_recharge_delay = 0.0f;
+    [SerializeField]
+    [Range(0, 10)]
+    int max_ammo = 5;
+    public static int ammo = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +53,7 @@ public class Player : MonoBehaviour
         fuel_gauge.SetMaxFuelGauge(max_fuel);
         fuel_meter.SetNonGlidingColour();
         score = 0;
+        ammo = 5;
     }
 
     public void UpdateDirectionAndThrottleValues(float trigger_amount, Vector3 direction)
@@ -59,6 +68,7 @@ public class Player : MonoBehaviour
         //print("elapsed fuel recharge delay: " + elapsed_fuel_recharge_delay);
         CheckIfOutOfBounds();
         CheckIfAbleToRechargeEnergy();
+        CheckIfAbleToRechargeGun();
         if (throttle && fuel != 0.0f)
         {
             Fly();
@@ -121,6 +131,28 @@ public class Player : MonoBehaviour
         else
         {
             elapsed_fuel_recharge_delay = 0.0f;
+        }
+    }
+    private void CheckIfAbleToRechargeGun()
+    {
+        if (ground_check.is_grounded)
+        {
+            if (ammo != max_ammo)
+            {
+                if (elapsed_ammo_recharge_delay > ammo_recharge_interval)
+                {
+                    ammo++;
+                    elapsed_ammo_recharge_delay = 0.0f;
+                }
+                else
+                {
+                    elapsed_ammo_recharge_delay += Time.deltaTime;
+                }
+            }
+        }
+        else
+        {
+            elapsed_ammo_recharge_delay = 0.0f;
         }
     }
 
