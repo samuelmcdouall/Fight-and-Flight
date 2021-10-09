@@ -24,6 +24,8 @@ public class Platform : MonoBehaviour
     public GameObject rare_pickup;
     [SerializeField]
     bool starting_platform = false;
+    bool begun_falling = false;
+    public AudioClip fall_sfx;
 
 
     // Start is called before the first frame update
@@ -81,6 +83,11 @@ public class Platform : MonoBehaviour
             else
             {
                 transform.Translate(-Vector3.up * Time.deltaTime * platform_fall_speed);
+                if (!begun_falling)
+                {
+                    AudioSource.PlayClipAtPoint(fall_sfx, transform.position);
+                    begun_falling = true;
+                }
             }
         }
     }
