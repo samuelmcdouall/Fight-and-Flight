@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
     [Range(0, 10)]
     int max_ammo = 5;
     public static int ammo = 5;
+    public bool gun_trigger_pressed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +83,15 @@ public class Player : MonoBehaviour
         {
             fuel_meter.SetNonGlidingColour();
             player_as.Stop();
+        }
+        if (gun_trigger_pressed)
+        {
+            if (ammo != 0)
+            {
+                // fire gun, use the info from LeftHandController for laser direction
+                ammo--;
+                gun_trigger_pressed = false;
+            }
         }
     }
 
