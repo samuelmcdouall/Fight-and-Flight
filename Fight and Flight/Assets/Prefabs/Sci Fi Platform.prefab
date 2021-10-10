@@ -113,11 +113,13 @@ MonoBehaviour:
   platform_fall_speed: 3
   color_max_life: {r: 1, g: 1, b: 1, a: 0}
   color_min_life: {r: 0, g: 0, b: 0, a: 0}
-  percentage_chance_to_spawn_common_pickup: 50
+  percentage_chance_to_spawn_common_pickup: 40
   percentage_chance_to_spawn_rare_pickup: 10
+  percentage_chance_to_spawn_ammo_pickup: 20
   pickup_spawn_range_limit: 2
   common_pickup: {fileID: 1689830508881278957, guid: 1edaae3579a8c1d4fada9342ad92546d, type: 3}
   rare_pickup: {fileID: 306189006300075459, guid: 05388f5bb4cf81b45b24a0bcba225b76, type: 3}
+  ammo_pickup: {fileID: 1674643942503215292, guid: dc8b61381ca64b745a87402dd2901c5d, type: 3}
   starting_platform: 0
   fall_sfx: {fileID: 8300000, guid: 4b4dd7245f6104c8c8eb07ccf6b386ed, type: 3}
 --- !u!82 &2562547655948394292

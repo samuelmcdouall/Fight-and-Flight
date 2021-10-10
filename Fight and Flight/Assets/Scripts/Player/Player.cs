@@ -34,27 +34,18 @@ public class Player : MonoBehaviour
     public AudioClip flying_sfx;
     public AudioClip gliding_sfx;
     public static int score = 0;
-    [SerializeField]
-    [Range(0.0f, 3.0f)]
-    float ammo_recharge_interval = 1.0f;
-    float elapsed_ammo_recharge_delay = 0.0f;
-    [SerializeField]
-    [Range(0, 10)]
-    int max_ammo = 5;
-    public static int ammo = 5;
-    public bool gun_trigger_pressed = false;
+    float y_out_of_bounds = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
         starting_position = transform.position;
-        ground_check = GameObject.FindGameObjectWithTag("GroundCheck").GetComponent<GroundCheck>();
         player_as = GetComponent<AudioSource>();
         player_rb = GetComponent<Rigidbody>();
+        ground_check = GameObject.FindGameObjectWithTag("GroundCheck").GetComponent<GroundCheck>();
         fuel = max_fuel;
         fuel_gauge.SetMaxFuelGauge(max_fuel);
         fuel_meter.SetNonGlidingColour();
         score = 0;
-        ammo = 5;
     }
 
     public void UpdateDirectionAndThrottleValues(float trigger_amount, Vector3 direction)
@@ -69,7 +60,6 @@ public class Player : MonoBehaviour
         //print("elapsed fuel recharge delay: " + elapsed_fuel_recharge_delay);
         CheckIfOutOfBounds();
         CheckIfAbleToRechargeEnergy();
-        CheckIfAbleToRechargeGun();
         if (throttle && fuel != 0.0f)
         {
             Fly();
@@ -83,15 +73,6 @@ public class Player : MonoBehaviour
         {
             fuel_meter.SetNonGlidingColour();
             player_as.Stop();
-        }
-        if (gun_trigger_pressed)
-        {
-            if (ammo != 0)
-            {
-                // fire gun, use the info from LeftHandController for laser direction
-                ammo--;
-                gun_trigger_pressed = false;
-            }
         }
     }
 
@@ -143,34 +124,12 @@ public class Player : MonoBehaviour
             elapsed_fuel_recharge_delay = 0.0f;
         }
     }
-    private void CheckIfAbleToRechargeGun()
-    {
-        if (ground_check.is_grounded)
-        {
-            if (ammo != max_ammo)
-            {
-                if (elapsed_ammo_recharge_delay > ammo_recharge_interval)
-                {
-                    ammo++;
-                    elapsed_ammo_recharge_delay = 0.0f;
-                }
-                else
-                {
-                    elapsed_ammo_recharge_delay += Time.deltaTime;
-                }
-            }
-        }
-        else
-        {
-            elapsed_ammo_recharge_delay = 0.0f;
-        }
-    }
 
     private void CheckIfOutOfBounds()
     {
-        if (transform.position.y <= -20.0f)
+        if (transform.position.y <= y_out_of_bounds)
         {
-            transform.position = starting_position;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

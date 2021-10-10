@@ -9,22 +9,22 @@ public class GunUI : MonoBehaviour
     void Start()
     {
         ammo_remaining_text = GetComponent<Text>();
-        ammo_remaining_text.text = "" + Player.ammo;
+        ammo_remaining_text.text = "" + Gun.ammo;
     }
     void Update()
     {
-        if (Player.ammo <= 1)
+        if (Gun.ammo <= 2)
         {
             ammo_remaining_text.color = Color.red;
         }
-        else if (Player.ammo <= 3)
+        else if (Gun.ammo <= 6)
         {
             ammo_remaining_text.color = Color.yellow;
         }
-        else if (Player.ammo <= 5)
+        else if (Gun.ammo <= 10)
         {
             ammo_remaining_text.color = Color.green;
         }
-        ammo_remaining_text.text = "" + Player.ammo;
+        ammo_remaining_text.text = "" + Gun.ammo;
     }
 }
