@@ -8,6 +8,9 @@ TagManager:
   - Platform
   - GroundCheck
   - Platform Spawner
+  - Gun
+  - FxTemporaire
+  - Target
   layers:
   - Default
   - TransparentFX
