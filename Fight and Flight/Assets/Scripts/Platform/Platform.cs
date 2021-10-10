@@ -19,9 +19,12 @@ public class Platform : MonoBehaviour
     [SerializeField]
     int percentage_chance_to_spawn_rare_pickup = 25;
     [SerializeField]
+    int percentage_chance_to_spawn_ammo_pickup = 20; // do all the stuff for an ammo pickup (including the prefab and the script)
+    [SerializeField]
     float pickup_spawn_range_limit = 2.0f;
     public GameObject common_pickup;
     public GameObject rare_pickup;
+    public GameObject ammo_pickup;
     [SerializeField]
     bool starting_platform = false;
     bool begun_falling = false;
@@ -51,6 +54,14 @@ public class Platform : MonoBehaviour
                 Vector3 pick_up_offset = transform.position + new Vector3(pickup_random_x_location, 1.0f, pickup_random_z_location);
                 GameObject new_rare_pickup = Instantiate(rare_pickup, pick_up_offset, rare_pickup.transform.rotation);
                 new_rare_pickup.transform.SetParent(gameObject.transform);
+            }
+            else if (random_spawn_chance < percentage_chance_to_spawn_common_pickup + percentage_chance_to_spawn_rare_pickup + percentage_chance_to_spawn_ammo_pickup + 1)
+            {
+                float pickup_random_x_location = Random.Range(-pickup_spawn_range_limit, pickup_spawn_range_limit);
+                float pickup_random_z_location = Random.Range(-pickup_spawn_range_limit, pickup_spawn_range_limit);
+                Vector3 pick_up_offset = transform.position + new Vector3(pickup_random_x_location, 1.0f, pickup_random_z_location);
+                GameObject new_ammo_pickup = Instantiate(ammo_pickup, pick_up_offset, ammo_pickup.transform.rotation);
+                new_ammo_pickup.transform.SetParent(gameObject.transform);
             }
         }
         current_life_time = max_life_time;
