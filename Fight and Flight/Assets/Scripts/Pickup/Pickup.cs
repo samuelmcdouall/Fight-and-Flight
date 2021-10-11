@@ -9,7 +9,7 @@ public class Pickup : MonoBehaviour
     float revolution_time = 1.0f;
     [SerializeField]
     PickupType pickup_type;
-    int rare_value = 5;
+    int rare_value = 3;
     int common_value = 1;
     public AudioClip collect_reward_sfx;
     public AudioClip collect_ammo_sfx;
