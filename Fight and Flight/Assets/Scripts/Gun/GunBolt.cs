@@ -28,6 +28,11 @@ public class GunBolt : MonoBehaviour
             Destroy(collider.gameObject);
             Explode();
         }
+        else if (collider.gameObject.tag == "Drone Hit Box")
+        {
+            Destroy(collider.gameObject.transform.parent.gameObject);
+            Explode();
+        }
     }
 
     private void Explode()
