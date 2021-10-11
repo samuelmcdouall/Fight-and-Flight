@@ -26,8 +26,9 @@ public class DroneRocket : MonoBehaviour
         }
         else if (collider.gameObject.tag == "Player")
         {
+            Player.game_over = true;
             //Explode(); say GAME OVER and show score
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // play lose noise
         }
     }
 
