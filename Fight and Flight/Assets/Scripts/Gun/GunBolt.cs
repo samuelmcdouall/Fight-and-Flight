@@ -31,6 +31,7 @@ public class GunBolt : MonoBehaviour
         else if (collider.gameObject.tag == "Drone Hit Box")
         {
             Player.score += drone_value;
+            Player.drones_destroyed++;
             Destroy(collider.gameObject.transform.parent.gameObject);
             Explode();
         }

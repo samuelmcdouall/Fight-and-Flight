@@ -14,6 +14,6 @@ public class ScoreUI : MonoBehaviour
     {
         score_text.text = "Score: " + Player.score + "\n" +
                           "Level: " + (Player.player_level + 1) + "\n" +
-                          "Drones : " + (Player.enemies_destroyed);
+                          "Drones : " + (Player.drones_destroyed);
     }
 }
