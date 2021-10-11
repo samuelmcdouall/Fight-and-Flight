@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Floor")
+        if (collision.gameObject.tag == "Drone Hit Box")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
