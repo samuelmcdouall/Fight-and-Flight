@@ -9,10 +9,10 @@ public class ScoreUI : MonoBehaviour
     void Start()
     {
         score_text = GetComponent<Text>();
-        score_text.text = "Score: " + Player.score;
+        score_text.text = "Score: " + Player.score + "\n" + "Level: " + (Player.player_level + 1);
     }
     void Update()
     {
-        score_text.text = "Score: " + Player.score;
+        score_text.text = "Score: " + Player.score + "\n" + "Level: " + (Player.player_level + 1);
     }
 }
