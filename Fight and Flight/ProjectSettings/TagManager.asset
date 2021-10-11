@@ -11,6 +11,9 @@ TagManager:
   - Gun
   - FxTemporaire
   - Target
+  - Drone
+  - Drone Target
+  - Drone Hit Box
   layers:
   - Default
   - TransparentFX
