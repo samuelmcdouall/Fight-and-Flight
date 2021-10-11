@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
     public AudioClip flying_sfx;
     public AudioClip gliding_sfx;
     public static int score = 0;
+    public static int player_level = 0;
+    int level_increase_rate = 10;
     float y_out_of_bounds = 0.5f;
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,7 @@ public class Player : MonoBehaviour
         fuel_gauge.SetMaxFuelGauge(max_fuel);
         fuel_meter.SetNonGlidingColour();
         score = 0;
+        player_level = 0;
     }
 
     public void UpdateDirectionAndThrottleValues(float trigger_amount, Vector3 direction)
@@ -58,6 +61,14 @@ public class Player : MonoBehaviour
     void Update()
     {
         //print("elapsed fuel recharge delay: " + elapsed_fuel_recharge_delay);
+        if (score / level_increase_rate <= 4)
+        {
+            player_level = score / level_increase_rate;
+        }
+        else
+        {
+            player_level = 4;
+        }
         CheckIfOutOfBounds();
         CheckIfAbleToRechargeEnergy();
         if (throttle && fuel != 0.0f)

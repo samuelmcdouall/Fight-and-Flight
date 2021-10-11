@@ -5,7 +5,7 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     bool deteriorating = false;
-    public float max_life_time = 10.0f;
+    float max_life_time = 10.0f;
     float current_life_time;
     public float platform_fall_speed = 3.0f;
     Material platform_m;
@@ -64,6 +64,7 @@ public class Platform : MonoBehaviour
                 new_ammo_pickup.transform.SetParent(gameObject.transform);
             }
         }
+        max_life_time -= (2 * Player.player_level);
         current_life_time = max_life_time;
         platform_m = GetComponent<Renderer>().material;
         platform_spawner = GameObject.FindGameObjectWithTag("Platform Spawner");

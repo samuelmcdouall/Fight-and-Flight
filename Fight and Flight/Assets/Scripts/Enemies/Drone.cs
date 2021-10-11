@@ -7,10 +7,8 @@ public class Drone : MonoBehaviour
     // Start is called before the first frame update
     GameObject player;
     [SerializeField]
-    [Range(0.0f, 100.0f)]
-    float rocket_speed = 10.0f;
-    [SerializeField]
     [Range(0.1f, 100.0f)]
+    float rocket_speed = 10.0f;
     float fire_interval = 5.0f;
     float elapsed_fire_timer = 0.0f;
     public GameObject rocket_spawn_right;
@@ -28,7 +26,7 @@ public class Drone : MonoBehaviour
     void Update()
     {
         transform.LookAt(player.transform);
-        if (elapsed_fire_timer > fire_interval)
+        if (elapsed_fire_timer > fire_interval - Player.player_level)
         {
             //Quaternion rotation_spawn_offset = gun_barrel_outer.transform.rotation * gun_ammo_offset;
             int randomly_selected_rocket_rack = Random.Range(0, 2);
