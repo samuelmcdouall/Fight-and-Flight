@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Gun : MonoBehaviour
 {
@@ -26,14 +27,21 @@ public class Gun : MonoBehaviour
     {
         if (gun_trigger_pressed)
         {
-            if (ammo != 0)
+            if (!Player.game_over)
             {
-                Quaternion rotation_spawn_offset = gun_barrel_outer.transform.rotation * gun_ammo_offset;
-                GameObject ammo_object = Instantiate(gun_bolt, gun_barrel_outer.transform.position, rotation_spawn_offset);
-                ammo_object.GetComponent<Rigidbody>().velocity = (gun_barrel_outer.transform.position - gun_barrel_inner.transform.position).normalized * ammo_speed;
-                AudioSource.PlayClipAtPoint(fire_sfx, transform.position);
-                ammo--;
-                gun_trigger_pressed = false;
+                if (ammo != 0)
+                {
+                    Quaternion rotation_spawn_offset = gun_barrel_outer.transform.rotation * gun_ammo_offset;
+                    GameObject ammo_object = Instantiate(gun_bolt, gun_barrel_outer.transform.position, rotation_spawn_offset);
+                    ammo_object.GetComponent<Rigidbody>().velocity = (gun_barrel_outer.transform.position - gun_barrel_inner.transform.position).normalized * ammo_speed;
+                    AudioSource.PlayClipAtPoint(fire_sfx, transform.position);
+                    ammo--;
+                    gun_trigger_pressed = false;
+                }
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
     }
