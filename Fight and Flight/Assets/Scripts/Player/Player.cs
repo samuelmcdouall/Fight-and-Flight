@@ -32,11 +32,15 @@ public class Player : MonoBehaviour
     float elapsed_fuel_recharge_delay = 0.0f;
     AudioSource player_as;
     public AudioClip flying_sfx;
-    public AudioClip gliding_sfx;
+    public AudioClip game_over_sfx;
     public static int score = 0;
     public static int player_level = 0;
+    public static int drones_destroyed = 0;
     int level_increase_rate = 10;
     float y_out_of_bounds = 0.5f;
+    public static bool game_over = false;
+    public GameObject game_over_screen;
+    public GameObject score_screen;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +53,9 @@ public class Player : MonoBehaviour
         fuel_meter.SetNonGlidingColour();
         score = 0;
         player_level = 0;
+        drones_destroyed = 0;
+        game_over = false;
+        Time.timeScale = 1.0f;
     }
 
     public void UpdateDirectionAndThrottleValues(float trigger_amount, Vector3 direction)
@@ -61,30 +68,56 @@ public class Player : MonoBehaviour
     void Update()
     {
         //print("elapsed fuel recharge delay: " + elapsed_fuel_recharge_delay);
-        if (score / level_increase_rate <= 4)
+        if (game_over)
         {
-            player_level = score / level_increase_rate;
+            if (game_over_screen.activeSelf == false)
+            {
+                game_over_screen.SetActive(true);
+                score_screen.SetActive(false);
+                if (player_as.isPlaying)
+                {
+                    player_as.Stop();
+                }
+                player_as.PlayOneShot(game_over_sfx, 1.0f);
+                Time.timeScale = 0.0f;
+            }
+            //if (game_over_timer > game_over_interval)
+            //{
+            //    ReloadScene();
+            //}
+            //else
+            //{
+            //    game_over_timer += Time.deltaTime;
+            //}
         }
         else
         {
-            player_level = 4;
+            if (score / level_increase_rate <= 4)
+            {
+                player_level = score / level_increase_rate;
+            }
+            else
+            {
+                player_level = 4;
+            }
+            CheckIfOutOfBounds();
+            CheckIfAbleToRechargeEnergy();
+            if (throttle && fuel != 0.0f)
+            {
+                Fly();
+            }
+            else if (throttle && fuel == 0.0f)
+            {
+                Glide();
+                player_as.Stop();
+            }
+            else
+            {
+                fuel_meter.SetNonGlidingColour();
+                player_as.Stop();
+            }
         }
-        CheckIfOutOfBounds();
-        CheckIfAbleToRechargeEnergy();
-        if (throttle && fuel != 0.0f)
-        {
-            Fly();
-        }
-        else if (throttle && fuel == 0.0f)
-        {
-            Glide();
-            player_as.Stop();
-        }
-        else
-        {
-            fuel_meter.SetNonGlidingColour();
-            player_as.Stop();
-        }
+       
     }
 
     private void Glide()
@@ -140,7 +173,7 @@ public class Player : MonoBehaviour
     {
         if (transform.position.y <= y_out_of_bounds)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            game_over = true;
         }
     }
 
@@ -148,7 +181,12 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Drone Hit Box")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            game_over = true;
         }
+    }
+
+    void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
