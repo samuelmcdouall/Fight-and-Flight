@@ -9,7 +9,7 @@ public class GunBolt : MonoBehaviour
     public GameObject explosion_fx;
     public AudioClip explosion_sfx;
     GameObject player;
-    Vector3 audio_offset = new Vector3(0.0f, 0.0f, 0.0f);
+    int drone_value = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +30,7 @@ public class GunBolt : MonoBehaviour
         }
         else if (collider.gameObject.tag == "Drone Hit Box")
         {
+            Player.score += drone_value;
             Destroy(collider.gameObject.transform.parent.gameObject);
             Explode();
         }
@@ -37,7 +38,7 @@ public class GunBolt : MonoBehaviour
 
     private void Explode()
     {
-        AudioSource.PlayClipAtPoint(explosion_sfx, player.transform.position + audio_offset);
+        AudioSource.PlayClipAtPoint(explosion_sfx, player.transform.position);
         Instantiate(explosion_fx, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
