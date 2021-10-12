@@ -63,9 +63,13 @@ public class Player : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
-    public void UpdateDirectionAndThrottleValues(float trigger_amount, Vector3 direction)
+    public void UpdateThrottleValue(float trigger_amount)
     {
         current_throttle = trigger_amount;
+    }
+
+    public void UpdateDirection(Vector3 direction)
+    {
         current_direction = direction;
     }
 
