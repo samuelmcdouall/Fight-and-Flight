@@ -8,6 +8,7 @@ public class RightHandController : MonoBehaviour
 
     private ActionBasedController right_controller;
     private float amount_trigger_pressed;
+    private float menu_button_pressed;
     float press_threshold = 0.001f;
     private Player player_script;
     // Start is called before the first frame update
@@ -16,12 +17,16 @@ public class RightHandController : MonoBehaviour
         right_controller = GetComponent<ActionBasedController>();
         player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
-        amount_trigger_pressed = right_controller.selectAction.action.ReadValue<float>();
-
-        right_controller.selectAction.action.performed += Action_performed;
+        right_controller.selectAction.action.performed += Trigger_Pressed;
+        right_controller.activateAction.action.performed += Menu_Button_Pressed;
     }
 
-    private void Action_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    public void Menu_Button_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    { 
+        player_script.PauseUnpause();
+    }
+
+    public void Trigger_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         amount_trigger_pressed = right_controller.selectAction.action.ReadValue<float>();
         if (amount_trigger_pressed <= press_threshold)
@@ -32,12 +37,15 @@ public class RightHandController : MonoBehaviour
         {
             player_script.throttle = true;
         }
+        // need to be giving controller direction always, as this cuts out when you click into 1 when gliding or flying
+        // move the direction to a separate function in the update function
         Vector3 controller_facing_direction = gameObject.transform.rotation * Vector3.forward;
         player_script.UpdateDirectionAndThrottleValues(amount_trigger_pressed, controller_facing_direction);
     }
 
-    void Update()
+    public void RemoveActions()
     {
-
+        right_controller.selectAction.action.performed -= Trigger_Pressed;
+        right_controller.activateAction.action.performed -= Menu_Button_Pressed;
     }
 }

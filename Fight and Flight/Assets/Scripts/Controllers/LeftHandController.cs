@@ -9,18 +9,26 @@ public class LeftHandController : MonoBehaviour
     private ActionBasedController left_controller;
     private float trigger_pressed;
     private Gun gun_script;
+    private Player player_script;
     // Start is called before the first frame update
     void Start()
     {
         left_controller = GetComponent<ActionBasedController>();
         gun_script = GameObject.FindGameObjectWithTag("Gun").GetComponent<Gun>();
+        player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
         trigger_pressed = left_controller.selectAction.action.ReadValue<float>();
         
-        left_controller.selectAction.action.performed += Action_performed;
+        left_controller.selectAction.action.performed += Trigger_Pressed;
+        left_controller.activateAction.action.performed += Menu_Button_Pressed;
     }
 
-    private void Action_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    public void Menu_Button_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        player_script.PauseUnpause();
+    }
+
+    private void Trigger_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         if (Gun.ammo != 0)
         {
@@ -31,9 +39,9 @@ public class LeftHandController : MonoBehaviour
             }
         }
     }
-
-    void Update()
+    public void RemoveActions()
     {
-
+        left_controller.selectAction.action.performed -= Trigger_Pressed;
+        left_controller.activateAction.action.performed -= Menu_Button_Pressed;
     }
 }
