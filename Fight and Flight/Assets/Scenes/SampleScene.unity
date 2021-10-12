@@ -1062,6 +1062,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1240061116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4775896686148400781, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+  m_PrefabInstance: {fileID: 4775896685949767758}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c725beefa46c6b44790f6115aef0b26f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1278996971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,6 +1465,85 @@ MonoBehaviour:
   maximum_vertical_spawn_distance: 17
   minimum_spawn_drone_proximity_distance: 8
   spawn_sfx: {fileID: 8300000, guid: 7a52f324fbd840546afd8d12a296e9b3, type: 3}
+--- !u!1 &1409426188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1409426191}
+  - component: {fileID: 1409426190}
+  - component: {fileID: 1409426189}
+  m_Layer: 5
+  m_Name: Pause Screen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1409426189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409426188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7264151, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 5
+    m_MaxSize: 50
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Paused
+--- !u!222 &1409426190
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409426188}
+  m_CullTransparentMesh: 1
+--- !u!224 &1409426191
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409426188}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1612233716}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -203, y: 235}
+  m_SizeDelta: {x: 610.1, y: 335.1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1460190185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1618,6 +1708,11 @@ Transform:
   m_Father: {fileID: 1857323142}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1612233716 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4775896684757019691, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+  m_PrefabInstance: {fileID: 4775896685949767758}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1756370996
 GameObject:
   m_ObjectHideFlags: 0
@@ -2087,6 +2182,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3466461927982727383, guid: f5332077499f50b4da4ffac7ccf57280, type: 3}
   m_PrefabInstance: {fileID: 876011628}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1915397348 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4775896684409787994, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+  m_PrefabInstance: {fileID: 4775896685949767758}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: babb6c9b9fb41564c8408f1bcee309ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1952946737 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8307603157612568338, guid: 0daf96c15d4c97b4e9e526f6acfce2f0, type: 3}
@@ -2365,6 +2471,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4775896684323821882, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: pause_sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 657578e4be6b64dbf9b09deada272e55, type: 3}
+    - target: {fileID: 4775896684323821882, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: unpause_sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: a0ca8964c08d54c5dbebf245bdc474ca, type: 3}
+    - target: {fileID: 4775896684323821882, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: pause_screen
+      value: 
+      objectReference: {fileID: 1409426188}
     - target: {fileID: 4775896684323821886, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_Name
       value: XR Rig
@@ -2379,6 +2497,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4775896684762653750, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4775896685260920319, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: left_hand_controller_script
+      value: 
+      objectReference: {fileID: 1915397348}
+    - target: {fileID: 4775896685260920319, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: right_hand_controller_script
+      value: 
+      objectReference: {fileID: 1240061116}
+    - target: {fileID: 4775896685918275750, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4775896686148400776, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}

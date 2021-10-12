@@ -16,6 +16,8 @@ public class Gun : MonoBehaviour
     public GameObject gun_bolt;
     public AudioClip fire_sfx;
     Quaternion gun_ammo_offset = Quaternion.Euler(0.0f, 0.0f, -90.0f);
+    public RightHandController right_hand_controller_script;
+    public LeftHandController left_hand_controller_script;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,7 @@ public class Gun : MonoBehaviour
     {
         if (gun_trigger_pressed)
         {
-            if (!Player.game_over)
+            if (!Player.game_over && !Player.paused)
             {
                 if (ammo != 0)
                 {
@@ -39,8 +41,12 @@ public class Gun : MonoBehaviour
                     gun_trigger_pressed = false;
                 }
             }
-            else
+
+            // FOR THE MOMENT THIS IS THE PLACE TO RELOAD THE SCENE will use a proper menu later
+            else if (!Player.paused)
             {
+                right_hand_controller_script.RemoveActions();
+                left_hand_controller_script.RemoveActions();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
