@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
         player_level = 0;
         drones_destroyed = 0;
         game_over = false;
+        paused = false;
         Time.timeScale = 1.0f;
     }
 
@@ -111,8 +112,9 @@ public class Player : MonoBehaviour
                 {
                     player_as.Stop();
                 }
-                player_as.PlayOneShot(unpause_sfx, 1.0f);
                 Time.timeScale = 1.0f;
+                //hm seems to do it using playclipatpoint, not sure why
+                AudioSource.PlayClipAtPoint(unpause_sfx, transform.position);
             }
             if (score / level_increase_rate <= 4)
             {
