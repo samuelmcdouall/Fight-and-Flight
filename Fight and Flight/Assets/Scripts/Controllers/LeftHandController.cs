@@ -16,8 +16,6 @@ public class LeftHandController : MonoBehaviour
         left_controller = GetComponent<ActionBasedController>();
         gun_script = GameObject.FindGameObjectWithTag("Gun").GetComponent<Gun>();
         player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
-        trigger_pressed = left_controller.selectAction.action.ReadValue<float>();
         
         left_controller.selectAction.action.performed += Trigger_Pressed;
         left_controller.activateAction.action.performed += Menu_Button_Pressed;
@@ -30,7 +28,7 @@ public class LeftHandController : MonoBehaviour
 
     private void Trigger_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        if (Gun.ammo != 0)
+        if (Gun.ammo != 0 && !Player.paused)
         {
             trigger_pressed = left_controller.selectAction.action.ReadValue<float>();
             if (trigger_pressed == 1.0f)
