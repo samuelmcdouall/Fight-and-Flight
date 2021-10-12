@@ -33,14 +33,18 @@ public class Player : MonoBehaviour
     AudioSource player_as;
     public AudioClip flying_sfx;
     public AudioClip game_over_sfx;
+    public AudioClip pause_sfx;
+    public AudioClip unpause_sfx;
     public static int score = 0;
     public static int player_level = 0;
     public static int drones_destroyed = 0;
     int level_increase_rate = 10;
     float y_out_of_bounds = 0.5f;
     public static bool game_over = false;
+    public static bool paused = false;
     public GameObject game_over_screen;
     public GameObject score_screen;
+    public GameObject pause_screen;
     // Start is called before the first frame update
     void Start()
     {
@@ -81,17 +85,35 @@ public class Player : MonoBehaviour
                 player_as.PlayOneShot(game_over_sfx, 1.0f);
                 Time.timeScale = 0.0f;
             }
-            //if (game_over_timer > game_over_interval)
-            //{
-            //    ReloadScene();
-            //}
-            //else
-            //{
-            //    game_over_timer += Time.deltaTime;
-            //}
+            return;
+        }
+        if (paused)
+        {
+            if (pause_screen.activeSelf == false)
+            {
+                pause_screen.SetActive(true);
+                score_screen.SetActive(false);
+                if (player_as.isPlaying)
+                {
+                    player_as.Stop();
+                }
+                player_as.PlayOneShot(pause_sfx, 1.0f);
+                Time.timeScale = 0.0f;
+            }
         }
         else
         {
+            if (pause_screen.activeSelf == true)
+            {
+                pause_screen.SetActive(false);
+                score_screen.SetActive(true);
+                if (player_as.isPlaying)
+                {
+                    player_as.Stop();
+                }
+                player_as.PlayOneShot(unpause_sfx, 1.0f);
+                Time.timeScale = 1.0f;
+            }
             if (score / level_increase_rate <= 4)
             {
                 player_level = score / level_increase_rate;
@@ -117,7 +139,6 @@ public class Player : MonoBehaviour
                 player_as.Stop();
             }
         }
-       
     }
 
     private void Glide()
@@ -188,5 +209,10 @@ public class Player : MonoBehaviour
     void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void PauseUnpause()
+    {
+        paused = !paused;
     }
 }
