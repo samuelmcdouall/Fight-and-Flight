@@ -37,15 +37,18 @@ public class RightHandController : MonoBehaviour
         {
             player_script.throttle = true;
         }
-        // need to be giving controller direction always, as this cuts out when you click into 1 when gliding or flying
-        // move the direction to a separate function in the update function
-        Vector3 controller_facing_direction = gameObject.transform.rotation * Vector3.forward;
-        player_script.UpdateDirectionAndThrottleValues(amount_trigger_pressed, controller_facing_direction);
+        player_script.UpdateThrottleValue(amount_trigger_pressed);
     }
 
     public void RemoveActions()
     {
         right_controller.selectAction.action.performed -= Trigger_Pressed;
         right_controller.activateAction.action.performed -= Menu_Button_Pressed;
+    }
+
+    void Update()
+    {
+        Vector3 controller_facing_direction = gameObject.transform.rotation * Vector3.forward;
+        player_script.UpdateDirection(controller_facing_direction);
     }
 }
