@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.SceneManagement;
 
 public class LeftHandController : MonoBehaviour
 {
 
     private ActionBasedController left_controller;
-    private float trigger_pressed;
+    private float amount_trigger_pressed;
     private Gun gun_script;
     private Player player_script;
+    public RightHandController right_hand_controller;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,8 +32,15 @@ public class LeftHandController : MonoBehaviour
     {
         if (Gun.ammo != 0 && !Player.paused)
         {
-            trigger_pressed = left_controller.selectAction.action.ReadValue<float>();
-            if (trigger_pressed == 1.0f)
+            amount_trigger_pressed = left_controller.selectAction.action.ReadValue<float>();
+            if (amount_trigger_pressed == 1.0f && Player.game_over)
+            {
+                right_hand_controller.RemoveActions();
+                RemoveActions();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            
+            else if (amount_trigger_pressed == 1.0f)
             {
                 gun_script.gun_trigger_pressed = true;
             }

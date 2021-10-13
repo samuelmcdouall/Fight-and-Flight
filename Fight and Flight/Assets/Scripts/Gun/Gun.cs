@@ -41,14 +41,6 @@ public class Gun : MonoBehaviour
                     gun_trigger_pressed = false;
                 }
             }
-
-            // FOR THE MOMENT THIS IS THE PLACE TO RELOAD THE SCENE will use a proper menu later
-            else if (!Player.paused)
-            {
-                right_hand_controller_script.RemoveActions();
-                left_hand_controller_script.RemoveActions();
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.SceneManagement;
 
 public class RightHandController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class RightHandController : MonoBehaviour
     private float menu_button_pressed;
     float press_threshold = 0.001f;
     private Player player_script;
+    public LeftHandController left_hand_controller;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,12 @@ public class RightHandController : MonoBehaviour
     public void Trigger_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         amount_trigger_pressed = right_controller.selectAction.action.ReadValue<float>();
+        if (amount_trigger_pressed == 1.0f && Player.game_over)
+        {
+            left_hand_controller.RemoveActions();
+            RemoveActions();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // replace with load menu 
+        }
         if (amount_trigger_pressed <= press_threshold)
         {
             player_script.throttle = false;
