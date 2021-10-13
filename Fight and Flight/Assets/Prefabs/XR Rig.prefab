@@ -1162,6 +1162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25025b49211888a4a81c7b61b78f425b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_menu: 0
   ammo_speed: 20
   gun_trigger_pressed: 0
   gun_barrel_outer: {fileID: 7214157987201208089}
@@ -1893,6 +1894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a3c0f826d2e3b41b6447bb816a55d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_menu: 0
   throttle: 0
   fly_speed: 10
   glide_speed: 2
@@ -2495,6 +2497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f1a40570494f8408c0972b5d5c9447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_menu: 0
 --- !u!1 &7214157988310770421
 GameObject:
   m_ObjectHideFlags: 0
