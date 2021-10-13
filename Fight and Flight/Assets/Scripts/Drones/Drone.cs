@@ -42,7 +42,6 @@ public class Drone : MonoBehaviour
         {
             current_waypoint_target_num = Random.Range(0, waypoint_targets.Count);
             current_waypoint_target = waypoint_targets[current_waypoint_target_num];
-            print("ok going to waypoint: " + current_waypoint_target_num);
             waypoint_determined = true;
         }
 

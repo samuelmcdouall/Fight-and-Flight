@@ -1576,7 +1576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drone: {fileID: 7777510388650222487, guid: c0721433c65e6924093620e7b05dd052, type: 3}
-  starting_drones: 1
+  starting_drones: 0
   maximum_horizontal_spawn_distance: 20
   minimum_vertical_spawn_distance: 15
   maximum_vertical_spawn_distance: 17
