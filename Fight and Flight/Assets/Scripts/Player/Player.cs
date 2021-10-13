@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public bool in_menu;
     Rigidbody player_rb;
     GroundCheck ground_check;
     public bool throttle = false;
@@ -102,7 +103,7 @@ public class Player : MonoBehaviour
                 {
                     player_as.Stop();
                 }
-                player_as.PlayOneShot(pause_sfx, 1.0f);
+                //player_as.PlayOneShot(pause_sfx, 1.0f);
                 Time.timeScale = 0.0f;
             }
         }
@@ -112,13 +113,14 @@ public class Player : MonoBehaviour
             {
                 pause_screen.SetActive(false);
                 score_screen.SetActive(true);
-                if (player_as.isPlaying)
-                {
-                    player_as.Stop();
-                }
+                //if (player_as.isPlaying)
+                //{
+                //    player_as.Stop();
+                //}
                 Time.timeScale = 1.0f;
                 //hm seems to do it using playclipatpoint, not sure why
-                AudioSource.PlayClipAtPoint(unpause_sfx, transform.position);
+                //maybe dont need unpause sound
+                //AudioSource.PlayClipAtPoint(unpause_sfx, transform.position);
             }
             if (score / level_increase_rate <= 4)
             {
