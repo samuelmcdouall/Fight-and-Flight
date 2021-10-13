@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GunUI : MonoBehaviour
 {
     Text ammo_remaining_text;
+    public bool in_menu = false;
     void Start()
     {
         ammo_remaining_text = GetComponent<Text>();
@@ -13,18 +14,25 @@ public class GunUI : MonoBehaviour
     }
     void Update()
     {
-        if (Gun.ammo <= 2)
+        if (in_menu)
         {
-            ammo_remaining_text.color = Color.red;
+            ammo_remaining_text.text = "";
         }
-        else if (Gun.ammo <= 6)
+        else
         {
-            ammo_remaining_text.color = Color.yellow;
+            if (Gun.ammo <= 2)
+            {
+                ammo_remaining_text.color = Color.red;
+            }
+            else if (Gun.ammo <= 6)
+            {
+                ammo_remaining_text.color = Color.yellow;
+            }
+            else if (Gun.ammo <= 10)
+            {
+                ammo_remaining_text.color = Color.green;
+            }
+            ammo_remaining_text.text = "" + Gun.ammo;
         }
-        else if (Gun.ammo <= 10)
-        {
-            ammo_remaining_text.color = Color.green;
-        }
-        ammo_remaining_text.text = "" + Gun.ammo;
     }
 }
