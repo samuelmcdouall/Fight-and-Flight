@@ -24,28 +24,40 @@ public class RightHandController : MonoBehaviour
     }
 
     public void Menu_Button_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-    { 
-        player_script.PauseUnpause();
+    {
+        if (!player_script.in_menu)
+        {
+            player_script.PauseUnpause();
+        }
     }
 
     public void Trigger_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         amount_trigger_pressed = right_controller.selectAction.action.ReadValue<float>();
-        if (amount_trigger_pressed == 1.0f && Player.game_over)
+        if (player_script.in_menu && Player.game_over && amount_trigger_pressed == 1.0f)
         {
             left_hand_controller.RemoveActions();
             RemoveActions();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // replace with load menu 
-        }
-        if (amount_trigger_pressed <= press_threshold)
-        {
-            player_script.throttle = false;
+            SceneManager.LoadScene("MenuScene");
         }
         else
         {
-            player_script.throttle = true;
+            if (amount_trigger_pressed == 1.0f && Player.game_over)
+            {
+                left_hand_controller.RemoveActions();
+                RemoveActions();
+                SceneManager.LoadScene("MenuScene");
+            }
+            if (amount_trigger_pressed <= press_threshold)
+            {
+                player_script.throttle = false;
+            }
+            else
+            {
+                player_script.throttle = true;
+            }
+            player_script.UpdateThrottleValue(amount_trigger_pressed);
         }
-        player_script.UpdateThrottleValue(amount_trigger_pressed);
     }
 
     public void RemoveActions()

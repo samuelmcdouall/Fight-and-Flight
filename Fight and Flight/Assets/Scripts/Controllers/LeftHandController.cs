@@ -25,22 +25,29 @@ public class LeftHandController : MonoBehaviour
 
     public void Menu_Button_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        player_script.PauseUnpause();
+        if (!player_script.in_menu)
+        {
+            player_script.PauseUnpause();
+        }
     }
 
     private void Trigger_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        if (Gun.ammo != 0 && !Player.paused)
+        amount_trigger_pressed = left_controller.selectAction.action.ReadValue<float>();
+        if (player_script.in_menu && Player.game_over && amount_trigger_pressed == 1.0f)
         {
-            amount_trigger_pressed = left_controller.selectAction.action.ReadValue<float>();
-            if (amount_trigger_pressed == 1.0f && Player.game_over)
+            print("QUIT GAME");
+            //Application.Quit();
+        }
+        else
+        {
+            if (Player.game_over && amount_trigger_pressed == 1.0f)
             {
                 right_hand_controller.RemoveActions();
                 RemoveActions();
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene("GameScene");
             }
-            
-            else if (amount_trigger_pressed == 1.0f)
+            else if (Gun.ammo != 0 && !Player.paused && amount_trigger_pressed == 1.0f)
             {
                 gun_script.gun_trigger_pressed = true;
             }
