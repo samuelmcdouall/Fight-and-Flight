@@ -28,6 +28,7 @@ public class DroneSpawner : MonoBehaviour
     public AudioClip spawn_sfx;
     float drone_spawn_interval = 20.0f;
     float elapsed_drone_spawn_timer = 0.0f;
+    public List<Transform> waypoints;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");

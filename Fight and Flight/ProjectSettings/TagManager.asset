@@ -14,6 +14,7 @@ TagManager:
   - Drone
   - Drone Target
   - Drone Hit Box
+  - Drone Spawner
   layers:
   - Default
   - TransparentFX

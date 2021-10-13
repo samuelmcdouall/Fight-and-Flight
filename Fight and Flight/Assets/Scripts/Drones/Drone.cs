@@ -16,16 +16,47 @@ public class Drone : MonoBehaviour
     public GameObject rocket;
     public AudioClip fire_sfx;
     Vector3 rocket_rotation_offset = new Vector3(90.0f, 0.0f, 0.0f);
+    public List<Transform> waypoint_targets;
+    GameObject drone_spawner;
+    float waypoint_threshold = 0.1f;
+    bool waypoint_determined = false;
+    int current_waypoint_target_num;
+    Transform current_waypoint_target;
+    float drone_speed = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Drone Target");
+        drone_spawner = GameObject.FindGameObjectWithTag("Drone Spawner");
+        waypoint_targets = new List<Transform>();
+        waypoint_targets.AddRange(drone_spawner.GetComponent<DroneSpawner>().waypoints);
+        drone_speed = Player.player_level * 2.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.LookAt(player.transform);
+
+        if (!waypoint_determined)
+        {
+            current_waypoint_target_num = Random.Range(0, waypoint_targets.Count);
+            current_waypoint_target = waypoint_targets[current_waypoint_target_num];
+            print("ok going to waypoint: " + current_waypoint_target_num);
+            waypoint_determined = true;
+        }
+
+        if (Vector3.Distance(transform.position, current_waypoint_target.position) <= waypoint_threshold)
+        {
+            waypoint_determined = false;
+        }
+
+        else
+        {
+            Vector3 drone_to_waypoint_target_direction = (current_waypoint_target.position - transform.position).normalized;
+            transform.position += drone_to_waypoint_target_direction * Time.deltaTime * drone_speed;
+        }
+
         if (elapsed_fire_timer > fire_interval - Player.player_level)
         {
             //Quaternion rotation_spawn_offset = gun_barrel_outer.transform.rotation * gun_ammo_offset;
