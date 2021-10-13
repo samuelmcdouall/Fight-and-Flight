@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GunBolt : MonoBehaviour
 {
@@ -34,6 +35,13 @@ public class GunBolt : MonoBehaviour
             Player.drones_destroyed++;
             Destroy(collider.gameObject.transform.parent.gameObject);
             Explode();
+        }
+        else if (collider.gameObject.tag == "Menu Drone Hit Box")
+        {
+            //Destroy(collider.gameObject.transform.parent.gameObject);
+            //Explode();
+            // wait for certain time then load new scene
+            SceneManager.LoadScene("GameScene");
         }
     }
 

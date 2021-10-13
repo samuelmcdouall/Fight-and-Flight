@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Gun : MonoBehaviour
 {
+    public bool in_menu = false;
     public static int max_ammo = 10;
     public static int ammo = 0;
     [SerializeField]
@@ -37,7 +38,10 @@ public class Gun : MonoBehaviour
                     GameObject ammo_object = Instantiate(gun_bolt, gun_barrel_outer.transform.position, rotation_spawn_offset);
                     ammo_object.GetComponent<Rigidbody>().velocity = (gun_barrel_outer.transform.position - gun_barrel_inner.transform.position).normalized * ammo_speed;
                     AudioSource.PlayClipAtPoint(fire_sfx, transform.position);
-                    ammo--;
+                    if (!in_menu)
+                    {
+                        ammo--;
+                    }
                     gun_trigger_pressed = false;
                 }
             }
