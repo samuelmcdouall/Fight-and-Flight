@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,19 +18,24 @@ public class GunUI : MonoBehaviour
         }
         else
         {
-            if (Gun.ammo <= 2)
-            {
-                ammo_remaining_text.color = Color.red;
-            }
-            else if (Gun.ammo <= 6)
-            {
-                ammo_remaining_text.color = Color.yellow;
-            }
-            else if (Gun.ammo <= 10)
-            {
-                ammo_remaining_text.color = Color.green;
-            }
+            DetermineGunColour();
             ammo_remaining_text.text = "" + Gun.ammo;
+        }
+    }
+
+    private void DetermineGunColour()
+    {
+        if (Gun.ammo <= 2)
+        {
+            ammo_remaining_text.color = Color.red;
+        }
+        else if (Gun.ammo <= 6)
+        {
+            ammo_remaining_text.color = Color.yellow;
+        }
+        else if (Gun.ammo <= 10)
+        {
+            ammo_remaining_text.color = Color.green;
         }
     }
 }
