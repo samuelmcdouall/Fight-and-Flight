@@ -1903,8 +1903,6 @@ MonoBehaviour:
   fuel_recharge_rate: 100
   flying_sfx: {fileID: 8300000, guid: 733446b34956b8447a7908f3a4515513, type: 3}
   game_over_sfx: {fileID: 8300000, guid: 35fbad8cdde724f11ba6481f1e64af71, type: 3}
-  pause_sfx: {fileID: 8300000, guid: ff8da7cd2b27df6489583fd8e9c7bc66, type: 3}
-  unpause_sfx: {fileID: 8300000, guid: f8247152d1298bb4cb80c7783953c903, type: 3}
   game_over_screen: {fileID: 7214157986881283644}
   score_screen: {fileID: 7214157988041706876}
   pause_screen: {fileID: 7214157988553414600}
