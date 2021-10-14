@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +9,6 @@ public class GunBolt : MonoBehaviour
     public AudioClip explosion_sfx;
     GameObject player;
     int drone_value = 3;
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -38,9 +35,6 @@ public class GunBolt : MonoBehaviour
         }
         else if (collider.gameObject.tag == "Menu Drone Hit Box")
         {
-            //Destroy(collider.gameObject.transform.parent.gameObject);
-            //Explode();
-            // wait for certain time then load new scene
             SceneManager.LoadScene("GameScene");
         }
     }
