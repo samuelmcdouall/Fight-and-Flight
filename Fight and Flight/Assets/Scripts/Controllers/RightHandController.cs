@@ -1,52 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.SceneManagement;
 
 public class RightHandController : MonoBehaviour
 {
-
     private ActionBasedController right_controller;
     private float amount_trigger_pressed;
-    private float menu_button_pressed;
     float press_threshold = 0.001f;
     private Player player_script;
     public LeftHandController left_hand_controller;
-    // Start is called before the first frame update
     void Start()
     {
-        right_controller = GetComponent<ActionBasedController>();
-        player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
-        right_controller.selectAction.action.performed += Trigger_Pressed;
-        right_controller.activateAction.action.performed += Menu_Button_Pressed;
+        InitialSetupRightController();
+    }
+    void Update()
+    {
+        Vector3 controller_facing_direction = gameObject.transform.rotation * Vector3.forward;
+        player_script.UpdateDirection(controller_facing_direction);
     }
 
-    public void Menu_Button_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    private void InitialSetupRightController()
     {
-        if (!player_script.in_menu)
-        {
-            player_script.PauseUnpause();
-        }
+        right_controller = GetComponent<ActionBasedController>();
+        right_controller.selectAction.action.performed += Trigger_Pressed;
+        right_controller.activateAction.action.performed += Menu_Button_Pressed;
+        player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     public void Trigger_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         amount_trigger_pressed = right_controller.selectAction.action.ReadValue<float>();
-        if (player_script.in_menu && Player.game_over && amount_trigger_pressed == 1.0f)
+        bool trigger_fully_pressed = amount_trigger_pressed == 1.0f;
+        if (player_script.in_menu && Player.game_over && trigger_fully_pressed)
         {
-            left_hand_controller.RemoveActions();
-            RemoveActions();
-            SceneManager.LoadScene("MenuScene");
+            LoadMenuScene();
         }
         else
         {
-            if (amount_trigger_pressed == 1.0f && Player.game_over)
+            if (trigger_fully_pressed && Player.game_over)
             {
-                left_hand_controller.RemoveActions();
-                RemoveActions();
-                SceneManager.LoadScene("MenuScene");
+                LoadMenuScene();
             }
             if (amount_trigger_pressed <= press_threshold)
             {
@@ -60,15 +53,24 @@ public class RightHandController : MonoBehaviour
         }
     }
 
+    private void LoadMenuScene()
+    {
+        left_hand_controller.RemoveActions();
+        RemoveActions();
+        SceneManager.LoadScene("MenuScene");
+    }
+
+    public void Menu_Button_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        if (!player_script.in_menu)
+        {
+            player_script.PauseUnpause();
+        }
+    }
+
     public void RemoveActions()
     {
         right_controller.selectAction.action.performed -= Trigger_Pressed;
         right_controller.activateAction.action.performed -= Menu_Button_Pressed;
-    }
-
-    void Update()
-    {
-        Vector3 controller_facing_direction = gameObject.transform.rotation * Vector3.forward;
-        player_script.UpdateDirection(controller_facing_direction);
     }
 }
