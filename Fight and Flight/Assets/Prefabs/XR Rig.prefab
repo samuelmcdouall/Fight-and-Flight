@@ -1169,8 +1169,6 @@ MonoBehaviour:
   gun_barrel_inner: {fileID: 7214157988378778358}
   gun_bolt: {fileID: 5196851032814981430, guid: 8ddf203ace6bd1648abea58721f585b8, type: 3}
   fire_sfx: {fileID: 8300000, guid: 4f1ad1a2a4d33484db06895ac4295c80, type: 3}
-  right_hand_controller_script: {fileID: 7214157987348879042}
-  left_hand_controller_script: {fileID: 7214157988310770426}
 --- !u!1 &7214157987638321816
 GameObject:
   m_ObjectHideFlags: 0
