@@ -13,8 +13,18 @@ public class Spaceship : MonoBehaviour
     [SerializeField]
     public bool reverse_spawner = false;
 
-    // Start is called before the first frame update
     void Start()
+    {
+        DetermineFlightPath();
+        Destroy(gameObject, lifetime);
+    }
+
+    void Update()
+    {
+        transform.Translate(-Vector3.forward * Time.deltaTime * speed);
+    }
+
+    private void DetermineFlightPath()
     {
         float chosen_angle_arc;
         if (!reverse_spawner)
@@ -26,20 +36,7 @@ public class Spaceship : MonoBehaviour
             chosen_angle_arc = Random.Range(-random_chosen_angle_arc + 180, random_chosen_angle_arc + 180);
         }
         transform.Rotate(Vector3.up, chosen_angle_arc);
-        Destroy(gameObject, lifetime);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (!reverse_spawner)
-        //{
-           transform.Translate(-Vector3.forward * Time.deltaTime * speed);
-        //}
-        //else
-        //{
-        //    transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        //}
-        
-    }
+
 }

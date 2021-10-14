@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpaceshipSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject red_spaceship;
     public GameObject blue_spaceship;
     [SerializeField]
@@ -20,7 +19,6 @@ public class SpaceshipSpawner : MonoBehaviour
         respawn_rate = Random.Range(spawn_min_timer, spawn_max_timer);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (elapsed_timer > respawn_rate) {
