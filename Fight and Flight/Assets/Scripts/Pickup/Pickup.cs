@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
+    // General
     [SerializeField]
     [Range(0.1f, 10.0f)]
     float revolution_time = 1.0f;
+
+    // Collecting
     [SerializeField]
     PickupType pickup_type;
     int rare_value = 3;
@@ -14,7 +15,6 @@ public class Pickup : MonoBehaviour
     public AudioClip collect_reward_sfx;
     public AudioClip collect_ammo_sfx;
 
-    // Update is called once per frame
     void Update()
     {
         if (pickup_type == PickupType.ammo)
@@ -27,35 +27,44 @@ public class Pickup : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Player") {
             if (pickup_type == PickupType.rare)
             {
-                AudioSource.PlayClipAtPoint(collect_reward_sfx, transform.position);
-                Player.score += rare_value;
+                CollectReward(rare_value);
             }
             else if (pickup_type == PickupType.common)
             {
-                AudioSource.PlayClipAtPoint(collect_reward_sfx, transform.position);
-                Player.score += common_value;
+                CollectReward(common_value);
             }
             else
             {
                 AudioSource.PlayClipAtPoint(collect_ammo_sfx, transform.position);
-                if (Gun.ammo + 5 > Gun.max_ammo)
-                {
-                    Gun.ammo = Gun.max_ammo;
-                }
-                else
-                {
-                    Gun.ammo += 5;
-                }
+                CollectAmmo();
             }
             Destroy(gameObject);
         }
     }
+
+    private void CollectReward(int value)
+    {
+        AudioSource.PlayClipAtPoint(collect_reward_sfx, transform.position);
+        Player.score += value;
+    }
+
+    private static void CollectAmmo()
+    {
+        if (Gun.ammo + 5 > Gun.max_ammo)
+        {
+            Gun.ammo = Gun.max_ammo;
+        }
+        else
+        {
+            Gun.ammo += 5;
+        }
+    }
+
     enum PickupType{
         common,
         rare,
