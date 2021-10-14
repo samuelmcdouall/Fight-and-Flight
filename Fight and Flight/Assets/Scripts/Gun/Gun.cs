@@ -24,7 +24,6 @@ public class Gun : MonoBehaviour
         ammo = max_ammo;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (gun_trigger_pressed)
