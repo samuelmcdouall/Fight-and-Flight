@@ -7,9 +7,11 @@ public class DroneRocket : MonoBehaviour
     public GameObject explosion_fx;
     public AudioClip explosion_sfx;
     GameObject player;
+    GameObject platform_spawner;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        platform_spawner = GameObject.FindGameObjectWithTag("Platform Spawner");
         Destroy(gameObject, lifetime);
     }
 
@@ -20,6 +22,7 @@ public class DroneRocket : MonoBehaviour
             Explode();
             if (gameObject.tag == "Boss Drone Rocket")
             {
+                platform_spawner.GetComponent<PlatformSpawner>().AttemptToSpawnPlatform();
                 Destroy(collider.gameObject);
             }
         }
