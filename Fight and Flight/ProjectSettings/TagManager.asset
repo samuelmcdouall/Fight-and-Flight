@@ -21,6 +21,7 @@ TagManager:
   - Boss Drone Hit Box
   - Drone Rocket
   - Boss Drone Rocket
+  - Boss Drone Health Bar
   layers:
   - Default
   - TransparentFX
