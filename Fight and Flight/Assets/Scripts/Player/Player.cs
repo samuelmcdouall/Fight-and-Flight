@@ -4,6 +4,7 @@ public class Player : MonoBehaviour
 {
     // General
     public bool in_menu;
+    public static bool boss_spawned = false;
     float y_out_of_bounds = 0.5f;
 
     // Movement Mechanics
@@ -48,9 +49,12 @@ public class Player : MonoBehaviour
     // UI screens
     public static bool game_over = false;
     public static bool paused = false;
+    public static bool victory = false;
     public GameObject game_over_screen;
     public GameObject score_screen;
     public GameObject pause_screen;
+    public GameObject boss_screen;
+    public GameObject victory_screen;
 
     void Start()
     {
@@ -58,7 +62,21 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if (game_over)
+        if (victory)
+        {
+            if (victory_screen.activeSelf == false)
+            {
+                victory_screen.SetActive(true);
+                boss_screen.SetActive(false);
+                score_screen.SetActive(false);
+                if (player_as.isPlaying)
+                {
+                    player_as.Stop();
+                }
+                Time.timeScale = 0.0f;
+            }
+        }
+        else if (game_over)
         {
             if (game_over_screen.activeSelf == false)
             {
@@ -77,6 +95,13 @@ public class Player : MonoBehaviour
             if (pause_screen.activeSelf == true)
             {
                 DisablePauseScreen();
+            }
+            if (!in_menu)
+            {
+                if (boss_screen.activeSelf == false && score >= 50)
+                {
+                    boss_screen.SetActive(true);
+                }
             }
             DetermineCurrentPlayerLevel();
             CheckIfOutOfBounds();
@@ -110,16 +135,22 @@ public class Player : MonoBehaviour
         score = 0;
         player_level = 0;
         drones_destroyed = 0;
+        boss_spawned = false;
     }
     private static void InitialUISetup()
     {
         game_over = false;
         paused = false;
+        victory = false;
     }
     private void EnableGameOverScreen()
     {
         game_over_screen.SetActive(true);
         score_screen.SetActive(false);
+        if (score >= 50)
+        {
+            boss_screen.SetActive(false);
+        }
         if (player_as.isPlaying)
         {
             player_as.Stop();
@@ -131,6 +162,10 @@ public class Player : MonoBehaviour
     {
         pause_screen.SetActive(true);
         score_screen.SetActive(false);
+        if (score >= 50)
+        {
+            boss_screen.SetActive(false);
+        }
         if (player_as.isPlaying)
         {
             player_as.Stop();
@@ -141,6 +176,10 @@ public class Player : MonoBehaviour
     {
         pause_screen.SetActive(false);
         score_screen.SetActive(true);
+        if (score >= 50)
+        {
+            boss_screen.SetActive(true);
+        }
         Time.timeScale = 1.0f;
     }
     private void DetermineCurrentPlayerLevel()
