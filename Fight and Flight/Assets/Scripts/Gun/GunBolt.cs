@@ -40,16 +40,19 @@ public class GunBolt : MonoBehaviour
         }
         else if (collider.gameObject.tag == "Boss Drone Hit Box")
         {
-            if (collider.gameObject.GetComponent<BossDrone>().drone_hp == 1)
+            if (collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().current_boss_drone_hp == 1)
             {
+                collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().current_boss_drone_hp--;
                 Player.score += boss_drone_value;
                 Player.drones_destroyed++;
+                Player.victory = true;
                 Destroy(collider.gameObject.transform.parent.gameObject);
                 Explode();
             }
             else
             {
-                collider.gameObject.GetComponent<BossDrone>().drone_hp--;
+                collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().current_boss_drone_hp--;
+                // set boss bar here
                 Explode();
             }
         }
