@@ -33,6 +33,7 @@ public class DroneSpawner : MonoBehaviour
     // Waypoints
     public List<Transform> waypoints;
     public List<Transform> boss_spawn_waypoints;
+    public int boss_spawn_location;
     public List<Transform> boss_waypoints;
 
     void Start()
@@ -68,9 +69,9 @@ public class DroneSpawner : MonoBehaviour
 
     private void SpawnBossDrone()
     {
-        int random_spawn_location = Random.Range(0, 4);
-        Instantiate(boss_drone, boss_spawn_waypoints[random_spawn_location].position, Quaternion.identity);
-        Vector3 player_to_drone_direction = (boss_spawn_waypoints[random_spawn_location].position - player.transform.position).normalized;
+        boss_spawn_location = Random.Range(0, 4);
+        Instantiate(boss_drone, boss_spawn_waypoints[boss_spawn_location].position, Quaternion.identity);
+        Vector3 player_to_drone_direction = (boss_spawn_waypoints[boss_spawn_location].position - player.transform.position).normalized;
         Vector3 audio_cue_position = player.transform.position + player_to_drone_direction * audio_cue_distance;
         AudioSource.PlayClipAtPoint(spawn_sfx, audio_cue_position);
     }
