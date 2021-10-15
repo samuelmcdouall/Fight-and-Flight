@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     // General
-    public bool in_menu;
+    public static bool in_menu;
     public static bool boss_spawned = false;
     float y_out_of_bounds = 0.5f;
 
@@ -115,6 +116,14 @@ public class Player : MonoBehaviour
         InitialFuelSetup();
         InitialProgressionSetup();
         InitialUISetup();
+        if (SceneManager.GetActiveScene().name == "MenuScene")
+        {
+            in_menu = true;
+        }
+        else
+        {
+            in_menu = false;
+        }
         Time.timeScale = 1.0f;
     }
 

@@ -10,9 +10,13 @@ public class GunBolt : MonoBehaviour
     GameObject player;
     int drone_value = 3;
     int boss_drone_value = 10;
+    RightHandController right_hand_controller;
+    LeftHandController left_hand_controller;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        right_hand_controller = GameObject.FindGameObjectWithTag("Right Hand Controller").GetComponent<RightHandController>();
+        left_hand_controller = GameObject.FindGameObjectWithTag("Left Hand Controller").GetComponent<LeftHandController>();
         Destroy(gameObject, lifetime);
     }
 
@@ -36,6 +40,8 @@ public class GunBolt : MonoBehaviour
         }
         else if (collider.gameObject.tag == "Menu Drone Hit Box")
         {
+            right_hand_controller.RemoveActions();
+            left_hand_controller.RemoveActions();
             SceneManager.LoadScene("GameScene");
         }
         else if (collider.gameObject.tag == "Boss Drone Hit Box")

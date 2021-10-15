@@ -889,6 +889,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd0d7a404702934eb3011c445677685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menu_music: {fileID: 0}
+  game_music: {fileID: 0}
   boss_music: {fileID: 8300000, guid: 4bf488ec7cc942641939a84ff217a998, type: 3}
   victory_music: {fileID: 8300000, guid: 24dce80f47ed7ab4ca33dc6cb88213fb, type: 3}
 --- !u!1 &1526223166082016298
@@ -1320,7 +1322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a3c0f826d2e3b41b6447bb816a55d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_menu: 0
   throttle: 0
   fly_speed: 10
   glide_speed: 2

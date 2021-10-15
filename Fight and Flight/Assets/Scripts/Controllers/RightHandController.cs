@@ -31,7 +31,7 @@ public class RightHandController : MonoBehaviour
     {
         amount_trigger_pressed = right_controller.selectAction.action.ReadValue<float>();
         bool trigger_fully_pressed = amount_trigger_pressed == 1.0f;
-        if (player_script.in_menu && Player.game_over && trigger_fully_pressed)
+        if (Player.in_menu && Player.game_over && trigger_fully_pressed)
         {
             LoadMenuScene();
         }
@@ -62,7 +62,8 @@ public class RightHandController : MonoBehaviour
 
     public void Menu_Button_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        if (!player_script.in_menu)
+        print("in menu: " + Player.in_menu);
+        if (!Player.in_menu)
         {
             player_script.PauseUnpause();
         }

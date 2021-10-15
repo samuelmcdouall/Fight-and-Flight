@@ -4821,7 +4821,7 @@ GameObject:
   - component: {fileID: 153312504410829864}
   m_Layer: 0
   m_Name: Laser_Gun_Ammo
-  m_TagString: Untagged
+  m_TagString: Gun Rocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

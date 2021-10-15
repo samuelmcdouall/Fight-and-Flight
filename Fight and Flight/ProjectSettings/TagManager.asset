@@ -22,6 +22,9 @@ TagManager:
   - Drone Rocket
   - Boss Drone Rocket
   - Boss Drone Health Bar
+  - Gun Rocket
+  - Left Hand Controller
+  - Right Hand Controller
   layers:
   - Default
   - TransparentFX

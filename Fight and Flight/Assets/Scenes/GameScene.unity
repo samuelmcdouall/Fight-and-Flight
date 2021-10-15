@@ -2792,6 +2792,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1526223166072644017, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: game_music
+      value: 
+      objectReference: {fileID: 8300000, guid: f6510b707d01cfc44984033154792187, type: 3}
+    - target: {fileID: 1526223166072644017, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: menu_music
+      value: 
+      objectReference: {fileID: 8300000, guid: ae8877145d872cd47911257c6accdae5, type: 3}
+    - target: {fileID: 1526223166072644022, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526223166072644022, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1526223166180620106, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_Name
       value: XR Rig
@@ -2840,10 +2856,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1526223166745582604, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_TagString
+      value: Right Hand Controller
+      objectReference: {fileID: 0}
     - target: {fileID: 1526223166745582609, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1043852688}
+    - target: {fileID: 1526223167160601046, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_TagString
+      value: Left Hand Controller
+      objectReference: {fileID: 0}
     - target: {fileID: 1526223167160601050, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_InteractionManager
       value: 
