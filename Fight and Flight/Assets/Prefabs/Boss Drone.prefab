@@ -368,7 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8106008d3bd16a48a63845c076f2a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drone_hp: 10
+  max_boss_drone_hp: 10
+  current_boss_drone_hp: 10
   rocket_speed: 10
   rocket_spawn_right: {fileID: 7330069672785996898}
   rocket_spawn_left: {fileID: 7330069671614620644}
