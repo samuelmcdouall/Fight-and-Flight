@@ -9,6 +9,7 @@ public class GunBolt : MonoBehaviour
     public AudioClip explosion_sfx;
     GameObject player;
     int drone_value = 3;
+    int boss_drone_value = 10;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -36,6 +37,21 @@ public class GunBolt : MonoBehaviour
         else if (collider.gameObject.tag == "Menu Drone Hit Box")
         {
             SceneManager.LoadScene("GameScene");
+        }
+        else if (collider.gameObject.tag == "Boss Drone Hit Box")
+        {
+            if (collider.gameObject.GetComponent<BossDrone>().drone_hp == 1)
+            {
+                Player.score += boss_drone_value;
+                Player.drones_destroyed++;
+                Destroy(collider.gameObject.transform.parent.gameObject);
+                Explode();
+            }
+            else
+            {
+                collider.gameObject.GetComponent<BossDrone>().drone_hp--;
+                Explode();
+            }
         }
     }
 

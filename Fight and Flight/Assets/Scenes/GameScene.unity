@@ -215,6 +215,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   revolution_time: 30
+--- !u!1 &62980168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 62980169}
+  m_Layer: 0
+  m_Name: BossDroneWayPoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &62980169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62980168}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 20, z: -30}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1321063062}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &231304741
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +274,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1321063062}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &285682537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 285682538}
+  m_Layer: 0
+  m_Name: BossDroneWayPoint3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &285682538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285682537}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -30, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1321063062}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &307819939
 GameObject:
@@ -278,6 +338,66 @@ Transform:
   - {fileID: 1982074357}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &387228398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 387228399}
+  m_Layer: 0
+  m_Name: BossDroneSpawnPoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &387228399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387228398}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 50, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1321063062}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &443359627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 443359628}
+  m_Layer: 0
+  m_Name: BossDroneSpawnPoint4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &443359628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443359627}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 20, z: 50}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1321063062}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &447371798
 GameObject:
@@ -432,6 +552,36 @@ MonoBehaviour:
   spawn_min_timer: 45
   spawn_max_timer: 75
   reverse_spawner: 0
+--- !u!1 &605863010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 605863011}
+  m_Layer: 0
+  m_Name: BossDroneWayPoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &605863011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605863010}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 30, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1321063062}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,9 +843,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e33e807c8733340b41f92222582456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menu_platform: 0
+  starting_platform: 0
   platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
+  fall_sfx: {fileID: 0}
   percentage_chance_to_spawn_common_pickup: 50
   percentage_chance_to_spawn_rare_pickup: 25
   percentage_chance_to_spawn_ammo_pickup: 20
@@ -703,8 +856,6 @@ MonoBehaviour:
   common_pickup: {fileID: 0}
   rare_pickup: {fileID: 0}
   ammo_pickup: {fileID: 0}
-  starting_platform: 0
-  fall_sfx: {fileID: 0}
 --- !u!1 &824842009
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,9 +964,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e33e807c8733340b41f92222582456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menu_platform: 0
+  starting_platform: 0
   platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
+  fall_sfx: {fileID: 0}
   percentage_chance_to_spawn_common_pickup: 50
   percentage_chance_to_spawn_rare_pickup: 25
   percentage_chance_to_spawn_ammo_pickup: 20
@@ -823,8 +977,6 @@ MonoBehaviour:
   common_pickup: {fileID: 0}
   rare_pickup: {fileID: 0}
   ammo_pickup: {fileID: 0}
-  starting_platform: 0
-  fall_sfx: {fileID: 0}
 --- !u!1001 &876011628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1002,9 +1154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e33e807c8733340b41f92222582456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menu_platform: 0
+  starting_platform: 1
   platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
+  fall_sfx: {fileID: 0}
   percentage_chance_to_spawn_common_pickup: 50
   percentage_chance_to_spawn_rare_pickup: 25
   percentage_chance_to_spawn_ammo_pickup: 20
@@ -1012,8 +1167,36 @@ MonoBehaviour:
   common_pickup: {fileID: 1689830508881278957, guid: 1edaae3579a8c1d4fada9342ad92546d, type: 3}
   rare_pickup: {fileID: 306189006300075459, guid: 05388f5bb4cf81b45b24a0bcba225b76, type: 3}
   ammo_pickup: {fileID: 0}
-  starting_platform: 1
-  fall_sfx: {fileID: 0}
+--- !u!1 &928785054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 928785055}
+  m_Layer: 0
+  m_Name: BossDroneWayPoint4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &928785055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928785054}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 20, z: 30}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1321063062}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &941991610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,9 +1473,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e33e807c8733340b41f92222582456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menu_platform: 0
+  starting_platform: 0
   platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
+  fall_sfx: {fileID: 0}
   percentage_chance_to_spawn_common_pickup: 50
   percentage_chance_to_spawn_rare_pickup: 25
   percentage_chance_to_spawn_ammo_pickup: 20
@@ -1300,8 +1486,6 @@ MonoBehaviour:
   common_pickup: {fileID: 0}
   rare_pickup: {fileID: 0}
   ammo_pickup: {fileID: 0}
-  starting_platform: 0
-  fall_sfx: {fileID: 0}
 --- !u!1 &1295050701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,9 +1594,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e33e807c8733340b41f92222582456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menu_platform: 0
+  starting_platform: 0
   platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
+  fall_sfx: {fileID: 0}
   percentage_chance_to_spawn_common_pickup: 50
   percentage_chance_to_spawn_rare_pickup: 25
   percentage_chance_to_spawn_ammo_pickup: 20
@@ -1420,8 +1607,6 @@ MonoBehaviour:
   common_pickup: {fileID: 0}
   rare_pickup: {fileID: 0}
   ammo_pickup: {fileID: 0}
-  starting_platform: 0
-  fall_sfx: {fileID: 0}
 --- !u!4 &1309143007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3413591602286923417, guid: 5e3e2c88550c24e4ba8f863e1fb85757, type: 3}
@@ -1464,6 +1649,14 @@ Transform:
   - {fileID: 1373004998}
   - {fileID: 231304742}
   - {fileID: 776129293}
+  - {fileID: 605863011}
+  - {fileID: 62980169}
+  - {fileID: 285682538}
+  - {fileID: 928785055}
+  - {fileID: 387228399}
+  - {fileID: 1824680392}
+  - {fileID: 2089433533}
+  - {fileID: 443359628}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1576,12 +1769,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drone: {fileID: 7777510388650222487, guid: c0721433c65e6924093620e7b05dd052, type: 3}
-  starting_drones: 0
+  boss_drone: {fileID: 7330069671415255019, guid: 24de60364d8e7f3499c4b7a4e13991de, type: 3}
   maximum_horizontal_spawn_distance: 20
   minimum_vertical_spawn_distance: 15
   maximum_vertical_spawn_distance: 17
   minimum_spawn_drone_proximity_distance: 8
   spawn_sfx: {fileID: 8300000, guid: 7a52f324fbd840546afd8d12a296e9b3, type: 3}
+  starting_drones: 0
   waypoints:
   - {fileID: 1426693648}
   - {fileID: 783248715}
@@ -1591,6 +1785,16 @@ MonoBehaviour:
   - {fileID: 1373004998}
   - {fileID: 231304742}
   - {fileID: 776129293}
+  boss_spawn_waypoints:
+  - {fileID: 387228399}
+  - {fileID: 1824680392}
+  - {fileID: 2089433533}
+  - {fileID: 443359628}
+  boss_waypoints:
+  - {fileID: 605863011}
+  - {fileID: 62980169}
+  - {fileID: 285682538}
+  - {fileID: 928785055}
 --- !u!1 &1373004997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,9 +2282,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e33e807c8733340b41f92222582456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menu_platform: 0
+  starting_platform: 0
   platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
+  fall_sfx: {fileID: 0}
   percentage_chance_to_spawn_common_pickup: 50
   percentage_chance_to_spawn_rare_pickup: 25
   percentage_chance_to_spawn_ammo_pickup: 20
@@ -2088,8 +2295,36 @@ MonoBehaviour:
   common_pickup: {fileID: 0}
   rare_pickup: {fileID: 0}
   ammo_pickup: {fileID: 0}
-  starting_platform: 0
-  fall_sfx: {fileID: 0}
+--- !u!1 &1824680391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1824680392}
+  m_Layer: 0
+  m_Name: BossDroneSpawnPoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1824680392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824680391}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 20, z: -50}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1321063062}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1827539899
 GameObject:
   m_ObjectHideFlags: 0
@@ -2231,9 +2466,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e33e807c8733340b41f92222582456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menu_platform: 0
+  starting_platform: 0
   platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
+  fall_sfx: {fileID: 0}
   percentage_chance_to_spawn_common_pickup: 50
   percentage_chance_to_spawn_rare_pickup: 25
   percentage_chance_to_spawn_ammo_pickup: 20
@@ -2241,8 +2479,6 @@ MonoBehaviour:
   common_pickup: {fileID: 0}
   rare_pickup: {fileID: 0}
   ammo_pickup: {fileID: 0}
-  starting_platform: 0
-  fall_sfx: {fileID: 0}
 --- !u!65 &1852232717
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2367,6 +2603,146 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3360166068394803097, guid: 0daf96c15d4c97b4e9e526f6acfce2f0, type: 3}
   m_PrefabInstance: {fileID: 1460190185}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1957623601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1957623602}
+  - component: {fileID: 1957623604}
+  - component: {fileID: 1957623603}
+  m_Layer: 0
+  m_Name: Music Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1957623602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957623601}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7214157987095522131}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1957623603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957623601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd0d7a404702934eb3011c445677685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &1957623604
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957623601}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f6510b707d01cfc44984033154792187, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1982074356
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,6 +2886,36 @@ Transform:
   m_Father: {fileID: 1857323142}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2089433532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2089433533}
+  m_Layer: 0
+  m_Name: BossDroneSpawnPoint3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2089433533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089433532}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -50, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1321063062}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3413591600978616646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2644,6 +3050,11 @@ PrefabInstance:
       objectReference: {fileID: 1043852688}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+--- !u!4 &7214157987095522131 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7214157987673173218, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+  m_PrefabInstance: {fileID: 7214157987095522130}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7325958810579211363
 PrefabInstance:
   m_ObjectHideFlags: 0

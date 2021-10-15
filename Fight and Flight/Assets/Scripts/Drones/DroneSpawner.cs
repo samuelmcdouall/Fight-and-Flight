@@ -5,6 +5,7 @@ public class DroneSpawner : MonoBehaviour
 {
     // General
     public GameObject drone;
+    public GameObject boss_drone;
     GameObject player;
     float drone_spawn_difficulty_modifier = 2.0f;
 
@@ -27,9 +28,12 @@ public class DroneSpawner : MonoBehaviour
     [SerializeField]
     int starting_drones = 2;
     float audio_cue_distance = 2.0f;
+    bool spawned_in_boss = false;
 
     // Waypoints
     public List<Transform> waypoints;
+    public List<Transform> boss_spawn_waypoints;
+    public List<Transform> boss_waypoints;
 
     void Start()
     {
@@ -42,7 +46,16 @@ public class DroneSpawner : MonoBehaviour
     }
     void Update()
     {
-        if (elapsed_drone_spawn_timer > drone_spawn_interval - Player.player_level * drone_spawn_difficulty_modifier)
+        if (Player.score >= 50)
+        {
+            if (!spawned_in_boss)
+            {
+                DestroyAllCurrentDrones();
+                SpawnBossDrone();
+                spawned_in_boss = true;
+            }
+        }
+        else if (elapsed_drone_spawn_timer > drone_spawn_interval - Player.player_level * drone_spawn_difficulty_modifier)
         {
             AttemptToSpawnDrone();
             elapsed_drone_spawn_timer = 0.0f;
@@ -50,6 +63,24 @@ public class DroneSpawner : MonoBehaviour
         else
         {
             elapsed_drone_spawn_timer += Time.deltaTime;
+        }
+    }
+
+    private void SpawnBossDrone()
+    {
+        int random_spawn_location = Random.Range(0, 4);
+        Instantiate(boss_drone, boss_spawn_waypoints[random_spawn_location].position, Quaternion.identity);
+        Vector3 player_to_drone_direction = (boss_spawn_waypoints[random_spawn_location].position - player.transform.position).normalized;
+        Vector3 audio_cue_position = player.transform.position + player_to_drone_direction * audio_cue_distance;
+        AudioSource.PlayClipAtPoint(spawn_sfx, audio_cue_position);
+    }
+
+    private static void DestroyAllCurrentDrones()
+    {
+        GameObject[] drones = GameObject.FindGameObjectsWithTag("Drone");
+        foreach (GameObject drone in drones)
+        {
+            Destroy(drone);
         }
     }
 

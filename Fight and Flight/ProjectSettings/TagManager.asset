@@ -17,6 +17,10 @@ TagManager:
   - Drone Spawner
   - Menu Drone
   - Menu Drone Hit Box
+  - Boss Drone
+  - Boss Drone Hit Box
+  - Drone Rocket
+  - Boss Drone Rocket
   layers:
   - Default
   - TransparentFX

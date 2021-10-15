@@ -18,6 +18,10 @@ public class DroneRocket : MonoBehaviour
         if (collider.gameObject.tag == "Platform")
         {
             Explode();
+            if (gameObject.tag == "Boss Drone Rocket")
+            {
+                Destroy(collider.gameObject);
+            }
         }
         else if (collider.gameObject.tag == "Player")
         {
