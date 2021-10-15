@@ -35,7 +35,7 @@ public class PlatformSpawner : MonoBehaviour
 
     public void AttemptToSpawnPlatform()
     {
-        while (!SpawnPlatform()) ;
+        while (!SpawnPlatform());
     }
 
     bool SpawnPlatform()
