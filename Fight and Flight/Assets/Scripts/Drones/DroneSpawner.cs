@@ -6,7 +6,7 @@ public class DroneSpawner : MonoBehaviour
     // General
     public GameObject drone;
     GameObject player;
-    float drone_spawn_difficulty_modifier = 4.0f;
+    float drone_spawn_difficulty_modifier = 2.0f;
 
     // Spawning parameters
     [SerializeField]

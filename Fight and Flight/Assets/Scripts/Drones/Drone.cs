@@ -8,8 +8,8 @@ public class Drone : MonoBehaviour
     GameObject player;
     GameObject drone_spawner;
     float drone_speed = 0.0f;
-    float drone_speed_difficulty_modifier = 2.0f;
-    float drone_fire_difficulty_modifier = 1.0f;
+    float drone_speed_difficulty_modifier = 1.0f;
+    float drone_fire_difficulty_modifier = 0.0f; // turn off for the moment might just remove this later
     
     // Firing 
     [SerializeField]

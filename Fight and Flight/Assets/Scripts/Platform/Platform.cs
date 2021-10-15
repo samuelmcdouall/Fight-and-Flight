@@ -18,7 +18,7 @@ public class Platform : MonoBehaviour
     float color_lerp_time = 0;
     bool begun_falling = false;
     public AudioClip fall_sfx;
-    float platform_lifetime_difficulty_modifier = 2.0f;
+    float platform_lifetime_difficulty_modifier = 1.0f;
 
     // Platform Spawning
     GameObject platform_spawner;
