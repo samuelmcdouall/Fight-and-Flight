@@ -12,6 +12,7 @@ public class Pickup : MonoBehaviour
     PickupType pickup_type;
     int rare_value = 3;
     int common_value = 1;
+    int ammo_value = 5;
     public AudioClip collect_reward_sfx;
     public AudioClip collect_ammo_sfx;
 
@@ -53,15 +54,15 @@ public class Pickup : MonoBehaviour
         Player.score += value;
     }
 
-    private static void CollectAmmo()
+    private void CollectAmmo()
     {
-        if (Gun.ammo + 5 > Gun.max_ammo)
+        if (Gun.ammo + ammo_value > Gun.max_ammo)
         {
             Gun.ammo = Gun.max_ammo;
         }
         else
         {
-            Gun.ammo += 5;
+            Gun.ammo += ammo_value;
         }
     }
 
