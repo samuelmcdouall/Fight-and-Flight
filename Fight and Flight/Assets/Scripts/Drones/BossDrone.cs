@@ -5,12 +5,12 @@ using UnityEngine;
 public class BossDrone : MonoBehaviour
 {
     // General
-    GameObject player;
+    GameObject player_hit_box;
     GameObject drone_spawner;
+    GameObject boss_healthbar_UI;
     float drone_speed = 0.0f;
-    float drone_speed_difficulty_modifier = 1.0f;
-    float drone_fire_difficulty_modifier = 0.0f; // turn off for the moment might just remove this later
-    public int drone_hp = 10;
+    public int max_boss_drone_hp = 20;
+    public int current_boss_drone_hp = 20;
 
     // Firing 
     [SerializeField]
@@ -29,15 +29,22 @@ public class BossDrone : MonoBehaviour
     bool waypoint_determined = false;
     int current_waypoint_target_num;
     Transform current_waypoint_target;
+    bool arrived_at_inner_waypoints = false;
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Drone Target");
+        player_hit_box = GameObject.FindGameObjectWithTag("Drone Target");
+        boss_healthbar_UI = GameObject.FindGameObjectWithTag("Boss Drone Health Bar");
         InitialDroneSetup();
     }
 
     void Update()
     {
-        transform.LookAt(player.transform);
+        transform.LookAt(player_hit_box.transform);
+        if (arrived_at_inner_waypoints)
+        {
+            drone_speed = (20 - current_boss_drone_hp)/2;
+        }
+        boss_healthbar_UI.GetComponent<BossHealthBarUI>().SetBossBar(current_boss_drone_hp);// should really move to gun rocket as constantly calling this
         DetermineWaypointAndMove();
         DetermineIfTimeToFire();
     }
@@ -47,7 +54,13 @@ public class BossDrone : MonoBehaviour
         drone_spawner = GameObject.FindGameObjectWithTag("Drone Spawner");
         waypoint_targets = new List<Transform>();
         waypoint_targets.AddRange(drone_spawner.GetComponent<DroneSpawner>().boss_waypoints);
-        drone_speed = (11.0f - drone_hp) * drone_speed_difficulty_modifier;
+        current_waypoint_target = waypoint_targets[drone_spawner.GetComponent<DroneSpawner>().boss_spawn_location];
+        drone_speed = 3.0f;
+        current_boss_drone_hp = max_boss_drone_hp;
+        waypoint_determined = true;
+        boss_healthbar_UI.GetComponent<BossHealthBarUI>().SetMaxBossBar(current_boss_drone_hp);
+        Player.boss_spawned = true;
+
     }
 
     private void DetermineWaypointAndMove()
@@ -62,6 +75,10 @@ public class BossDrone : MonoBehaviour
         if (Vector3.Distance(transform.position, current_waypoint_target.position) <= waypoint_threshold)
         {
             waypoint_determined = false;
+            if (!arrived_at_inner_waypoints)
+            {
+                arrived_at_inner_waypoints = true;
+            }
         }
 
         else
@@ -72,7 +89,7 @@ public class BossDrone : MonoBehaviour
     }
     private void DetermineIfTimeToFire()
     {
-        if (elapsed_fire_timer > fire_interval - Player.player_level * drone_fire_difficulty_modifier)
+        if (elapsed_fire_timer > fire_interval - (20 - current_boss_drone_hp)/8)
         {
             FireRocket();
             elapsed_fire_timer = 0.0f;
@@ -89,15 +106,15 @@ public class BossDrone : MonoBehaviour
         {
             GameObject rocket_object = Instantiate(rocket, rocket_spawn_right.transform.position, transform.rotation);
             rocket_object.transform.Rotate(rocket_rotation_offset);
-            rocket_object.GetComponent<Rigidbody>().velocity = (player.transform.position - rocket_spawn_right.transform.position).normalized * rocket_speed;
-            AudioSource.PlayClipAtPoint(fire_sfx, player.transform.position);
+            rocket_object.GetComponent<Rigidbody>().velocity = (player_hit_box.transform.position - rocket_spawn_right.transform.position).normalized * rocket_speed;
+            AudioSource.PlayClipAtPoint(fire_sfx, player_hit_box.transform.position);
         }
         else
         {
             GameObject rocket_object = Instantiate(rocket, rocket_spawn_left.transform.position, transform.rotation);
             rocket_object.transform.Rotate(rocket_rotation_offset);
-            rocket_object.GetComponent<Rigidbody>().velocity = (player.transform.position - rocket_spawn_left.transform.position).normalized * rocket_speed;
-            AudioSource.PlayClipAtPoint(fire_sfx, player.transform.position);
+            rocket_object.GetComponent<Rigidbody>().velocity = (player_hit_box.transform.position - rocket_spawn_left.transform.position).normalized * rocket_speed;
+            AudioSource.PlayClipAtPoint(fire_sfx, player_hit_box.transform.position);
         }
     }
 }
