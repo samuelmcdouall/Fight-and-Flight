@@ -33,7 +33,7 @@ public class LeftHandController : MonoBehaviour
         }
         else
         {
-            if (Player.game_over && trigger_fully_pressed)
+            if ((Player.game_over || Player.victory) && trigger_fully_pressed)
             {
                 LoadGameScene();
             }

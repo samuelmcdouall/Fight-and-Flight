@@ -37,7 +37,7 @@ public class RightHandController : MonoBehaviour
         }
         else
         {
-            if (trigger_fully_pressed && Player.game_over)
+            if ((Player.game_over || Player.victory) && trigger_fully_pressed)
             {
                 LoadMenuScene();
             }
