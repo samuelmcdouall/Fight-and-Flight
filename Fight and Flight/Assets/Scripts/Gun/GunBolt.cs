@@ -6,37 +6,51 @@ public class GunBolt : MonoBehaviour
     [SerializeField]
     float lifetime = 10.0f;
     public GameObject explosion_fx;
+    public GameObject boss_explosion_fx;
     public AudioClip explosion_sfx;
     GameObject player;
-    int drone_value = 3;
+    int drone_value = 5;
     int boss_drone_value = 10;
     RightHandController right_hand_controller;
     LeftHandController left_hand_controller;
+    BossHealthBarUI boss_healthbar;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         right_hand_controller = GameObject.FindGameObjectWithTag("Right Hand Controller").GetComponent<RightHandController>();
         left_hand_controller = GameObject.FindGameObjectWithTag("Left Hand Controller").GetComponent<LeftHandController>();
+        if (Player.boss_spawned)
+        {
+            boss_healthbar = GameObject.FindGameObjectWithTag("Boss Drone Health Bar").GetComponent<BossHealthBarUI>();
+        }
         Destroy(gameObject, lifetime);
+    }
+
+    void Update()
+    {
+        if (Player.boss_spawned && boss_healthbar == null)
+        {
+            boss_healthbar = GameObject.FindGameObjectWithTag("Boss Drone Health Bar").GetComponent<BossHealthBarUI>();
+        }
     }
 
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Platform")
         {
-            Explode();
+            Explode(explosion_fx);
         }
         else if (collider.gameObject.tag == "Target")
         {
             Destroy(collider.gameObject);
-            Explode();
+            Explode(explosion_fx);
         }
         else if (collider.gameObject.tag == "Drone Hit Box")
         {
             Player.score += drone_value;
             Player.drones_destroyed++;
             Destroy(collider.gameObject.transform.parent.gameObject);
-            Explode();
+            Explode(explosion_fx);
         }
         else if (collider.gameObject.tag == "Menu Drone Hit Box")
         {
@@ -49,25 +63,36 @@ public class GunBolt : MonoBehaviour
             if (collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().current_boss_drone_hp == 1)
             {
                 collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().current_boss_drone_hp--;
+                boss_healthbar.SetBossBar(collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().current_boss_drone_hp);
                 Player.score += boss_drone_value;
                 Player.drones_destroyed++;
-                Player.victory = true;
+                Player.victory_countdown_begun = true;
+                DestroyAllCurrentBossRockets();
                 Destroy(collider.gameObject.transform.parent.gameObject);
-                Explode();
+                Explode(boss_explosion_fx);
             }
             else
             {
                 collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().current_boss_drone_hp--;
-                // set boss bar here
-                Explode();
+                boss_healthbar.SetBossBar(collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().current_boss_drone_hp);
+                Explode(explosion_fx);
             }
         }
     }
 
-    private void Explode()
+    private void Explode(GameObject explosion_fx)
     {
         AudioSource.PlayClipAtPoint(explosion_sfx, player.transform.position);
         Instantiate(explosion_fx, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    private static void DestroyAllCurrentBossRockets()
+    {
+        GameObject[] rockets = GameObject.FindGameObjectsWithTag("Boss Drone Rocket");
+        foreach (GameObject rocket in rockets)
+        {
+            Destroy(rocket);
+        }
     }
 }

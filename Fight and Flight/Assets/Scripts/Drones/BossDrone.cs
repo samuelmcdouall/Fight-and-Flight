@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,10 +6,10 @@ public class BossDrone : MonoBehaviour
     // General
     GameObject player_hit_box;
     GameObject drone_spawner;
-    GameObject boss_healthbar_UI;
+    BossHealthBarUI boss_healthbar_UI;
     float drone_speed = 0.0f;
-    public int max_boss_drone_hp = 20;
-    public int current_boss_drone_hp = 20;
+    public int max_boss_drone_hp = 15;
+    public int current_boss_drone_hp = 15;
 
     // Firing 
     [SerializeField]
@@ -33,7 +32,7 @@ public class BossDrone : MonoBehaviour
     void Start()
     {
         player_hit_box = GameObject.FindGameObjectWithTag("Drone Target");
-        boss_healthbar_UI = GameObject.FindGameObjectWithTag("Boss Drone Health Bar");
+        boss_healthbar_UI = GameObject.FindGameObjectWithTag("Boss Drone Health Bar").GetComponent<BossHealthBarUI>();
         InitialDroneSetup();
     }
 
@@ -42,9 +41,8 @@ public class BossDrone : MonoBehaviour
         transform.LookAt(player_hit_box.transform);
         if (arrived_at_inner_waypoints)
         {
-            drone_speed = (20 - current_boss_drone_hp)/2;
+            drone_speed = (15 - current_boss_drone_hp)/3;
         }
-        boss_healthbar_UI.GetComponent<BossHealthBarUI>().SetBossBar(current_boss_drone_hp);// should really move to gun rocket as constantly calling this
         DetermineWaypointAndMove();
         DetermineIfTimeToFire();
     }
@@ -58,7 +56,7 @@ public class BossDrone : MonoBehaviour
         drone_speed = 3.0f;
         current_boss_drone_hp = max_boss_drone_hp;
         waypoint_determined = true;
-        boss_healthbar_UI.GetComponent<BossHealthBarUI>().SetMaxBossBar(current_boss_drone_hp);
+        boss_healthbar_UI.SetMaxBossBar(current_boss_drone_hp);
         Player.boss_spawned = true;
 
     }
@@ -89,7 +87,7 @@ public class BossDrone : MonoBehaviour
     }
     private void DetermineIfTimeToFire()
     {
-        if (elapsed_fire_timer > fire_interval - (20 - current_boss_drone_hp)/8)
+        if (elapsed_fire_timer > fire_interval - (15 - current_boss_drone_hp)/6)
         {
             FireRocket();
             elapsed_fire_timer = 0.0f;
