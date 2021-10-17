@@ -23,6 +23,7 @@ public class DroneSpawner : MonoBehaviour
     [Range(8.0f, 10.0f)]
     float minimum_spawn_drone_proximity_distance = 8.0f;
     public AudioClip spawn_sfx;
+    public AudioClip boss_spawn_sfx;
     float drone_spawn_interval = 20.0f;
     float elapsed_drone_spawn_timer = 0.0f;
     [SerializeField]
@@ -51,7 +52,7 @@ public class DroneSpawner : MonoBehaviour
         {
             if (!spawned_in_boss)
             {
-                DestroyAllCurrentDrones();
+                DestroyAllCurrentDronesAndRockets();
                 SpawnBossDrone();
                 spawned_in_boss = true;
             }
@@ -73,15 +74,20 @@ public class DroneSpawner : MonoBehaviour
         Instantiate(boss_drone, boss_spawn_waypoints[boss_spawn_location].position, Quaternion.identity);
         Vector3 player_to_drone_direction = (boss_spawn_waypoints[boss_spawn_location].position - player.transform.position).normalized;
         Vector3 audio_cue_position = player.transform.position + player_to_drone_direction * audio_cue_distance;
-        AudioSource.PlayClipAtPoint(spawn_sfx, audio_cue_position);
+        AudioSource.PlayClipAtPoint(boss_spawn_sfx, audio_cue_position);
     }
 
-    private static void DestroyAllCurrentDrones()
+    private static void DestroyAllCurrentDronesAndRockets()
     {
         GameObject[] drones = GameObject.FindGameObjectsWithTag("Drone");
         foreach (GameObject drone in drones)
         {
             Destroy(drone);
+        }
+        GameObject[] rockets = GameObject.FindGameObjectsWithTag("Drone Rocket");
+        foreach (GameObject rocket in rockets)
+        {
+            Destroy(rocket);
         }
     }
 

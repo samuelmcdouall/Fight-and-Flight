@@ -24,11 +24,17 @@ public class Platform : MonoBehaviour
     GameObject platform_spawner;
     float y_out_of_bounds = 0.5f;
     [SerializeField]
-    int percentage_chance_to_spawn_common_pickup = 50;
+    int percentage_chance_to_spawn_common_pickup = 40;
     [SerializeField]
-    int percentage_chance_to_spawn_rare_pickup = 25;
+    int percentage_chance_to_spawn_rare_pickup = 20;
     [SerializeField]
     int percentage_chance_to_spawn_ammo_pickup = 20;
+    [SerializeField]
+    int percentage_chance_to_spawn_common_pickup_boss = 15;
+    [SerializeField]
+    int percentage_chance_to_spawn_rare_pickup_boss = 15;
+    [SerializeField]
+    int percentage_chance_to_spawn_ammo_pickup_boss = 50;
     [SerializeField]
     float pickup_spawn_range_limit = 2.0f;
     public GameObject common_pickup;
@@ -76,18 +82,39 @@ public class Platform : MonoBehaviour
 
     private void DetermineIfPickUpSpawnedOnPlatform()
     {
-        int random_spawn_chance = Random.Range(1, 101);
-        if (random_spawn_chance < percentage_chance_to_spawn_common_pickup + 1)
+        if (!Player.boss_spawned)
         {
-            SpawnPickUp(common_pickup);
+            print("spawning regular pickup rate");
+            int random_spawn_chance = Random.Range(1, 101);
+            if (random_spawn_chance < percentage_chance_to_spawn_common_pickup + 1)
+            {
+                SpawnPickUp(common_pickup);
+            }
+            else if (random_spawn_chance < percentage_chance_to_spawn_common_pickup + percentage_chance_to_spawn_rare_pickup + 1)
+            {
+                SpawnPickUp(rare_pickup);
+            }
+            else if (random_spawn_chance < percentage_chance_to_spawn_common_pickup + percentage_chance_to_spawn_rare_pickup + percentage_chance_to_spawn_ammo_pickup + 1)
+            {
+                SpawnPickUp(ammo_pickup);
+            }
         }
-        else if (random_spawn_chance < percentage_chance_to_spawn_common_pickup + percentage_chance_to_spawn_rare_pickup + 1)
+        else
         {
-            SpawnPickUp(rare_pickup);
-        }
-        else if (random_spawn_chance < percentage_chance_to_spawn_common_pickup + percentage_chance_to_spawn_rare_pickup + percentage_chance_to_spawn_ammo_pickup + 1)
-        {
-            SpawnPickUp(ammo_pickup);
+            print("spawning BOSS pickup_boss rate");
+            int random_spawn_chance = Random.Range(1, 101);
+            if (random_spawn_chance < percentage_chance_to_spawn_common_pickup_boss + 1)
+            {
+                SpawnPickUp(common_pickup);
+            }
+            else if (random_spawn_chance < percentage_chance_to_spawn_common_pickup_boss + percentage_chance_to_spawn_rare_pickup_boss + 1)
+            {
+                SpawnPickUp(rare_pickup);
+            }
+            else if (random_spawn_chance < percentage_chance_to_spawn_common_pickup_boss + percentage_chance_to_spawn_rare_pickup_boss + percentage_chance_to_spawn_ammo_pickup_boss + 1)
+            {
+                SpawnPickUp(ammo_pickup);
+            }
         }
     }
 

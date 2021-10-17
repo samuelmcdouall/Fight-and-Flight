@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    // General
-    public bool in_menu = false;
-
     // Ammo
     public static int max_ammo = 10;
     public static int ammo = 0;
@@ -33,7 +30,7 @@ public class Gun : MonoBehaviour
                 if (ammo != 0)
                 {
                     FireGunRocket();
-                    if (!in_menu)
+                    if (!Player.in_menu)
                     {
                         ammo--;
                     }

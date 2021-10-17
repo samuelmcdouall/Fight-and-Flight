@@ -4904,6 +4904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 10
   explosion_fx: {fileID: 4666410091753442072, guid: 9067f4200b0798045ace0b9bf068fd12, type: 3}
+  boss_explosion_fx: {fileID: 3921977380879412988, guid: 9ec0f78542b811b449afdb0132eea814, type: 3}
   explosion_sfx: {fileID: 8300000, guid: c7e572b255e311b479005985ed7f4ba2, type: 3}
 --- !u!54 &6361714504741222387
 Rigidbody:

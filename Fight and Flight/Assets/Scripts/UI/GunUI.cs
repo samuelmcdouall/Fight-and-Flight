@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class GunUI : MonoBehaviour
 {
     Text ammo_remaining_text;
-    public bool in_menu = false;
     void Start()
     {
         ammo_remaining_text = GetComponent<Text>();
@@ -12,7 +11,7 @@ public class GunUI : MonoBehaviour
     }
     void Update()
     {
-        if (in_menu)
+        if (Player.in_menu)
         {
             ammo_remaining_text.text = "";
         }

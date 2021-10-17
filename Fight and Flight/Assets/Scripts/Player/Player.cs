@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public static bool in_menu;
     public static bool boss_spawned = false;
     float y_out_of_bounds = 0.5f;
+    public static bool victory_countdown_begun = false;
+    float victory_countdown_timer = 2.0f;
 
     // Movement Mechanics
     Rigidbody player_rb;
@@ -63,6 +65,17 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        if (!victory && victory_countdown_begun)
+        {
+            if (victory_countdown_timer <= 0.0f)
+            {
+                victory = true;
+            }
+            else
+            {
+                victory_countdown_timer -= Time.deltaTime;
+            }
+        }
         if (victory)
         {
             if (victory_screen.activeSelf == false)
@@ -139,12 +152,14 @@ public class Player : MonoBehaviour
         fuel_gauge.SetMaxFuelGauge(max_fuel);
         fuel_meter.SetNonGlidingColour();
     }
-    private static void InitialProgressionSetup()
+    private void InitialProgressionSetup()
     {
         score = 0;
         player_level = 0;
         drones_destroyed = 0;
         boss_spawned = false;
+        victory_countdown_begun = false;
+        victory_countdown_timer = 2.0f;
     }
     private static void InitialUISetup()
     {

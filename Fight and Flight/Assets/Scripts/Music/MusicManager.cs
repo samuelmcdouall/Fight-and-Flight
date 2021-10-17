@@ -9,8 +9,9 @@ public class MusicManager : MonoBehaviour
     AudioSource music_as;
     bool started_playing_menu_music;
     bool started_playing_game_music;
-    bool started_playing_boss_music = false;
-    bool started_playing_victory_music = false;
+    bool started_playing_boss_music;
+    bool started_victory_music_gap;
+    bool started_playing_victory_music;
     void Start()
     {
         music_as = GetComponent<AudioSource>();
@@ -19,6 +20,7 @@ public class MusicManager : MonoBehaviour
         started_playing_menu_music = false;
         started_playing_game_music = false;
         started_playing_boss_music = false;
+        started_victory_music_gap = false;
         started_playing_victory_music = false;
     }
     void Update()
@@ -54,6 +56,14 @@ public class MusicManager : MonoBehaviour
                 music_as.loop = true;
                 music_as.Play();
                 started_playing_boss_music = true;
+            }
+            if (!Player.victory && Player.victory_countdown_begun)
+            {
+                if (!started_victory_music_gap)
+                {
+                    started_victory_music_gap = false;
+                    music_as.Stop();
+                }
             }
             if (Player.victory)
             {
