@@ -23,7 +23,7 @@ public class Drone : MonoBehaviour
     Vector3 rocket_rotation_offset = new Vector3(90.0f, 0.0f, 0.0f);
     
     // Waypoint traversing
-    public List<Transform> waypoint_targets;
+    List<Transform> waypoint_targets;
     float waypoint_threshold = 0.1f;
     bool waypoint_determined = false;
     int current_waypoint_target_num;

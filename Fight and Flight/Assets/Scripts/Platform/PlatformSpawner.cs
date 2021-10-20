@@ -35,10 +35,10 @@ public class PlatformSpawner : MonoBehaviour
 
     public void AttemptToSpawnPlatform()
     {
-        while (!SpawnPlatform());
+        while (!SpawnedPlatformSuccessfully());
     }
 
-    bool SpawnPlatform()
+    bool SpawnedPlatformSuccessfully()
     {
         Vector3 random_chosen_new_starting_position = RandomlyDetermineSpawnPosition();
         Vector3 random_chosen_y_independent_new_starting_position = new Vector3(random_chosen_new_starting_position.x, 0.0f, random_chosen_new_starting_position.z);
