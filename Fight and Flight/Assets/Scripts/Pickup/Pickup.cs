@@ -5,16 +5,21 @@ public class Pickup : MonoBehaviour
     // General
     [SerializeField]
     [Range(0.1f, 10.0f)]
-    float revolution_time = 1.0f;
+    float revolution_time;
 
     // Collecting
     [SerializeField]
     PickupType pickup_type;
-    int rare_value = 3;
-    int common_value = 1;
-    int ammo_value = 5;
+    int rare_value;
+    int common_value;
+    int ammo_value;
     public AudioClip collect_reward_sfx;
     public AudioClip collect_ammo_sfx;
+
+    void Start()
+    {
+        InitialPickupSetup();
+    }
 
     void Update()
     {
@@ -26,6 +31,13 @@ public class Pickup : MonoBehaviour
         {
             transform.Rotate(Vector3.forward, Time.deltaTime * 360.0f / revolution_time);
         }
+    }
+
+    private void InitialPickupSetup()
+    {
+        rare_value = 3;
+        common_value = 1;
+        ammo_value = 5;
     }
 
     private void OnTriggerEnter(Collider collider)

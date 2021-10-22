@@ -5,38 +5,36 @@ public class Platform : MonoBehaviour
     // General
     public bool menu_platform = false;
     [SerializeField]
-    bool starting_platform = false;
+    bool starting_platform;
 
     // Platform Lifetime
-    bool deteriorating = false;
-    float max_life_time = 10.0f;
+    bool deteriorating;
+    float max_life_time;
     float current_life_time;
-    public float platform_fall_speed = 3.0f;
+    float platform_fall_speed;
     Material platform_m;
     public Color color_max_life;
     public Color color_min_life;
-    float color_lerp_time = 0;
-    bool begun_falling = false;
+    float color_lerp_time;
+    bool begun_falling;
     public AudioClip fall_sfx;
-    float platform_lifetime_difficulty_modifier = 1.0f;
 
     // Platform Spawning
     GameObject platform_spawner;
-    float y_out_of_bounds = 0.5f;
+    float y_out_of_bounds;
     [SerializeField]
-    int percentage_chance_to_spawn_common_pickup = 40;
+    int percentage_chance_to_spawn_common_pickup;
     [SerializeField]
-    int percentage_chance_to_spawn_rare_pickup = 20;
+    int percentage_chance_to_spawn_rare_pickup;
     [SerializeField]
-    int percentage_chance_to_spawn_ammo_pickup = 20;
+    int percentage_chance_to_spawn_ammo_pickup;
     [SerializeField]
-    int percentage_chance_to_spawn_common_pickup_boss = 15;
+    int percentage_chance_to_spawn_common_pickup_boss;
     [SerializeField]
-    int percentage_chance_to_spawn_rare_pickup_boss = 15;
+    int percentage_chance_to_spawn_rare_pickup_boss;
     [SerializeField]
-    int percentage_chance_to_spawn_ammo_pickup_boss = 50;
-    [SerializeField]
-    float pickup_spawn_range_limit = 2.0f;
+    int percentage_chance_to_spawn_ammo_pickup_boss;
+    float pickup_spawn_range_limit;
     public GameObject common_pickup;
     public GameObject rare_pickup;
     public GameObject ammo_pickup;
@@ -84,7 +82,6 @@ public class Platform : MonoBehaviour
     {
         if (!Player.boss_spawned)
         {
-            print("spawning regular pickup rate");
             int random_spawn_chance = Random.Range(1, 101);
             if (random_spawn_chance < percentage_chance_to_spawn_common_pickup + 1)
             {
@@ -101,7 +98,6 @@ public class Platform : MonoBehaviour
         }
         else
         {
-            print("spawning BOSS pickup_boss rate");
             int random_spawn_chance = Random.Range(1, 101);
             if (random_spawn_chance < percentage_chance_to_spawn_common_pickup_boss + 1)
             {
@@ -130,6 +126,12 @@ public class Platform : MonoBehaviour
     private void InitialPlatformSetup()
     {
         max_life_time = 10.0f;
+        deteriorating = false;
+        platform_fall_speed = 3.0f;
+        color_lerp_time = 0.0f;
+        begun_falling = false;
+        y_out_of_bounds = 0.5f;
+        pickup_spawn_range_limit = 2.0f;
         platform_m = GetComponent<Renderer>().material;
         platform_spawner = GameObject.FindGameObjectWithTag("Platform Spawner");
     }
@@ -162,7 +164,7 @@ public class Platform : MonoBehaviour
         {
             if (!deteriorating)
             {
-                max_life_time -= Player.player_level * platform_lifetime_difficulty_modifier;
+                max_life_time -= Player.player_level;
                 current_life_time = max_life_time;
                 deteriorating = true;
             }

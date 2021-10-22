@@ -7,29 +7,29 @@ public class DroneSpawner : MonoBehaviour
     public GameObject drone;
     public GameObject boss_drone;
     GameObject player;
-    float drone_spawn_difficulty_modifier = 2.0f;
+    float drone_spawn_difficulty_modifier;
 
     // Spawning parameters
     [SerializeField]
     [Range(5.0f, 20.0f)]
-    float maximum_horizontal_spawn_distance = 20.0f;
+    float maximum_horizontal_spawn_distance;
     [SerializeField]
     [Range(12.0f, 15.0f)]
-    float minimum_vertical_spawn_distance = 15.0f;
+    float minimum_vertical_spawn_distance;
     [SerializeField]
     [Range(16.0f, 20.0f)]
-    float maximum_vertical_spawn_distance = 17.0f;
+    float maximum_vertical_spawn_distance;
     [SerializeField]
     [Range(8.0f, 10.0f)]
-    float minimum_spawn_drone_proximity_distance = 8.0f;
+    float minimum_spawn_drone_proximity_distance;
     public AudioClip spawn_sfx;
     public AudioClip boss_spawn_sfx;
-    float drone_spawn_interval = 20.0f;
-    float elapsed_drone_spawn_timer = 0.0f;
+    float drone_spawn_interval;
+    float elapsed_drone_spawn_timer;
     [SerializeField]
-    int starting_drones = 2;
-    float audio_cue_distance = 2.0f;
-    bool spawned_in_boss = false;
+    int starting_drones;
+    float audio_cue_distance;
+    bool spawned_in_boss;
 
     // Waypoints
     public List<Transform> waypoints;
@@ -39,13 +39,14 @@ public class DroneSpawner : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        InitialDroneSpawnerSetup();
         for (int drone = 0; drone < starting_drones; drone++)
         {
             AttemptToSpawnDrone();
         }
 
     }
+
     void Update()
     {
         if (Player.score >= 50)
@@ -66,6 +67,16 @@ public class DroneSpawner : MonoBehaviour
         {
             elapsed_drone_spawn_timer += Time.deltaTime;
         }
+    }
+
+    private void InitialDroneSpawnerSetup()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        drone_spawn_interval = 20.0f;
+        drone_spawn_difficulty_modifier = 2.0f;
+        elapsed_drone_spawn_timer = 0.0f;
+        audio_cue_distance = 2.0f;
+        spawned_in_boss = false;
     }
 
     private void SpawnBossDrone()

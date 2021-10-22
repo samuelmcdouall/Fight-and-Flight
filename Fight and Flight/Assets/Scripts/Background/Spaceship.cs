@@ -8,7 +8,6 @@ public class Spaceship : MonoBehaviour
     float lifetime;
     [SerializeField]
     float random_chosen_angle_arc;
-    [SerializeField]
     public bool reverse_spawner = false;
 
     void Start()

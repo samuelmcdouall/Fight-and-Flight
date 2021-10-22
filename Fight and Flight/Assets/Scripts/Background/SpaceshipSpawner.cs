@@ -9,19 +9,19 @@ public class SpaceshipSpawner : MonoBehaviour
     [SerializeField]
     float spawn_max_timer;
     float respawn_rate;
-    float elapsed_timer = 0;
-    [SerializeField]
+    float elapsed_timer;
     public bool reverse_spawner = false;
     void Start()
     {
         respawn_rate = Random.Range(spawn_min_timer, spawn_max_timer);
+        elapsed_timer = 0.0f;
     }
 
     void Update()
     {
         if (elapsed_timer > respawn_rate) {
             SpawnSpaceship();
-            elapsed_timer = 0;
+            elapsed_timer = 0.0f;
             respawn_rate = Random.Range(spawn_min_timer, spawn_max_timer);
         }
         else

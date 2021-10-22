@@ -4,21 +4,19 @@ using UnityEngine.SceneManagement;
 public class GunBolt : MonoBehaviour
 {
     [SerializeField]
-    float lifetime = 10.0f;
+    float lifetime;
     public GameObject explosion_fx;
     public GameObject boss_explosion_fx;
     public AudioClip explosion_sfx;
     GameObject player;
-    int drone_value = 5;
-    int boss_drone_value = 10;
+    int drone_value;
+    int boss_drone_value;
     RightHandController right_hand_controller;
     LeftHandController left_hand_controller;
     BossHealthBarUI boss_healthbar;
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        right_hand_controller = GameObject.FindGameObjectWithTag("Right Hand Controller").GetComponent<RightHandController>();
-        left_hand_controller = GameObject.FindGameObjectWithTag("Left Hand Controller").GetComponent<LeftHandController>();
+        InitialGunBoltSetup();
         if (Player.boss_spawned)
         {
             boss_healthbar = GameObject.FindGameObjectWithTag("Boss Drone Health Bar").GetComponent<BossHealthBarUI>();
@@ -32,6 +30,15 @@ public class GunBolt : MonoBehaviour
         {
             boss_healthbar = GameObject.FindGameObjectWithTag("Boss Drone Health Bar").GetComponent<BossHealthBarUI>();
         }
+    }
+
+    private void InitialGunBoltSetup()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        right_hand_controller = GameObject.FindGameObjectWithTag("Right Hand Controller").GetComponent<RightHandController>();
+        left_hand_controller = GameObject.FindGameObjectWithTag("Left Hand Controller").GetComponent<LeftHandController>();
+        drone_value = 5;
+        boss_drone_value = 10;
     }
 
     private void OnTriggerEnter(Collider collider)

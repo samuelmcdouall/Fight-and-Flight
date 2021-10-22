@@ -3,7 +3,7 @@ using UnityEngine;
 public class DroneRocket : MonoBehaviour
 {
     [SerializeField]
-    float lifetime = 10.0f;
+    float lifetime;
     public GameObject explosion_fx;
     public AudioClip explosion_sfx;
     GameObject player;

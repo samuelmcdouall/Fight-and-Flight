@@ -6,7 +6,7 @@ public class RightHandController : MonoBehaviour
 {
     private ActionBasedController right_controller;
     private float amount_trigger_pressed;
-    float press_threshold = 0.001f;
+    float press_threshold;
     private Player player_script;
     public LeftHandController left_hand_controller;
     void Start()
@@ -25,6 +25,7 @@ public class RightHandController : MonoBehaviour
         right_controller.selectAction.action.performed += Trigger_Pressed;
         right_controller.activateAction.action.performed += Menu_Button_Pressed;
         player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        press_threshold = 0.001f;
     }
 
     public void Trigger_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)

@@ -845,7 +845,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu_platform: 0
   starting_platform: 0
-  platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
   fall_sfx: {fileID: 0}
@@ -855,7 +854,6 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
-  pickup_spawn_range_limit: 2
   common_pickup: {fileID: 0}
   rare_pickup: {fileID: 0}
   ammo_pickup: {fileID: 0}
@@ -969,7 +967,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu_platform: 0
   starting_platform: 0
-  platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
   fall_sfx: {fileID: 0}
@@ -979,7 +976,6 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
-  pickup_spawn_range_limit: 2
   common_pickup: {fileID: 0}
   rare_pickup: {fileID: 0}
   ammo_pickup: {fileID: 0}
@@ -1162,7 +1158,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu_platform: 0
   starting_platform: 1
-  platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
   fall_sfx: {fileID: 0}
@@ -1172,7 +1167,6 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
-  pickup_spawn_range_limit: 2
   common_pickup: {fileID: 1689830508881278957, guid: 1edaae3579a8c1d4fada9342ad92546d, type: 3}
   rare_pickup: {fileID: 306189006300075459, guid: 05388f5bb4cf81b45b24a0bcba225b76, type: 3}
   ammo_pickup: {fileID: 0}
@@ -1484,7 +1478,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu_platform: 0
   starting_platform: 0
-  platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
   fall_sfx: {fileID: 0}
@@ -1494,7 +1487,6 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
-  pickup_spawn_range_limit: 2
   common_pickup: {fileID: 0}
   rare_pickup: {fileID: 0}
   ammo_pickup: {fileID: 0}
@@ -1608,7 +1600,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu_platform: 0
   starting_platform: 0
-  platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
   fall_sfx: {fileID: 0}
@@ -1618,7 +1609,6 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
-  pickup_spawn_range_limit: 2
   common_pickup: {fileID: 0}
   rare_pickup: {fileID: 0}
   ammo_pickup: {fileID: 0}
@@ -2301,7 +2291,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu_platform: 0
   starting_platform: 0
-  platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
   fall_sfx: {fileID: 0}
@@ -2311,7 +2300,6 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
-  pickup_spawn_range_limit: 2
   common_pickup: {fileID: 0}
   rare_pickup: {fileID: 0}
   ammo_pickup: {fileID: 0}
@@ -2488,7 +2476,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu_platform: 0
   starting_platform: 0
-  platform_fall_speed: 3
   color_max_life: {r: 0, g: 1, b: 0.30994153, a: 1}
   color_min_life: {r: 1, g: 0, b: 0, a: 1}
   fall_sfx: {fileID: 0}
@@ -2498,7 +2485,6 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
-  pickup_spawn_range_limit: 2
   common_pickup: {fileID: 0}
   rare_pickup: {fileID: 0}
   ammo_pickup: {fileID: 0}
@@ -2910,6 +2896,10 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 1526223166914275997, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1526223166914275998, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2930,6 +2920,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1043852688}
+    - target: {fileID: 1526223167582235762, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: ammo_speed
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
 --- !u!1001 &3413591600978616646

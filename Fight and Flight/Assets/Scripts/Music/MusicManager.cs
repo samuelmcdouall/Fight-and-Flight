@@ -14,15 +14,9 @@ public class MusicManager : MonoBehaviour
     bool started_playing_victory_music;
     void Start()
     {
-        music_as = GetComponent<AudioSource>();
-        music_as.playOnAwake = true;
-        music_as.loop = true;
-        started_playing_menu_music = false;
-        started_playing_game_music = false;
-        started_playing_boss_music = false;
-        started_victory_music_gap = false;
-        started_playing_victory_music = false;
+        InitialMusicManagerSetup();
     }
+
     void Update()
     {
         if (Player.in_menu)
@@ -77,5 +71,17 @@ public class MusicManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void InitialMusicManagerSetup()
+    {
+        music_as = GetComponent<AudioSource>();
+        music_as.playOnAwake = true;
+        music_as.loop = true;
+        started_playing_menu_music = false;
+        started_playing_game_music = false;
+        started_playing_boss_music = false;
+        started_victory_music_gap = false;
+        started_playing_victory_music = false;
     }
 }

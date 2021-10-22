@@ -4,7 +4,7 @@ public class SpaceStation : MonoBehaviour
 {
     [SerializeField]
     [Range(0.1f, 60.0f)]
-    float revolution_time = 1.0f;
+    float revolution_time;
 
     void Update()
     {

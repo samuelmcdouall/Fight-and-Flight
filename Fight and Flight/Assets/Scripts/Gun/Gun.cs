@@ -3,22 +3,22 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     // Ammo
-    public static int max_ammo = 10;
-    public static int ammo = 0;
+    public static int max_ammo;
+    public static int ammo;
     [SerializeField]
     [Range(0.0f, 100.0f)]
-    float ammo_speed = 5.0f;
+    float ammo_speed;
 
     // Firing Mechanics
-    public bool gun_trigger_pressed = false;
+    public bool gun_trigger_pressed;
     public GameObject gun_barrel_outer;
     public GameObject gun_barrel_inner;
     public GameObject gun_bolt;
     public AudioClip fire_sfx;
-    Quaternion gun_ammo_offset = Quaternion.Euler(0.0f, 0.0f, -90.0f);
+    Quaternion gun_ammo_offset;
     void Start()
     {
-        ammo = max_ammo;
+        InitialGunSetup();
     }
 
     void Update()
@@ -38,6 +38,14 @@ public class Gun : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void InitialGunSetup()
+    {
+        max_ammo = 10;
+        ammo = max_ammo;
+        gun_ammo_offset = Quaternion.Euler(0.0f, 0.0f, -90.0f);
+        gun_trigger_pressed = false;
     }
 
     private void FireGunRocket()
