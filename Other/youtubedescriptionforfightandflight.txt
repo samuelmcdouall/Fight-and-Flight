@@ -1,0 +1,48 @@
+This is a development diary of me creating a VR game called Fight and Flight. The basic premise is the player must fly from platform to platform, collect pickups and shoot enemies. The game is run on an HTC Vive.
+
+This game was made for one of my courses whilst studying Games Development (Programming) MSc at Kingston University.
+
+In this video I show off the basic mechanics of flying. By holding the trigger the player flies off in the direction of the controller (the blue line). The player can only fly for a limited amount of time and will fall down when out of fuel/energy. However, if the trigger is held whilst falling the player will glide. This movement system was inspired by the game Daedalus.
+
+As I'm not a game designer and am just a programmer (which is what the course was focusing on), I have used a lot of assets which are mentioned below.
+
+Assets:
+-XR Plug-in Management
+-OpenXR Plugin
+-XR Interaction Toolkit
+
+-Brackeys Health Bar sprite https://github.com/Brackeys/Health-Bar
+
+-
+
+-Gem and Star Pickups: https://assetstore.unity.com/packages/3d/props/simple-gems-ultimate-animated-customizable-pack-73764
+-Gem and Star Pickup sfx: https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116
+-Space Station: https://assetstore.unity.com/packages/3d/vehicles/space/space-station-free-3d-asset-188734
+-Flying sfx: https://assetstore.unity.com/packages/audio/sound-fx/industrial-sci-fi-sfx-187841
+-New platforms: https://assetstore.unity.com/packages/3d/environments/sci-fi/modular-sci-fi-corridor-142811
+-Spaceship: https://assetstore.unity.com/packages/3d/galactic-heroes-cartoon-spaceship-70188
+-Space background: https://assetstore.unity.com/packages/2d/textures-materials/sky/spaceskies-free-80503
+-Game Music: https://assetstore.unity.com/packages/audio/music/electronic/synthwave-sci-fi-music-pack-184583
+
+-Gun: https://assetstore.unity.com/packages/3d/props/guns/sci-fi-gun-162872
+-Drone: https://assetstore.unity.com/packages/3d/vehicles/space/sci-fi-space-drone-exroid-5002-71731
+-Gun Rocket and Drone Rocket: https://assetstore.unity.com/packages/3d/props/weapons/rockets-missiles-bombs-cartoon-low-poly-pack-73141
+-Gun Fire sfx and Drone Fire sfx: https://assetstore.unity.com/packages/audio/sound-fx/weapons/ultra-sci-fi-game-audio-weapons-pack-vol-1-113047
+-Rocket Explosion fx: https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-free-109565
+-Rocket Explosion sfx: https://assetstore.unity.com/packages/audio/sound-fx/retro-noisy-explosion-sound-pack-lite-69305
+-Game Over sfx: https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116
+-Drone Spawn sfx: https://assetstore.unity.com/packages/audio/sound-fx/industrial-sci-fi-sfx-187841
+
+-New Flight Controller: https://assetstore.unity.com/packages/3d/environments/sci-fi/modular-sci-fi-corridor-142811
+
+-Menu Font: https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059
+-Text Mesh Pro shaders were also used for the 3D text in the menu
+-Main Menu music: https://assetstore.unity.com/packages/audio/music/electronic/synthwave-sci-fi-music-pack-184583
+
+-Boss Drone: https://assetstore.unity.com/packages/3d/vehicles/space/sci-fi-space-drone-exroid-5002-71731
+-Boss Drone Rocket: https://assetstore.unity.com/packages/3d/props/weapons/rockets-missiles-bombs-cartoon-low-poly-pack-73141
+-Boss Drone Fire sfx: https://assetstore.unity.com/packages/audio/sound-fx/weapons/ultra-sci-fi-game-audio-weapons-pack-vol-1-113047
+-Boss Theme Music: https://assetstore.unity.com/packages/audio/music/sci-fi-music-pack-1-105576
+-Boss Drone Spawn sfx: https://assetstore.unity.com/packages/audio/sound-fx/industrial-sci-fi-sfx-187841
+-Boss Drone Explosion fx: https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-free-109565
+-Victory music: https://assetstore.unity.com/packages/audio/music/electronic/synthwave-sci-fi-music-pack-184583    

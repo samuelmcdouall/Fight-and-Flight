@@ -1,0 +1,5 @@
+Watch your flight fuel
+Make use of nearby platforms for recharge
+When one platform descends another will spawn see if this is useful
+Drones spawn periodically, kill them then try to move around
+Drop when glidning to avoid rocket
