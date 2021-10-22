@@ -5,38 +5,38 @@ public class Player : MonoBehaviour
 {
     // General
     public static bool in_menu;
-    public static bool boss_spawned = false;
-    float y_out_of_bounds = 0.5f;
-    public static bool victory_countdown_begun = false;
-    float victory_countdown_timer = 2.0f;
+    public static bool boss_spawned;
+    public static bool victory_countdown_begun;
+    float victory_countdown_timer;
+    float y_out_of_bounds;
 
     // Movement Mechanics
     Rigidbody player_rb;
-    public bool throttle = false;
-    float current_throttle = 0.0f;
+    public bool throttle;
+    float current_throttle;
     Vector3 current_direction;
     [SerializeField]
     [Range(0.0f, 10.0f)]
-    float fly_speed = 10.0f;
+    float fly_speed;
     [SerializeField]
     [Range(0.0f, 2.0f)]
-    float glide_speed = 2.0f;
+    float glide_speed;
 
     // Fuel Mechanics
     GroundCheck ground_check;
     [SerializeField]
     [Range(0.0f, 500.0f)]
-    float max_fuel = 200.0f;
+    float max_fuel;
     float fuel;
     public FuelGauge fuel_gauge;
     public FuelMeter fuel_meter;
     [SerializeField]
     [Range(0.0f, 3.0f)]
-    float fuel_recharge_delay = 1.0f;
+    float fuel_recharge_delay;
     [SerializeField]
     [Range(0.0f, 250.0f)]
-    float fuel_recharge_rate = 100.0f;
-    float elapsed_fuel_recharge_delay = 0.0f;
+    float fuel_recharge_rate;
+    float elapsed_fuel_recharge_delay;
 
     // Audio
     AudioSource player_as;
@@ -44,15 +44,15 @@ public class Player : MonoBehaviour
     public AudioClip game_over_sfx;
 
     // Progression
-    public static int score = 0;
-    public static int player_level = 0;
-    public static int drones_destroyed = 0;
-    int level_increase_rate = 10;
+    public static int score;
+    public static int player_level;
+    public static int drones_destroyed;
+    int level_increase_rate;
 
     // UI screens
-    public static bool game_over = false;
-    public static bool paused = false;
-    public static bool victory = false;
+    public static bool game_over;
+    public static bool paused; 
+    public static bool victory;
     public GameObject game_over_screen;
     public GameObject score_screen;
     public GameObject pause_screen;
@@ -151,16 +151,21 @@ public class Player : MonoBehaviour
         fuel = max_fuel;
         fuel_gauge.SetMaxFuelGauge(max_fuel);
         fuel_meter.SetNonGlidingColour();
-    }
+        elapsed_fuel_recharge_delay = 0.0f;
+        throttle = false;
+        current_throttle = 0.0f;
+}
     private void InitialProgressionSetup()
     {
-        score = 0;
-        player_level = 0;
-        drones_destroyed = 0;
         boss_spawned = false;
+        y_out_of_bounds = 0.5f;
         victory_countdown_begun = false;
         victory_countdown_timer = 2.0f;
-    }
+        score = 49;
+        player_level = 0;
+        drones_destroyed = 0;
+        level_increase_rate = 10;
+}
     private static void InitialUISetup()
     {
         game_over = false;
@@ -302,7 +307,7 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Drone Hit Box")
+        if (collision.gameObject.tag == "Drone Hit Box" || collision.gameObject.tag == "Boss Drone Hit Box")
         {
             game_over = true;
         }
