@@ -129,8 +129,7 @@ public class Platform : MonoBehaviour
 
     private void InitialPlatformSetup()
     {
-        max_life_time -= Player.player_level * platform_lifetime_difficulty_modifier;
-        current_life_time = max_life_time;
+        max_life_time = 10.0f;
         platform_m = GetComponent<Renderer>().material;
         platform_spawner = GameObject.FindGameObjectWithTag("Platform Spawner");
     }
@@ -161,7 +160,12 @@ public class Platform : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            deteriorating = true;
+            if (!deteriorating)
+            {
+                max_life_time -= Player.player_level * platform_lifetime_difficulty_modifier;
+                current_life_time = max_life_time;
+                deteriorating = true;
+            }
         }
     }
 }
