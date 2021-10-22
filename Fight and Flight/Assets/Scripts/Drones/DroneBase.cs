@@ -30,13 +30,16 @@ public class DroneBase : MonoBehaviour
     public void InitialBaseDroneSetup()
     {
         player_hit_box = GameObject.FindGameObjectWithTag("Drone Target");
-        drone_spawner = GameObject.FindGameObjectWithTag("Drone Spawner");
-        waypoint_targets = new List<Transform>();
-        waypoint_threshold = 0.1f;
-        rocket_speed = 10.0f;
-        fire_interval = 5.0f;
-        elapsed_fire_timer = 0.0f;
-        rocket_rotation_offset = new Vector3(90.0f, 0.0f, 0.0f);
+        if (!menu_drone)
+        {
+            drone_spawner = GameObject.FindGameObjectWithTag("Drone Spawner");
+            waypoint_targets = new List<Transform>();
+            waypoint_threshold = 0.1f;
+            rocket_speed = 10.0f;
+            fire_interval = 5.0f;
+            elapsed_fire_timer = 0.0f;
+            rocket_rotation_offset = new Vector3(90.0f, 0.0f, 0.0f);
+        }
     }
 
     public virtual void DetermineWaypointAndMove()
@@ -61,7 +64,7 @@ public class DroneBase : MonoBehaviour
     }
     public virtual void DetermineIfTimeToFire()
     {
-        if (elapsed_fire_timer > fire_interval - Player.player_level)
+        if (elapsed_fire_timer > fire_interval)
         {
             FireRocket();
             elapsed_fire_timer = 0.0f;
