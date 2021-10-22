@@ -5,32 +5,38 @@ using UnityEngine;
 public class DroneBase : MonoBehaviour
 {
     // General
-    public GameObject player_hit_box;
-    public GameObject drone_spawner;
-    public float drone_speed;
+    protected GameObject player_hit_box;
+    protected GameObject drone_spawner;
+    protected float drone_speed;
     public bool menu_drone = false;
 
-    // Firing 
-    [SerializeField]
-    public float rocket_speed;
-    public float fire_interval;
-    public float elapsed_fire_timer;
+    // Firing
+    protected float rocket_speed;
+    protected float fire_interval;
+    protected float elapsed_fire_timer;
     public GameObject rocket_spawn_right;
     public GameObject rocket_spawn_left;
     public GameObject rocket;
     public AudioClip fire_sfx;
-    public Vector3 rocket_rotation_offset;
+    protected Vector3 rocket_rotation_offset;
 
     // Waypoint traversing
-    public List<Transform> waypoint_targets;
-    public float waypoint_threshold;
-    public bool waypoint_determined;
-    public int current_waypoint_target_num;
-    public Transform current_waypoint_target;
+    protected List<Transform> waypoint_targets;
+    protected float waypoint_threshold;
+    protected bool waypoint_determined;
+    protected int current_waypoint_target_num;
+    protected Transform current_waypoint_target;
 
-    public virtual void InitialDroneSetup() 
+    public void InitialBaseDroneSetup()
     {
-        return;
+        player_hit_box = GameObject.FindGameObjectWithTag("Drone Target");
+        drone_spawner = GameObject.FindGameObjectWithTag("Drone Spawner");
+        waypoint_targets = new List<Transform>();
+        waypoint_threshold = 0.1f;
+        rocket_speed = 10.0f;
+        fire_interval = 5.0f;
+        elapsed_fire_timer = 0.0f;
+        rocket_rotation_offset = new Vector3(90.0f, 0.0f, 0.0f);
     }
 
     public virtual void DetermineWaypointAndMove()

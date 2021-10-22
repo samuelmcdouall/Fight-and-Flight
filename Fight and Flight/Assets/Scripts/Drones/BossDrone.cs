@@ -5,15 +5,18 @@ public class BossDrone : DroneBase
 {
     // General
     BossHealthBarUI boss_healthbar_UI;
-    public int max_boss_drone_hp = 15;
-    public int current_boss_drone_hp = 15;
+    [System.NonSerialized]
+    public int max_boss_drone_hp;
+    [System.NonSerialized]
+    public int current_boss_drone_hp;
 
     // Waypoint traversing
-    bool arrived_at_inner_waypoints = false;
+    [System.NonSerialized]
+    bool arrived_at_inner_waypoints;
 
     void Start()
     {
-        InitialDroneSetup();
+        InitialBossDroneSetup();
     }
 
     void Update()
@@ -32,25 +35,19 @@ public class BossDrone : DroneBase
         }
     }
 
-    public override void InitialDroneSetup()
+    public void InitialBossDroneSetup()
     {
-        player_hit_box = GameObject.FindGameObjectWithTag("Drone Target");
-        drone_spawner = GameObject.FindGameObjectWithTag("Drone Spawner");
-        boss_healthbar_UI = GameObject.FindGameObjectWithTag("Boss Drone Health Bar").GetComponent<BossHealthBarUI>();
-        waypoint_targets = new List<Transform>();
+        InitialBaseDroneSetup();
         waypoint_targets.AddRange(drone_spawner.GetComponent<DroneSpawner>().boss_waypoints);
         current_waypoint_target = waypoint_targets[drone_spawner.GetComponent<DroneSpawner>().boss_spawn_location];
-        drone_speed = 3.0f;
-        rocket_speed = 10.0f;
-        fire_interval = 5.0f;
-        elapsed_fire_timer = 0.0f;
-        rocket_rotation_offset = new Vector3(90.0f, 0.0f, 0.0f);
-        current_boss_drone_hp = max_boss_drone_hp;
         waypoint_determined = true;
+        arrived_at_inner_waypoints = false;
+        drone_speed = 3.0f;
+        boss_healthbar_UI = GameObject.FindGameObjectWithTag("Boss Drone Health Bar").GetComponent<BossHealthBarUI>();
+        max_boss_drone_hp = 15;
+        current_boss_drone_hp = max_boss_drone_hp;
         boss_healthbar_UI.SetMaxBossBar(current_boss_drone_hp);
         Player.boss_spawned = true;
-        waypoint_threshold = 0.1f;
-        waypoint_determined = false;
 
 }
 
