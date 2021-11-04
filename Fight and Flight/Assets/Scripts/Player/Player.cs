@@ -56,7 +56,6 @@ public class Player : MonoBehaviour
     public GameObject game_over_screen;
     public GameObject statistics;
     public GameObject pause_screen;
-    public GameObject boss_screen;
     public GameObject victory_screen;
 
     void Start()
@@ -81,7 +80,6 @@ public class Player : MonoBehaviour
             if (victory_screen.activeSelf == false)
             {
                 victory_screen.SetActive(true);
-                boss_screen.SetActive(false);
                 statistics.SetActive(false);
                 if (player_as.isPlaying)
                 {
@@ -109,13 +107,6 @@ public class Player : MonoBehaviour
             if (pause_screen.activeSelf == true)
             {
                 DisablePauseScreen();
-            }
-            if (!in_menu)
-            {
-                if (boss_screen.activeSelf == false && score >= 50)
-                {
-                    boss_screen.SetActive(true);
-                }
             }
             DetermineCurrentPlayerLevel();
             CheckIfOutOfBounds();
@@ -161,7 +152,7 @@ public class Player : MonoBehaviour
         y_out_of_bounds = 0.5f;
         victory_countdown_begun = false;
         victory_countdown_timer = 2.0f;
-        score = 0;
+        score = 49;
         player_level = 0;
         drones_destroyed = 0;
         level_increase_rate = 10;
@@ -176,10 +167,6 @@ public class Player : MonoBehaviour
     {
         game_over_screen.SetActive(true);
         statistics.SetActive(false);
-        if (score >= 50)
-        {
-            boss_screen.SetActive(false);
-        }
         if (player_as.isPlaying)
         {
             player_as.Stop();
@@ -191,10 +178,6 @@ public class Player : MonoBehaviour
     {
         pause_screen.SetActive(true);
         statistics.SetActive(false);
-        if (score >= 50)
-        {
-            boss_screen.SetActive(false);
-        }
         if (player_as.isPlaying)
         {
             player_as.Stop();
@@ -205,10 +188,6 @@ public class Player : MonoBehaviour
     {
         pause_screen.SetActive(false);
         statistics.SetActive(true);
-        if (score >= 50)
-        {
-            boss_screen.SetActive(true);
-        }
         Time.timeScale = 1.0f;
     }
     private void DetermineCurrentPlayerLevel()
