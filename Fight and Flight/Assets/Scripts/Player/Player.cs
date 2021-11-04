@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     // General
+    [SerializeField]
+    bool test_boss_battle;
     public static bool in_menu;
     public static bool boss_spawned;
     public static bool victory_countdown_begun;
@@ -152,7 +154,14 @@ public class Player : MonoBehaviour
         y_out_of_bounds = 0.5f;
         victory_countdown_begun = false;
         victory_countdown_timer = 2.0f;
-        score = 49;
+        if (test_boss_battle)
+        {
+            score = 49;
+        }
+        else
+        {
+            score = 0;
+        }
         player_level = 0;
         drones_destroyed = 0;
         level_increase_rate = 10;

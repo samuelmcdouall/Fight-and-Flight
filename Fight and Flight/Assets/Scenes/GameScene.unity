@@ -1767,7 +1767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1257d8ff5eb6a754f8e809445983c678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drone: {fileID: 7777510388650222487, guid: c0721433c65e6924093620e7b05dd052, type: 3}
+  drone: {fileID: 8741091324758807470, guid: 8882d4040726cef4abd0a57fdb671ad9, type: 3}
   boss_drone: {fileID: 7330069671415255019, guid: 24de60364d8e7f3499c4b7a4e13991de, type: 3}
   maximum_horizontal_spawn_distance: 20
   minimum_vertical_spawn_distance: 15
