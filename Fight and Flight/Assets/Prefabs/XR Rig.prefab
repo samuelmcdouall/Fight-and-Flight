@@ -1322,6 +1322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a3c0f826d2e3b41b6447bb816a55d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test_boss_battle: 0
   throttle: 0
   fly_speed: 10
   glide_speed: 2
