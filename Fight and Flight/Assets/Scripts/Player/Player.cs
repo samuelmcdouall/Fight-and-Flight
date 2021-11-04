@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     public static bool paused; 
     public static bool victory;
     public GameObject game_over_screen;
-    public GameObject score_screen;
+    public GameObject statistics;
     public GameObject pause_screen;
     public GameObject boss_screen;
     public GameObject victory_screen;
@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
             {
                 victory_screen.SetActive(true);
                 boss_screen.SetActive(false);
-                score_screen.SetActive(false);
+                statistics.SetActive(false);
                 if (player_as.isPlaying)
                 {
                     player_as.Stop();
@@ -161,7 +161,7 @@ public class Player : MonoBehaviour
         y_out_of_bounds = 0.5f;
         victory_countdown_begun = false;
         victory_countdown_timer = 2.0f;
-        score = 49;
+        score = 0;
         player_level = 0;
         drones_destroyed = 0;
         level_increase_rate = 10;
@@ -175,7 +175,7 @@ public class Player : MonoBehaviour
     private void EnableGameOverScreen()
     {
         game_over_screen.SetActive(true);
-        score_screen.SetActive(false);
+        statistics.SetActive(false);
         if (score >= 50)
         {
             boss_screen.SetActive(false);
@@ -190,7 +190,7 @@ public class Player : MonoBehaviour
     private void EnablePauseScreen()
     {
         pause_screen.SetActive(true);
-        score_screen.SetActive(false);
+        statistics.SetActive(false);
         if (score >= 50)
         {
             boss_screen.SetActive(false);
@@ -204,7 +204,7 @@ public class Player : MonoBehaviour
     private void DisablePauseScreen()
     {
         pause_screen.SetActive(false);
-        score_screen.SetActive(true);
+        statistics.SetActive(true);
         if (score >= 50)
         {
             boss_screen.SetActive(true);

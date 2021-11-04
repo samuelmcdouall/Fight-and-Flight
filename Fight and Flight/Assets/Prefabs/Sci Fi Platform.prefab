@@ -113,7 +113,7 @@ MonoBehaviour:
   starting_platform: 0
   color_max_life: {r: 1, g: 1, b: 1, a: 0}
   color_min_life: {r: 0, g: 0, b: 0, a: 0}
-  fall_sfx: {fileID: 8300000, guid: 4b4dd7245f6104c8c8eb07ccf6b386ed, type: 3}
+  destroyed_sfx: {fileID: 8300000, guid: a235d590ef2a04d1b85b61ef4c21337c, type: 3}
   percentage_chance_to_spawn_common_pickup: 40
   percentage_chance_to_spawn_rare_pickup: 20
   percentage_chance_to_spawn_ammo_pickup: 20

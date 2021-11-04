@@ -13,11 +13,8 @@ public class Platform : MonoBehaviour
     float current_life_time;
     float platform_fall_speed;
     Material platform_m;
-    public Color color_max_life;
-    public Color color_min_life;
-    float color_lerp_time;
+    float transparency_lerp_time;
     bool begun_falling;
-    public AudioClip fall_sfx;
 
     // Platform Spawning
     GameObject platform_spawner;
@@ -55,10 +52,6 @@ public class Platform : MonoBehaviour
     {
         if (!menu_platform)
         {
-            if (transform.position.y <= y_out_of_bounds)
-            {
-                ReplacePlatform();
-            }
             if (deteriorating)
             {
                 if (current_life_time > 0.0f)
@@ -72,7 +65,7 @@ public class Platform : MonoBehaviour
                 }
                 else
                 {
-                    PlatformFalls();
+                    ReplacePlatform();
                 }
             }
         }
@@ -128,7 +121,7 @@ public class Platform : MonoBehaviour
         max_life_time = 10.0f;
         deteriorating = false;
         platform_fall_speed = 3.0f;
-        color_lerp_time = 0.0f;
+        transparency_lerp_time = 0.0f;
         begun_falling = false;
         y_out_of_bounds = 0.5f;
         pickup_spawn_range_limit = 2.0f;
@@ -144,18 +137,10 @@ public class Platform : MonoBehaviour
 
     private void ChangePlatformColour()
     {
-        platform_m.SetColor("_Color", Color.Lerp(color_max_life, color_min_life, color_lerp_time / max_life_time));
-        color_lerp_time += Time.deltaTime;
-    }
-
-    private void PlatformFalls()
-    {
-        transform.Translate(-Vector3.up * Time.deltaTime * platform_fall_speed);
-        if (!begun_falling)
-        {
-            AudioSource.PlayClipAtPoint(fall_sfx, transform.position);
-            begun_falling = true;
-        }
+        float current_transparency = Mathf.Lerp(1.0f, 0.0f, transparency_lerp_time / max_life_time);
+        Color current_color = new Color(platform_m.color.r, platform_m.color.g, platform_m.color.b, current_transparency);
+        platform_m.SetColor("_Color", current_color);
+        transparency_lerp_time += Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)

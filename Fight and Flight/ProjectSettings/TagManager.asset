@@ -25,6 +25,7 @@ TagManager:
   - Gun Rocket
   - Left Hand Controller
   - Right Hand Controller
+  - Statistics
   layers:
   - Default
   - TransparentFX

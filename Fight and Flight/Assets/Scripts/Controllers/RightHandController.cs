@@ -8,6 +8,7 @@ public class RightHandController : MonoBehaviour
     private float amount_trigger_pressed;
     float press_threshold;
     private Player player_script;
+    private GameObject statistics;
     public LeftHandController left_hand_controller;
     void Start()
     {
@@ -25,6 +26,8 @@ public class RightHandController : MonoBehaviour
         right_controller.selectAction.action.performed += Trigger_Pressed;
         right_controller.activateAction.action.performed += Menu_Button_Pressed;
         player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        statistics = GameObject.FindGameObjectWithTag("Statistics");
+        statistics.SetActive(false);
         press_threshold = 0.001f;
     }
 
@@ -66,7 +69,7 @@ public class RightHandController : MonoBehaviour
         print("in menu: " + Player.in_menu);
         if (!Player.in_menu)
         {
-            player_script.PauseUnpause();
+            statistics.SetActive(!statistics.activeSelf);
         }
     }
 
