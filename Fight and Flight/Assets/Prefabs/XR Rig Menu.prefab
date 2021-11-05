@@ -343,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a3c0f826d2e3b41b6447bb816a55d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test_boss_battle: 0
   throttle: 0
   fly_speed: 10
   glide_speed: 2
@@ -354,9 +355,8 @@ MonoBehaviour:
   flying_sfx: {fileID: 8300000, guid: 733446b34956b8447a7908f3a4515513, type: 3}
   game_over_sfx: {fileID: 8300000, guid: 35fbad8cdde724f11ba6481f1e64af71, type: 3}
   game_over_screen: {fileID: 329738576132841968}
-  score_screen: {fileID: 329738575620342517}
+  statistics: {fileID: 0}
   pause_screen: {fileID: 329738574555704947}
-  boss_screen: {fileID: 329738575984204598}
   victory_screen: {fileID: 329738574408026463}
 --- !u!54 &329738574495172321
 Rigidbody:
@@ -1762,6 +1762,10 @@ MonoBehaviour:
   game_music: {fileID: 0}
   boss_music: {fileID: 8300000, guid: 4bf488ec7cc942641939a84ff217a998, type: 3}
   victory_music: {fileID: 8300000, guid: 24dce80f47ed7ab4ca33dc6cb88213fb, type: 3}
+  xmas_menu_music: {fileID: 0}
+  xmas_game_music: {fileID: 0}
+  xmas_boss_music: {fileID: 0}
+  xmas_victory_music: {fileID: 0}
 --- !u!1 &329738575176235594
 GameObject:
   m_ObjectHideFlags: 0

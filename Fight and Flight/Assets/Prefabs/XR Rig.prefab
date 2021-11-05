@@ -892,6 +892,10 @@ MonoBehaviour:
   game_music: {fileID: 0}
   boss_music: {fileID: 8300000, guid: 4bf488ec7cc942641939a84ff217a998, type: 3}
   victory_music: {fileID: 8300000, guid: 24dce80f47ed7ab4ca33dc6cb88213fb, type: 3}
+  xmas_menu_music: {fileID: 0}
+  xmas_game_music: {fileID: 0}
+  xmas_boss_music: {fileID: 0}
+  xmas_victory_music: {fileID: 0}
 --- !u!1 &1526223166082016298
 GameObject:
   m_ObjectHideFlags: 0

@@ -856,9 +856,6 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
-  common_pickup: {fileID: 0}
-  rare_pickup: {fileID: 0}
-  ammo_pickup: {fileID: 0}
 --- !u!1 &824842009
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,9 +972,6 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
-  common_pickup: {fileID: 0}
-  rare_pickup: {fileID: 0}
-  ammo_pickup: {fileID: 0}
 --- !u!1001 &876011628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1167,9 +1161,6 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
-  common_pickup: {fileID: 1689830508881278957, guid: 1edaae3579a8c1d4fada9342ad92546d, type: 3}
-  rare_pickup: {fileID: 306189006300075459, guid: 05388f5bb4cf81b45b24a0bcba225b76, type: 3}
-  ammo_pickup: {fileID: 0}
 --- !u!1 &928785054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,9 +1475,6 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
-  common_pickup: {fileID: 0}
-  rare_pickup: {fileID: 0}
-  ammo_pickup: {fileID: 0}
 --- !u!1 &1295050701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,9 +1591,6 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
-  common_pickup: {fileID: 0}
-  rare_pickup: {fileID: 0}
-  ammo_pickup: {fileID: 0}
 --- !u!4 &1309143007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3413591602286923417, guid: 5e3e2c88550c24e4ba8f863e1fb85757, type: 3}
@@ -1767,8 +1752,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1257d8ff5eb6a754f8e809445983c678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drone: {fileID: 8741091324758807470, guid: 8882d4040726cef4abd0a57fdb671ad9, type: 3}
+  drone: {fileID: 7777510388650222487, guid: c0721433c65e6924093620e7b05dd052, type: 3}
+  xmas_drone: {fileID: 8741091324758807470, guid: 8882d4040726cef4abd0a57fdb671ad9, type: 3}
   boss_drone: {fileID: 7330069671415255019, guid: 24de60364d8e7f3499c4b7a4e13991de, type: 3}
+  xmas_boss_drone: {fileID: 6094457849995159028, guid: 8e93ca110a771a742bbcc1dbf8e1fbac, type: 3}
   maximum_horizontal_spawn_distance: 20
   minimum_vertical_spawn_distance: 15
   maximum_vertical_spawn_distance: 17
@@ -2291,9 +2278,6 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
-  common_pickup: {fileID: 0}
-  rare_pickup: {fileID: 0}
-  ammo_pickup: {fileID: 0}
 --- !u!1 &1824680391
 GameObject:
   m_ObjectHideFlags: 0
@@ -2473,9 +2457,6 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
-  common_pickup: {fileID: 0}
-  rare_pickup: {fileID: 0}
-  ammo_pickup: {fileID: 0}
 --- !u!65 &1852232717
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2796,6 +2777,22 @@ PrefabInstance:
       propertyPath: menu_music
       value: 
       objectReference: {fileID: 8300000, guid: ae8877145d872cd47911257c6accdae5, type: 3}
+    - target: {fileID: 1526223166072644017, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: xmas_boss_music
+      value: 
+      objectReference: {fileID: 8300000, guid: 845738d8f538df5478aa23a85d6fd0b1, type: 3}
+    - target: {fileID: 1526223166072644017, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: xmas_game_music
+      value: 
+      objectReference: {fileID: 8300000, guid: d493a35311a959d4daa1713e9fe104c0, type: 3}
+    - target: {fileID: 1526223166072644017, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: xmas_menu_music
+      value: 
+      objectReference: {fileID: 8300000, guid: 4ddcffc275fae3b408d3ab9357cc77f8, type: 3}
+    - target: {fileID: 1526223166072644017, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: xmas_victory_music
+      value: 
+      objectReference: {fileID: 8300000, guid: 06ac8db245ffc4e4f9f81a8a02fd0404, type: 3}
     - target: {fileID: 1526223166072644022, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_Volume
       value: 0.6
@@ -3051,9 +3048,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7325958809958136661, guid: 86e021e11f53c4246b38d89d84c57a98, type: 3}
+      propertyPath: ammo_pickup
+      value: 
+      objectReference: {fileID: 1674643942503215292, guid: dc8b61381ca64b745a87402dd2901c5d, type: 3}
+    - target: {fileID: 7325958809958136661, guid: 86e021e11f53c4246b38d89d84c57a98, type: 3}
+      propertyPath: rare_pickup
+      value: 
+      objectReference: {fileID: 306189006300075459, guid: 05388f5bb4cf81b45b24a0bcba225b76, type: 3}
+    - target: {fileID: 7325958809958136661, guid: 86e021e11f53c4246b38d89d84c57a98, type: 3}
+      propertyPath: common_pickup
+      value: 
+      objectReference: {fileID: 1689830508881278957, guid: 1edaae3579a8c1d4fada9342ad92546d, type: 3}
+    - target: {fileID: 7325958809958136661, guid: 86e021e11f53c4246b38d89d84c57a98, type: 3}
+      propertyPath: xmas_ammo_pickup
+      value: 
+      objectReference: {fileID: 1674643942503215292, guid: dc8b61381ca64b745a87402dd2901c5d, type: 3}
+    - target: {fileID: 7325958809958136661, guid: 86e021e11f53c4246b38d89d84c57a98, type: 3}
+      propertyPath: xmas_rare_pickup
+      value: 
+      objectReference: {fileID: 6768335779116164104, guid: 44dff0b76f539fa40bd39c420c8103f4, type: 3}
+    - target: {fileID: 7325958809958136661, guid: 86e021e11f53c4246b38d89d84c57a98, type: 3}
       propertyPath: starting_platforms
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7325958809958136661, guid: 86e021e11f53c4246b38d89d84c57a98, type: 3}
+      propertyPath: xmas_common_pickup
+      value: 
+      objectReference: {fileID: 6514137426578351722, guid: 43ab2c21a0621e34bb4ff575fe7fda26, type: 3}
     - target: {fileID: 7325958809958136661, guid: 86e021e11f53c4246b38d89d84c57a98, type: 3}
       propertyPath: maximum_spawn_platform_proximity_distance
       value: 15

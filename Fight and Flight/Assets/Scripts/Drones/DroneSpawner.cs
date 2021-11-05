@@ -1,11 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.RemoteConfig;
 
 public class DroneSpawner : MonoBehaviour
 {
     // General
     public GameObject drone;
+    public GameObject xmas_drone;
+    GameObject currently_selected_drone;
     public GameObject boss_drone;
+    public GameObject xmas_boss_drone;
+    GameObject currently_selected_boss_drone;
     GameObject player;
     float drone_spawn_difficulty_modifier;
 
@@ -37,14 +42,38 @@ public class DroneSpawner : MonoBehaviour
     public int boss_spawn_location;
     public List<Transform> boss_waypoints;
 
+    // Remote Config
+    public struct user_attributes { }
+    public struct app_attributes { }
+
     void Start()
     {
+        ConfigManager.FetchCompleted += ChooseDrones;
+        ConfigManager.FetchConfigs<user_attributes, app_attributes>(new user_attributes(), new app_attributes());
+        
         InitialDroneSpawnerSetup();
         for (int drone = 0; drone < starting_drones; drone++)
         {
             AttemptToSpawnDrone();
         }
 
+    }
+
+    void ChooseDrones(ConfigResponse response)
+    {
+        bool xmas = ConfigManager.appConfig.GetBool("xmas");
+        if (xmas)
+        {
+            print("Christmas Drones!");
+            currently_selected_drone = xmas_drone;
+            currently_selected_boss_drone = xmas_boss_drone;
+        }
+        else
+        {
+            print("Regular Drones");
+            currently_selected_drone = drone;
+            currently_selected_boss_drone = boss_drone;
+        }
     }
 
     void Update()
@@ -82,7 +111,7 @@ public class DroneSpawner : MonoBehaviour
     private void SpawnBossDrone()
     {
         boss_spawn_location = Random.Range(0, 4);
-        Instantiate(boss_drone, boss_spawn_waypoints[boss_spawn_location].position, Quaternion.identity);
+        Instantiate(currently_selected_boss_drone, boss_spawn_waypoints[boss_spawn_location].position, Quaternion.identity);
         Vector3 player_to_drone_direction = (boss_spawn_waypoints[boss_spawn_location].position - player.transform.position).normalized;
         Vector3 audio_cue_position = player.transform.position + player_to_drone_direction * audio_cue_distance;
         AudioSource.PlayClipAtPoint(boss_spawn_sfx, audio_cue_position);
@@ -109,6 +138,10 @@ public class DroneSpawner : MonoBehaviour
 
     bool SpawnedDroneSuccessfully()
     {
+        //if (!currently_selected_drone)
+        //{
+        //    return false;
+        //}
         Vector3 random_chosen_new_starting_position = RandomlyDetermineSpawnPosition();
         Vector3 random_chosen_y_independent_new_starting_position = new Vector3(random_chosen_new_starting_position.x, 0.0f, random_chosen_new_starting_position.z);
 
@@ -149,9 +182,14 @@ public class DroneSpawner : MonoBehaviour
 
     private void SpawnDrone(Vector3 random_chosen_new_starting_position)
     {
-        Instantiate(drone, random_chosen_new_starting_position, Quaternion.identity);
+        Instantiate(currently_selected_drone, random_chosen_new_starting_position, Quaternion.identity);
         Vector3 player_to_drone_direction = (random_chosen_new_starting_position - player.transform.position).normalized;
         Vector3 audio_cue_position = player.transform.position + player_to_drone_direction * audio_cue_distance;
         AudioSource.PlayClipAtPoint(spawn_sfx, audio_cue_position);
+    }
+
+    private void OnDestroy()
+    {
+        ConfigManager.FetchCompleted -= ChooseDrones;
     }
 }

@@ -175,7 +175,10 @@ public class Player : MonoBehaviour
     private void EnableGameOverScreen()
     {
         game_over_screen.SetActive(true);
-        statistics.SetActive(false);
+        if (statistics)
+        {
+            statistics.SetActive(false);
+        }
         if (player_as.isPlaying)
         {
             player_as.Stop();

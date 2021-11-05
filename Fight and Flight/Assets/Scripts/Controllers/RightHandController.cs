@@ -27,7 +27,10 @@ public class RightHandController : MonoBehaviour
         right_controller.activateAction.action.performed += Menu_Button_Pressed;
         player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         statistics = GameObject.FindGameObjectWithTag("Statistics");
-        statistics.SetActive(false);
+        if (statistics)
+        {
+            statistics.SetActive(false);
+        }
         press_threshold = 0.001f;
     }
 
