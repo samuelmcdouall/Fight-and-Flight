@@ -2031,6 +2031,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 329738574710675873, guid: 2323e0c2642b0f04a9b0dff7030dcf54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0193
+      objectReference: {fileID: 0}
+    - target: {fileID: 329738574710675873, guid: 2323e0c2642b0f04a9b0dff7030dcf54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0517
+      objectReference: {fileID: 0}
     - target: {fileID: 329738574886456359, guid: 2323e0c2642b0f04a9b0dff7030dcf54, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2087,6 +2095,14 @@ PrefabInstance:
     - target: {fileID: 329738575142113310, guid: 2323e0c2642b0f04a9b0dff7030dcf54, type: 3}
       propertyPath: m_audioClip
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 329738575846858181, guid: 2323e0c2642b0f04a9b0dff7030dcf54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0641
+      objectReference: {fileID: 0}
+    - target: {fileID: 329738575846858181, guid: 2323e0c2642b0f04a9b0dff7030dcf54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0288
       objectReference: {fileID: 0}
     - target: {fileID: 329738576012038964, guid: 2323e0c2642b0f04a9b0dff7030dcf54, type: 3}
       propertyPath: m_Text

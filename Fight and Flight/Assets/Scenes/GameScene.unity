@@ -2953,6 +2953,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1526223166579550217, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0193
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526223166579550217, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0517
+      objectReference: {fileID: 0}
     - target: {fileID: 1526223166745582604, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_TagString
       value: Right Hand Controller
@@ -3044,6 +3052,14 @@ PrefabInstance:
     - target: {fileID: 1526223167204733794, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526223167582235757, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0641
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526223167582235757, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0288
       objectReference: {fileID: 0}
     - target: {fileID: 1526223167582235762, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: ammo_speed
