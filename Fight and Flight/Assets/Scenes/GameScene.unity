@@ -856,6 +856,9 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
+  common_pickup: {fileID: 0}
+  rare_pickup: {fileID: 0}
+  ammo_pickup: {fileID: 0}
 --- !u!1 &824842009
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,6 +975,9 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
+  common_pickup: {fileID: 0}
+  rare_pickup: {fileID: 0}
+  ammo_pickup: {fileID: 0}
 --- !u!1001 &876011628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1161,6 +1167,9 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
+  common_pickup: {fileID: 0}
+  rare_pickup: {fileID: 0}
+  ammo_pickup: {fileID: 0}
 --- !u!1 &928785054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,6 +1484,9 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
+  common_pickup: {fileID: 0}
+  rare_pickup: {fileID: 0}
+  ammo_pickup: {fileID: 0}
 --- !u!1 &1295050701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,6 +1603,9 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
+  common_pickup: {fileID: 0}
+  rare_pickup: {fileID: 0}
+  ammo_pickup: {fileID: 0}
 --- !u!4 &1309143007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3413591602286923417, guid: 5e3e2c88550c24e4ba8f863e1fb85757, type: 3}
@@ -2278,6 +2293,9 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
+  common_pickup: {fileID: 0}
+  rare_pickup: {fileID: 0}
+  ammo_pickup: {fileID: 0}
 --- !u!1 &1824680391
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,6 +2475,9 @@ MonoBehaviour:
   percentage_chance_to_spawn_common_pickup_boss: 15
   percentage_chance_to_spawn_rare_pickup_boss: 15
   percentage_chance_to_spawn_ammo_pickup_boss: 50
+  common_pickup: {fileID: 0}
+  rare_pickup: {fileID: 0}
+  ammo_pickup: {fileID: 0}
 --- !u!65 &1852232717
 BoxCollider:
   m_ObjectHideFlags: 0
