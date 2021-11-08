@@ -10,6 +10,7 @@ public class RightHandController : MonoBehaviour
     private Player player_script;
     private GameObject statistics;
     public LeftHandController left_hand_controller;
+    private bool game_over_haptic_activated;
     void Start()
     {
         InitialSetupRightController();
@@ -18,6 +19,11 @@ public class RightHandController : MonoBehaviour
     {
         Vector3 controller_facing_direction = gameObject.transform.rotation * Vector3.forward;
         player_script.UpdateDirection(controller_facing_direction);
+        if (Player.game_over && !game_over_haptic_activated)
+        {
+            game_over_haptic_activated = true;
+            right_controller.SendHapticImpulse(0.7f, 0.5f);
+        }
     }
 
     private void InitialSetupRightController()
@@ -27,6 +33,7 @@ public class RightHandController : MonoBehaviour
         right_controller.activateAction.action.performed += Menu_Button_Pressed;
         player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         statistics = GameObject.FindGameObjectWithTag("Statistics");
+        game_over_haptic_activated = false;
         if (statistics)
         {
             statistics.SetActive(false);

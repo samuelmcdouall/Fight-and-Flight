@@ -9,9 +9,19 @@ public class LeftHandController : MonoBehaviour
     private Gun gun_script;
     private Player player_script;
     public RightHandController right_hand_controller;
+    bool game_over_haptic_activated;
     void Start()
     {
         InitialSetupLeftController();
+    }
+
+    private void Update()
+    {
+        if (Player.game_over && !game_over_haptic_activated)
+        {
+            game_over_haptic_activated = true;
+            left_controller.SendHapticImpulse(0.7f, 0.5f);
+        }
     }
 
     private void InitialSetupLeftController()
@@ -21,6 +31,7 @@ public class LeftHandController : MonoBehaviour
         left_controller.activateAction.action.performed += Menu_Button_Pressed;
         gun_script = GameObject.FindGameObjectWithTag("Gun").GetComponent<Gun>();
         player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        game_over_haptic_activated = false;
     }
     private void Trigger_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
@@ -39,9 +50,8 @@ public class LeftHandController : MonoBehaviour
             }
             else if (Gun.ammo != 0 && !Player.paused && trigger_fully_pressed)
             {
-                print("vibrate controller");
                 gun_script.gun_trigger_pressed = true;
-                left_controller.SendHapticImpulse(1.0f, 2.0f);
+                left_controller.SendHapticImpulse(0.7f, 0.1f);
             }
         }
     }
