@@ -30,8 +30,6 @@ public class MusicManager : MonoBehaviour
     public struct app_attributes { }
     void Start()
     {
-        ConfigManager.FetchCompleted += ChooseMusic;
-        ConfigManager.FetchConfigs<user_attributes, app_attributes>(new user_attributes(), new app_attributes());
         InitialMusicManagerSetup();
     }
 
@@ -101,16 +99,14 @@ public class MusicManager : MonoBehaviour
         started_playing_boss_music = false;
         started_victory_music_gap = false;
         started_playing_victory_music = false;
+        ChooseMusic();
 
     }
 
-    void ChooseMusic(ConfigResponse response)
+    void ChooseMusic()
     {
-        bool xmas = ConfigManager.appConfig.GetBool("xmas");
-        print("successfully got config for music");
-        if (xmas)
+        if (RemoteConfigSettings.instance.xmas)
         {
-            print("Christmas music!");
             currently_selected_menu_music = xmas_menu_music;
             currently_selected_game_music = xmas_game_music;
             currently_selected_boss_music = xmas_boss_music;
@@ -119,16 +115,10 @@ public class MusicManager : MonoBehaviour
         }
         else
         {
-            print("Regular music");
             currently_selected_menu_music = menu_music;
             currently_selected_game_music = game_music;
             currently_selected_boss_music = boss_music;
             currently_selected_victory_music = victory_music;
         }
-    }
-
-    private void OnDestroy()
-    {
-        ConfigManager.FetchCompleted -= ChooseMusic;
     }
 }

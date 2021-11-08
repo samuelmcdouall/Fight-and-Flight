@@ -35,16 +35,21 @@ public class Platform : MonoBehaviour
     public GameObject common_pickup;
     public GameObject rare_pickup;
     public GameObject ammo_pickup;
+    public GameObject xmas_common_pickup;
+    public GameObject xmas_rare_pickup;
+    GameObject currently_selected_common_pickup;
+    GameObject currently_selected_rare_pickup;
 
     void Start()
     {
         if (!menu_platform)
         {
+            InitialPlatformSetup();
             if (!starting_platform)
             {
+                ChoosePickups();
                 DetermineIfPickUpSpawnedOnPlatform();
             }
-            InitialPlatformSetup();
         }
     }
 
@@ -78,11 +83,11 @@ public class Platform : MonoBehaviour
             int random_spawn_chance = Random.Range(1, 101);
             if (random_spawn_chance < percentage_chance_to_spawn_common_pickup + 1)
             {
-                SpawnPickUp(common_pickup);
+                SpawnPickUp(currently_selected_common_pickup);
             }
             else if (random_spawn_chance < percentage_chance_to_spawn_common_pickup + percentage_chance_to_spawn_rare_pickup + 1)
             {
-                SpawnPickUp(rare_pickup);
+                SpawnPickUp(currently_selected_rare_pickup);
             }
             else if (random_spawn_chance < percentage_chance_to_spawn_common_pickup + percentage_chance_to_spawn_rare_pickup + percentage_chance_to_spawn_ammo_pickup + 1)
             {
@@ -94,11 +99,11 @@ public class Platform : MonoBehaviour
             int random_spawn_chance = Random.Range(1, 101);
             if (random_spawn_chance < percentage_chance_to_spawn_common_pickup_boss + 1)
             {
-                SpawnPickUp(common_pickup);
+                SpawnPickUp(currently_selected_common_pickup);
             }
             else if (random_spawn_chance < percentage_chance_to_spawn_common_pickup_boss + percentage_chance_to_spawn_rare_pickup_boss + 1)
             {
-                SpawnPickUp(rare_pickup);
+                SpawnPickUp(currently_selected_rare_pickup);
             }
             else if (random_spawn_chance < percentage_chance_to_spawn_common_pickup_boss + percentage_chance_to_spawn_rare_pickup_boss + percentage_chance_to_spawn_ammo_pickup_boss + 1)
             {
@@ -127,6 +132,20 @@ public class Platform : MonoBehaviour
         pickup_spawn_range_limit = 2.0f;
         platform_m = GetComponent<Renderer>().material;
         platform_spawner = GameObject.FindGameObjectWithTag("Platform Spawner");
+    }
+
+    private void ChoosePickups()
+    {
+        if (RemoteConfigSettings.instance.xmas)
+        {
+            currently_selected_common_pickup = xmas_common_pickup;
+            currently_selected_rare_pickup = xmas_rare_pickup;
+        }
+        else
+        {
+            currently_selected_common_pickup = common_pickup;
+            currently_selected_rare_pickup = rare_pickup;
+        }
     }
 
     private void ReplacePlatform()

@@ -39,7 +39,9 @@ public class LeftHandController : MonoBehaviour
             }
             else if (Gun.ammo != 0 && !Player.paused && trigger_fully_pressed)
             {
+                print("vibrate controller");
                 gun_script.gun_trigger_pressed = true;
+                left_controller.SendHapticImpulse(1.0f, 2.0f);
             }
         }
     }

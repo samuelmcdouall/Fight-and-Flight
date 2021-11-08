@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   revolution_time: 3
-  pickup_type: 2
+  pickup_type: 4
   collect_reward_sfx: {fileID: 8300000, guid: 130a177e727814a2ea78a886ab72213d, type: 3}
   collect_ammo_sfx: {fileID: 8300000, guid: 4e1ff8faed12a475eba9be0e46072269, type: 3}
 --- !u!82 &1673375022267372051

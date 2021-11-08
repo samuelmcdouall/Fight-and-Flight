@@ -28,7 +28,11 @@ public class GunBolt : MonoBehaviour
     {
         if (Player.boss_spawned && boss_healthbar == null)
         {
-            boss_healthbar = GameObject.FindGameObjectWithTag("Boss Drone Health Bar").GetComponent<BossHealthBarUI>();
+            GameObject boss = GameObject.FindGameObjectWithTag("Boss Drone Health Bar");
+            if (boss)
+            {
+                boss_healthbar = boss.GetComponent<BossHealthBarUI>();
+            }
         }
     }
 

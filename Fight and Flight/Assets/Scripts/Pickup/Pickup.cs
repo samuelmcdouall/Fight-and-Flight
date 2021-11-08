@@ -23,7 +23,7 @@ public class Pickup : MonoBehaviour
 
     void Update()
     {
-        if (pickup_type == PickupType.ammo)
+        if (pickup_type == PickupType.ammo || pickup_type == PickupType.xmas_common || pickup_type == PickupType.xmas_rare)
         {
             transform.Rotate(Vector3.up, Time.deltaTime * 360.0f / revolution_time);
         }
@@ -43,11 +43,11 @@ public class Pickup : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Player") {
-            if (pickup_type == PickupType.rare)
+            if (pickup_type == PickupType.rare || pickup_type == PickupType.xmas_rare)
             {
                 CollectReward(rare_value);
             }
-            else if (pickup_type == PickupType.common)
+            else if (pickup_type == PickupType.common || pickup_type == PickupType.xmas_common)
             {
                 CollectReward(common_value);
             }
@@ -81,6 +81,8 @@ public class Pickup : MonoBehaviour
     enum PickupType{
         common,
         rare,
+        xmas_common,
+        xmas_rare,
         ammo
     }
 }
