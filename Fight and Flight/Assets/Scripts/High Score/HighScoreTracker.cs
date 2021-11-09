@@ -24,8 +24,12 @@ public class HighScoreTracker : MonoBehaviour
                 StreamReader reader = new StreamReader(path);
                 high_score_string = reader.ReadToEnd();
                 reader.Close();
-                print(high_score_string);
-                if (Player.score > int.Parse(high_score_string))
+                print("current high score: " + high_score_string);
+                if (high_score_string == "")
+                {
+                    File.WriteAllText(path, Player.score.ToString());
+                }
+                else if (Player.score > int.Parse(high_score_string))
                 {
                     File.WriteAllText(path, Player.score.ToString());
                 }
