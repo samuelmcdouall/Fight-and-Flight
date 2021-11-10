@@ -17,7 +17,7 @@ public class ScoreUI : MonoBehaviour
         }
         else
         {
-            current_level = "Level: " + (Player.player_level + 1);
+            current_level = "Level: " + (Player.player_current_level + 1);
         }
         score_text.text = "Score: " + Player.score + "\n" +
                           current_level + "\n" +

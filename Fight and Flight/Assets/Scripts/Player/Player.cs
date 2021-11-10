@@ -47,7 +47,9 @@ public class Player : MonoBehaviour
 
     // Progression
     public static int score;
-    public static int player_level;
+    public static int player_current_level;
+    public static int player_min_level;
+    public static int player_max_level;
     public static int drones_destroyed;
     int level_increase_rate;
 
@@ -162,7 +164,9 @@ public class Player : MonoBehaviour
         {
             score = 0;
         }
-        player_level = 0;
+        player_current_level = 0;
+        player_min_level = 0;
+        player_max_level = 4;
         drones_destroyed = 0;
         level_increase_rate = 10;
 }
@@ -206,11 +210,11 @@ public class Player : MonoBehaviour
     {
         if (score / level_increase_rate <= 4)
         {
-            player_level = score / level_increase_rate;
+            player_current_level = score / level_increase_rate;
         }
         else
         {
-            player_level = 4;
+            player_current_level = 4;
         }
     }
     private void CheckIfOutOfBounds()

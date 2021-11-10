@@ -168,10 +168,28 @@ public class Platform : MonoBehaviour
         {
             if (!deteriorating)
             {
-                max_life_time -= Player.player_level;
+                AdjustForDifficultySetting();
                 current_life_time = max_life_time;
                 deteriorating = true;
             }
+        }
+    }
+
+    private void AdjustForDifficultySetting()
+    {
+        switch (DifficultyManager.difficulty)
+        {
+            case DifficultyManager.Difficulty.easy:
+                max_life_time -= Player.player_min_level;
+                break;
+            case DifficultyManager.Difficulty.normal:
+                max_life_time -= Player.player_current_level;
+                break;
+            case DifficultyManager.Difficulty.hard:
+                max_life_time -= Player.player_max_level;
+                break;
+            default:
+                break;
         }
     }
 }

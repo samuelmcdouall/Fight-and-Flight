@@ -31,6 +31,7 @@ public class DroneSpawner : MonoBehaviour
     public AudioClip boss_spawn_sfx;
     float drone_spawn_interval;
     float elapsed_drone_spawn_timer;
+    int drone_spawn_difficulty_setting;
     [SerializeField]
     int starting_drones;
     float audio_cue_distance;
@@ -54,6 +55,7 @@ public class DroneSpawner : MonoBehaviour
 
     void Update()
     {
+        AdjustForDifficultySetting();
         if (Player.score >= 50)
         {
             if (!spawned_in_boss)
@@ -63,7 +65,7 @@ public class DroneSpawner : MonoBehaviour
                 spawned_in_boss = true;
             }
         }
-        else if (elapsed_drone_spawn_timer > drone_spawn_interval - Player.player_level * drone_spawn_difficulty_modifier)
+        else if (elapsed_drone_spawn_timer > drone_spawn_interval - drone_spawn_difficulty_setting * drone_spawn_difficulty_modifier)
         {
             AttemptToSpawnDrone();
             elapsed_drone_spawn_timer = 0.0f;
@@ -71,6 +73,24 @@ public class DroneSpawner : MonoBehaviour
         else
         {
             elapsed_drone_spawn_timer += Time.deltaTime;
+        }
+    }
+
+    private void AdjustForDifficultySetting()
+    {
+        switch (DifficultyManager.difficulty)
+        {
+            case DifficultyManager.Difficulty.easy:
+                drone_spawn_difficulty_setting = Player.player_min_level;
+                break;
+            case DifficultyManager.Difficulty.normal:
+                drone_spawn_difficulty_setting = Player.player_current_level;
+                break;
+            case DifficultyManager.Difficulty.hard:
+                drone_spawn_difficulty_setting = Player.player_max_level;
+                break;
+            default:
+                break;
         }
     }
 

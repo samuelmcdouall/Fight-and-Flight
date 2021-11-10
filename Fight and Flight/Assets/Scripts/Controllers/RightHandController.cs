@@ -76,7 +76,6 @@ public class RightHandController : MonoBehaviour
 
     public void Menu_Button_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        print("in menu: " + Player.in_menu);
         if (!Player.in_menu && !Player.game_over && !Player.victory)
         {
             statistics.SetActive(!statistics.activeSelf);
