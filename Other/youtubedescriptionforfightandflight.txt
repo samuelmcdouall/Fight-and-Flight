@@ -2,7 +2,7 @@ This is a development diary of me creating a VR game called Fight and Flight. Th
 
 This game was made for one of my courses whilst studying Games Development (Programming) MSc at Kingston University.
 
-In this video I show off the basic mechanics of flying. By holding the trigger the player flies off in the direction of the controller (the blue line). The player can only fly for a limited amount of time and will fall down when out of fuel/energy. However, if the trigger is held whilst falling the player will glide. This movement system was inspired by the game Daedalus.
+In this video I show off changes made to the UI. The statistics are now viewable by clicking the menu button on the flight controller instead of on screen. The boss health bar also appears over the boss as an in game object rather than on screen. Additionally the platforms now grow more transparent until becoming completly invisible
 
 As I'm not a game designer and am just a programmer (which is what the course was focusing on), I have used a lot of assets which are mentioned below.
 
