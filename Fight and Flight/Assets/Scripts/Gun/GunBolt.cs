@@ -95,6 +95,12 @@ public class GunBolt : MonoBehaviour
             AudioSource.PlayClipAtPoint(explosion_sfx, player.transform.position, VolumeManager.sfx_volume);
             Destroy(gameObject);
         }
+        else if (collider.gameObject.tag == "Difficulty Setting")
+        {
+            collider.gameObject.GetComponent<DifficultySetting>().ChangeDifficulty();
+            AudioSource.PlayClipAtPoint(explosion_sfx, player.transform.position, VolumeManager.sfx_volume);
+            Destroy(gameObject);
+        }
     }
 
     private void Explode(GameObject explosion_fx)

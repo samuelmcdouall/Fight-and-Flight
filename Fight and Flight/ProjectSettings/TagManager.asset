@@ -28,6 +28,7 @@ TagManager:
   - Statistics
   - Volume Control
   - Volume Value
+  - Difficulty Setting
   layers:
   - Default
   - TransparentFX
