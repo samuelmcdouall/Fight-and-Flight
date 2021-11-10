@@ -21,13 +21,6 @@ public class VolumeManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         sfx_volume = 0.5f;
         music_volume = 0.5f;
-        MusicManager.UpdateMusicVolume();
-        GameObject[] volume_values;
-        volume_values = GameObject.FindGameObjectsWithTag("Volume Value");
-        foreach (GameObject volume_value in volume_values)
-        {
-            volume_value.GetComponent<VolumeValue>().UpdateVolumeValue();
-        }
     }
 
     public static void ChangeSFXVolume(float volume_change)

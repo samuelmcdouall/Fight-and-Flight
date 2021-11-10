@@ -95,6 +95,7 @@ public class MusicManager : MonoBehaviour
         music_as = GetComponent<AudioSource>();
         music_as.playOnAwake = true;
         music_as.loop = true;
+        music_as.volume = VolumeManager.music_volume;
         started_playing_menu_music = false;
         started_playing_game_music = false;
         started_playing_boss_music = false;
