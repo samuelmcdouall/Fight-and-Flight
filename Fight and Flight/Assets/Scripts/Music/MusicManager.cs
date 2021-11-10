@@ -16,7 +16,7 @@ public class MusicManager : MonoBehaviour
     AudioClip currently_selected_game_music;
     AudioClip currently_selected_boss_music;
     AudioClip currently_selected_victory_music;
-    AudioSource music_as;
+    public static AudioSource music_as;
 
     // Logic
     bool started_playing_menu_music;
@@ -35,6 +35,7 @@ public class MusicManager : MonoBehaviour
 
     void Update()
     {
+        
         if (Player.in_menu)
         {
             if (!started_playing_menu_music && currently_selected_menu_music)
@@ -111,7 +112,7 @@ public class MusicManager : MonoBehaviour
             currently_selected_game_music = xmas_game_music;
             currently_selected_boss_music = xmas_boss_music;
             currently_selected_victory_music = xmas_victory_music;
-            music_as.volume = 0.15f;
+            //music_as.volume = 0.15f;
         }
         else
         {
@@ -120,5 +121,10 @@ public class MusicManager : MonoBehaviour
             currently_selected_boss_music = boss_music;
             currently_selected_victory_music = victory_music;
         }
+    }
+
+    public static void UpdateMusicVolume()
+    {
+        music_as.volume = VolumeManager.music_volume;
     }
 }

@@ -105,7 +105,7 @@ public class DroneSpawner : MonoBehaviour
         Instantiate(currently_selected_boss_drone, boss_spawn_waypoints[boss_spawn_location].position, Quaternion.identity);
         Vector3 player_to_drone_direction = (boss_spawn_waypoints[boss_spawn_location].position - player.transform.position).normalized;
         Vector3 audio_cue_position = player.transform.position + player_to_drone_direction * audio_cue_distance;
-        AudioSource.PlayClipAtPoint(boss_spawn_sfx, audio_cue_position);
+        AudioSource.PlayClipAtPoint(boss_spawn_sfx, audio_cue_position, VolumeManager.sfx_volume);
     }
 
     private static void DestroyAllCurrentDronesAndRockets()
@@ -176,6 +176,6 @@ public class DroneSpawner : MonoBehaviour
         Instantiate(currently_selected_drone, random_chosen_new_starting_position, Quaternion.identity);
         Vector3 player_to_drone_direction = (random_chosen_new_starting_position - player.transform.position).normalized;
         Vector3 audio_cue_position = player.transform.position + player_to_drone_direction * audio_cue_distance;
-        AudioSource.PlayClipAtPoint(spawn_sfx, audio_cue_position);
+        AudioSource.PlayClipAtPoint(spawn_sfx, audio_cue_position, VolumeManager.sfx_volume);
     }
 }

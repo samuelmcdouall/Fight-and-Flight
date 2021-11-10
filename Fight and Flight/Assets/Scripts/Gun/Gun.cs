@@ -53,6 +53,6 @@ public class Gun : MonoBehaviour
         Quaternion rotation_spawn_offset = gun_barrel_outer.transform.rotation * gun_ammo_offset;
         GameObject ammo_object = Instantiate(gun_bolt, gun_barrel_outer.transform.position, rotation_spawn_offset);
         ammo_object.GetComponent<Rigidbody>().velocity = (gun_barrel_outer.transform.position - gun_barrel_inner.transform.position).normalized * ammo_speed;
-        AudioSource.PlayClipAtPoint(fire_sfx, transform.position);
+        AudioSource.PlayClipAtPoint(fire_sfx, transform.position, VolumeManager.sfx_volume);
     }
 }

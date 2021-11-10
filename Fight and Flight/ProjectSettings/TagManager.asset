@@ -26,6 +26,8 @@ TagManager:
   - Left Hand Controller
   - Right Hand Controller
   - Statistics
+  - Volume Control
+  - Volume Value
   layers:
   - Default
   - TransparentFX

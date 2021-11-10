@@ -89,11 +89,17 @@ public class GunBolt : MonoBehaviour
                 Explode(explosion_fx);
             }
         }
+        else if (collider.gameObject.tag == "Volume Control")
+        {
+            collider.gameObject.GetComponent<VolumeControl>().ChangeVolume();
+            AudioSource.PlayClipAtPoint(explosion_sfx, player.transform.position, VolumeManager.sfx_volume);
+            Destroy(gameObject);
+        }
     }
 
     private void Explode(GameObject explosion_fx)
     {
-        AudioSource.PlayClipAtPoint(explosion_sfx, player.transform.position);
+        AudioSource.PlayClipAtPoint(explosion_sfx, player.transform.position, VolumeManager.sfx_volume);
         Instantiate(explosion_fx, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

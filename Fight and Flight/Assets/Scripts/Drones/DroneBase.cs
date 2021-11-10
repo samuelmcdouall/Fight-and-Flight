@@ -82,14 +82,14 @@ public class DroneBase : MonoBehaviour
             GameObject rocket_object = Instantiate(rocket, rocket_spawn_right.transform.position, transform.rotation);
             rocket_object.transform.Rotate(rocket_rotation_offset);
             rocket_object.GetComponent<Rigidbody>().velocity = (player_hit_box.transform.position - rocket_spawn_right.transform.position).normalized * rocket_speed;
-            AudioSource.PlayClipAtPoint(fire_sfx, player_hit_box.transform.position);
+            AudioSource.PlayClipAtPoint(fire_sfx, player_hit_box.transform.position, VolumeManager.sfx_volume);
         }
         else
         {
             GameObject rocket_object = Instantiate(rocket, rocket_spawn_left.transform.position, transform.rotation);
             rocket_object.transform.Rotate(rocket_rotation_offset);
             rocket_object.GetComponent<Rigidbody>().velocity = (player_hit_box.transform.position - rocket_spawn_left.transform.position).normalized * rocket_speed;
-            AudioSource.PlayClipAtPoint(fire_sfx, player_hit_box.transform.position);
+            AudioSource.PlayClipAtPoint(fire_sfx, player_hit_box.transform.position, VolumeManager.sfx_volume);
         }
     }
 }

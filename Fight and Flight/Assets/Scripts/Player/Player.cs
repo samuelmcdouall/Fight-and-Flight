@@ -183,7 +183,7 @@ public class Player : MonoBehaviour
         {
             player_as.Stop();
         }
-        player_as.PlayOneShot(game_over_sfx, 1.0f);
+        player_as.PlayOneShot(game_over_sfx, VolumeManager.sfx_volume);
         Time.timeScale = 0.0f;
     }
     private void EnablePauseScreen()
@@ -275,7 +275,7 @@ public class Player : MonoBehaviour
         fuel_meter.SetNonGlidingColour();
         if (!player_as.isPlaying)
         {
-            player_as.PlayOneShot(flying_sfx, 1.0f);
+            player_as.PlayOneShot(flying_sfx, VolumeManager.sfx_volume);
         }
     }
     private void Glide()

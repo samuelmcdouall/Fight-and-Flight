@@ -34,7 +34,7 @@ public class DroneRocket : MonoBehaviour
 
     private void Explode()
     {
-        AudioSource.PlayClipAtPoint(explosion_sfx, player.transform.position);
+        AudioSource.PlayClipAtPoint(explosion_sfx, player.transform.position, VolumeManager.sfx_volume);
         Instantiate(explosion_fx, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

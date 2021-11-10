@@ -53,7 +53,7 @@ public class Pickup : MonoBehaviour
             }
             else
             {
-                AudioSource.PlayClipAtPoint(collect_ammo_sfx, transform.position);
+                AudioSource.PlayClipAtPoint(collect_ammo_sfx, transform.position, VolumeManager.sfx_volume);
                 CollectAmmo();
             }
             Destroy(gameObject);
@@ -62,7 +62,7 @@ public class Pickup : MonoBehaviour
 
     private void CollectReward(int value)
     {
-        AudioSource.PlayClipAtPoint(collect_reward_sfx, transform.position);
+        AudioSource.PlayClipAtPoint(collect_reward_sfx, transform.position, VolumeManager.sfx_volume);
         Player.score += value;
     }
 
