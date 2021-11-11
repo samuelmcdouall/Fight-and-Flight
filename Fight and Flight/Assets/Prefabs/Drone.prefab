@@ -561,13 +561,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d80bb7a77321e14f988ebfa2c383722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocket_speed: 10
+  menu_drone: 0
   rocket_spawn_right: {fileID: 7777510388353974302}
   rocket_spawn_left: {fileID: 7777510388988252056}
   rocket: {fileID: 5555543606351691502, guid: e4eac51d2e1e3e049a88b66521074ef2, type: 3}
   fire_sfx: {fileID: 8300000, guid: f095ed7fb8ed84caa814c14d6ea51fc0, type: 3}
-  waypoint_targets: []
-  drone_speed: 8
+  advanced_drone: 0
 --- !u!1 &7777510388706082844
 GameObject:
   m_ObjectHideFlags: 0

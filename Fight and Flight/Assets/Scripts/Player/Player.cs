@@ -302,7 +302,7 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Drone Hit Box" || collision.gameObject.tag == "Boss Drone Hit Box")
+        if (collision.gameObject.tag == "Drone Hit Box" || collision.gameObject.tag == "Boss Drone Hit Box" || collision.gameObject.tag == "Advanced Drone Hit Box")
         {
             game_over = true;
         }

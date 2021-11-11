@@ -67,7 +67,7 @@ public class GunBolt : MonoBehaviour
         {
             if (collider.gameObject.transform.parent.gameObject.GetComponent<Drone>().current_drone_hp == 1)
             {
-                Player.score += drone_value; // todo might change to more
+                Player.score += drone_value; // todo might change to more points
                 Player.drones_destroyed++;
                 Destroy(collider.gameObject.transform.parent.gameObject);
                 Explode(explosion_fx);
@@ -75,7 +75,7 @@ public class GunBolt : MonoBehaviour
             else
             {
                 collider.gameObject.transform.parent.gameObject.GetComponent<Drone>().current_drone_hp--;
-                // set animator to dip (probably shouldn't have exit time)
+                collider.gameObject.GetComponent<AdvancedDroneAnimation>().PlayDamageAnimation();
                 Explode(explosion_fx);
             }
         }
