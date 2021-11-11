@@ -29,6 +29,8 @@ TagManager:
   - Volume Control
   - Volume Value
   - Difficulty Setting
+  - Advanced Drone
+  - Advanced Drone Hit Box
   layers:
   - Default
   - TransparentFX

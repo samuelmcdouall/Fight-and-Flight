@@ -4,11 +4,13 @@ using UnityEngine;
 public class Drone : DroneBase
 {
     float difficulty_adjusted_speed;
+    [SerializeField]
+    bool advanced_drone;
+    [System.NonSerialized]
+    public int current_drone_hp;
     void Start()
     {
         InitialDroneSetup();
-
-    
     }
 
     void Update()
@@ -42,6 +44,14 @@ public class Drone : DroneBase
 
     public void InitialDroneSetup()
     {
+        if (advanced_drone)
+        {
+            current_drone_hp = 3;
+        }
+        else
+        {
+            current_drone_hp = 1;
+        }
         InitialBaseDroneSetup();
         if (!menu_drone)
         {

@@ -63,6 +63,22 @@ public class GunBolt : MonoBehaviour
             Destroy(collider.gameObject.transform.parent.gameObject);
             Explode(explosion_fx);
         }
+        else if (collider.gameObject.tag == "Advanced Drone Hit Box")
+        {
+            if (collider.gameObject.transform.parent.gameObject.GetComponent<Drone>().current_drone_hp == 1)
+            {
+                Player.score += drone_value; // todo might change to more
+                Player.drones_destroyed++;
+                Destroy(collider.gameObject.transform.parent.gameObject);
+                Explode(explosion_fx);
+            }
+            else
+            {
+                collider.gameObject.transform.parent.gameObject.GetComponent<Drone>().current_drone_hp--;
+                // set animator to dip (probably shouldn't have exit time)
+                Explode(explosion_fx);
+            }
+        }
         else if (collider.gameObject.tag == "Menu Drone Hit Box")
         {
             right_hand_controller.RemoveActions();

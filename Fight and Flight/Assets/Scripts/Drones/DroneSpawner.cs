@@ -8,6 +8,9 @@ public class DroneSpawner : MonoBehaviour
     public GameObject drone;
     public GameObject xmas_drone;
     GameObject currently_selected_drone;
+    public GameObject advanced_drone;
+    public GameObject xmas_advanced_drone;
+    GameObject currently_selected_advanced_drone;
     public GameObject boss_drone;
     public GameObject xmas_boss_drone;
     GameObject currently_selected_boss_drone;
@@ -36,6 +39,8 @@ public class DroneSpawner : MonoBehaviour
     int starting_drones;
     float audio_cue_distance;
     bool spawned_in_boss;
+    [SerializeField]
+    int chance_to_spawn_advanced_drone;
 
     // Waypoints
     public List<Transform> waypoints;
@@ -110,11 +115,13 @@ public class DroneSpawner : MonoBehaviour
         if (RemoteConfigSettings.instance.xmas)
         {
             currently_selected_drone = xmas_drone;
+            currently_selected_advanced_drone = xmas_advanced_drone;
             currently_selected_boss_drone = xmas_boss_drone;
         }
         else
         {
             currently_selected_drone = drone;
+            currently_selected_advanced_drone = advanced_drone;
             currently_selected_boss_drone = boss_drone;
         }
     }
@@ -193,7 +200,15 @@ public class DroneSpawner : MonoBehaviour
 
     private void SpawnDrone(Vector3 random_chosen_new_starting_position)
     {
-        Instantiate(currently_selected_drone, random_chosen_new_starting_position, Quaternion.identity);
+        int r = Random.Range(1, 101);
+        if (r <= chance_to_spawn_advanced_drone)
+        {
+            Instantiate(currently_selected_advanced_drone, random_chosen_new_starting_position, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(currently_selected_drone, random_chosen_new_starting_position, Quaternion.identity);
+        }
         Vector3 player_to_drone_direction = (random_chosen_new_starting_position - player.transform.position).normalized;
         Vector3 audio_cue_position = player.transform.position + player_to_drone_direction * audio_cue_distance;
         AudioSource.PlayClipAtPoint(spawn_sfx, audio_cue_position, VolumeManager.sfx_volume);
