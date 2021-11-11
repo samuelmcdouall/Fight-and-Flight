@@ -102,8 +102,11 @@ public class GunBolt : MonoBehaviour
             }
             else
             {
-                collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().current_boss_drone_hp--;
-                boss_healthbar.SetBossBar(collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().current_boss_drone_hp);
+                if (!collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().invulnerable)
+                {
+                    collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().current_boss_drone_hp--;
+                    boss_healthbar.SetBossBar(collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().current_boss_drone_hp);
+                }
                 Explode(explosion_fx);
             }
         }

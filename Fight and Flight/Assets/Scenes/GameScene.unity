@@ -2987,6 +2987,10 @@ PrefabInstance:
       propertyPath: statistics
       value: 
       objectReference: {fileID: 157992351}
+    - target: {fileID: 1526223166180620110, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
+      propertyPath: test_boss_battle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1526223166376715612, guid: 573dfb5b56eafcd448a9635c7a4fd599, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1

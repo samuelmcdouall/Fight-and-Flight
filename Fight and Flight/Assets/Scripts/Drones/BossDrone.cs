@@ -9,6 +9,17 @@ public class BossDrone : DroneBase
     public int max_boss_drone_hp;
     [System.NonSerialized]
     public int current_boss_drone_hp;
+    [System.NonSerialized]
+    public bool invulnerable;
+    BossPhase boss_stage;
+    bool transitioned_to_fighting_stage;
+    bool transitioned_to_invulnerable_stage;
+    [SerializeField]
+    int drones_to_spawn_first_invul_stage;
+    [SerializeField]
+    int drones_to_spawn_second_invul_stage;
+    bool transitioned_to_first_invul_stage;
+    bool transitioned_to_second_invul_stage;
 
     // Waypoint traversing
     [System.NonSerialized]
@@ -21,10 +32,71 @@ public class BossDrone : DroneBase
 
     void Update()
     {
+        print(drone_speed);
         transform.LookAt(player_hit_box.transform);
-        DetermineCurrentSpeed();
-        DetermineWaypointAndMove();
-        DetermineIfTimeToFire();
+        if (boss_stage == BossPhase.fighting)
+        {
+            if (!transitioned_to_fighting_stage)
+            {
+                boss_healthbar_UI.SetBossBar(current_boss_drone_hp);
+                invulnerable = false;
+                transitioned_to_fighting_stage = true;
+            }
+
+            DetermineCurrentSpeed();
+            DetermineWaypointAndMove();
+            DetermineIfTimeToFire();
+            if (current_boss_drone_hp == 10 && !transitioned_to_first_invul_stage || current_boss_drone_hp == 5 && !transitioned_to_second_invul_stage)
+            {
+                if (current_boss_drone_hp == 10)
+                {
+                    transitioned_to_first_invul_stage = true;
+                }
+                else
+                {
+                    transitioned_to_second_invul_stage = true;
+                }
+                boss_stage = BossPhase.invulnerable;
+                transitioned_to_fighting_stage = false;
+            }
+        }
+        else
+        {
+            if (!transitioned_to_invulnerable_stage)
+            {
+                drone_speed = 0.0f;
+                boss_healthbar_UI.SetBossBarInvulnerable(current_boss_drone_hp);
+                invulnerable = true;
+                int drones_to_spawn;
+                if (current_boss_drone_hp == 10)
+                {
+                    drones_to_spawn = drones_to_spawn_first_invul_stage;
+
+                    for (int drone_count = 0; drone_count < drones_to_spawn; drone_count++)
+                    {
+                        drone_spawner.GetComponent<DroneSpawner>().AttemptToSpawnDrone(DroneSpawner.DroneType.normal);
+                    }
+                }
+                else
+                {
+                    drones_to_spawn = drones_to_spawn_second_invul_stage;
+
+                    for (int drone_count = 0; drone_count < drones_to_spawn; drone_count++)
+                    {
+                        drone_spawner.GetComponent<DroneSpawner>().AttemptToSpawnDrone(DroneSpawner.DroneType.advanced);
+                    }
+                }
+                transitioned_to_invulnerable_stage = true;
+            }
+
+            GameObject[] drones = GameObject.FindGameObjectsWithTag("Drone");
+            GameObject[] advanced_drones = GameObject.FindGameObjectsWithTag("Advanced Drone");
+            if (drones.Length == 0 && advanced_drones.Length == 0)
+            {
+                boss_stage = BossPhase.fighting;
+                transitioned_to_invulnerable_stage = false;
+            }
+        }
     }
 
     private void DetermineCurrentSpeed()
@@ -32,6 +104,10 @@ public class BossDrone : DroneBase
         if (arrived_at_inner_waypoints)
         {
             drone_speed = (15 - current_boss_drone_hp) / 3;
+        }
+        else
+        {
+            drone_speed = 3.0f;
         }
     }
 
@@ -47,6 +123,12 @@ public class BossDrone : DroneBase
         max_boss_drone_hp = 15;
         current_boss_drone_hp = max_boss_drone_hp;
         boss_healthbar_UI.SetMaxBossBar(current_boss_drone_hp);
+        invulnerable = false;
+        boss_stage = BossPhase.fighting;
+        transitioned_to_fighting_stage = false;
+        transitioned_to_invulnerable_stage = false;
+        transitioned_to_first_invul_stage = false;
+        transitioned_to_second_invul_stage = false;
         Player.boss_spawned = true;
 
 }
@@ -86,5 +168,11 @@ public class BossDrone : DroneBase
         {
             elapsed_fire_timer += Time.deltaTime;
         }
+    }
+
+    enum BossPhase
+    {
+        fighting,
+        invulnerable
     }
 }

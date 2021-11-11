@@ -53,7 +53,7 @@ public class DroneSpawner : MonoBehaviour
         InitialDroneSpawnerSetup();
         for (int drone = 0; drone < starting_drones; drone++)
         {
-            AttemptToSpawnDrone();
+            AttemptToSpawnDrone(DroneType.random);
         }
 
     }
@@ -72,7 +72,7 @@ public class DroneSpawner : MonoBehaviour
         }
         else if (elapsed_drone_spawn_timer > drone_spawn_interval - drone_spawn_difficulty_setting * drone_spawn_difficulty_modifier)
         {
-            AttemptToSpawnDrone();
+            AttemptToSpawnDrone(DroneType.random);
             elapsed_drone_spawn_timer = 0.0f;
         }
         else
@@ -154,12 +154,12 @@ public class DroneSpawner : MonoBehaviour
         }
     }
 
-    public void AttemptToSpawnDrone()
+    public void AttemptToSpawnDrone(DroneType drone_type)
     {
-        while (!SpawnedDroneSuccessfully());
+        while (!SpawnedDroneSuccessfully(drone_type));
     }
 
-    bool SpawnedDroneSuccessfully()
+    bool SpawnedDroneSuccessfully(DroneType drone_type)
     {
         //if (!currently_selected_drone)
         //{
@@ -173,7 +173,7 @@ public class DroneSpawner : MonoBehaviour
             return false;
         }
 
-        SpawnDrone(random_chosen_new_starting_position);
+        SpawnDrone(random_chosen_new_starting_position, drone_type);
         return true;
     }
 
@@ -203,19 +203,37 @@ public class DroneSpawner : MonoBehaviour
         return false;
     }
 
-    private void SpawnDrone(Vector3 random_chosen_new_starting_position)
+    private void SpawnDrone(Vector3 random_chosen_new_starting_position, DroneType drone_type)
     {
-        int r = Random.Range(1, 101);
-        if (r <= chance_to_spawn_advanced_drone)
+        if (drone_type == DroneType.random)
         {
-            Instantiate(currently_selected_advanced_drone, random_chosen_new_starting_position, Quaternion.identity);
+            int r = Random.Range(1, 101);
+            if (r <= chance_to_spawn_advanced_drone)
+            {
+                Instantiate(currently_selected_advanced_drone, random_chosen_new_starting_position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(currently_selected_drone, random_chosen_new_starting_position, Quaternion.identity);
+            }
+        }
+        else if (drone_type == DroneType.normal)
+        {
+            Instantiate(currently_selected_drone, random_chosen_new_starting_position, Quaternion.identity);
         }
         else
         {
-            Instantiate(currently_selected_drone, random_chosen_new_starting_position, Quaternion.identity);
+            Instantiate(currently_selected_advanced_drone, random_chosen_new_starting_position, Quaternion.identity);
         }
         Vector3 player_to_drone_direction = (random_chosen_new_starting_position - player.transform.position).normalized;
         Vector3 audio_cue_position = player.transform.position + player_to_drone_direction * audio_cue_distance;
         AudioSource.PlayClipAtPoint(spawn_sfx, audio_cue_position, VolumeManager.sfx_volume);
+    }
+
+    public enum DroneType
+    {
+        normal,
+        advanced,
+        random
     }
 }

@@ -21,4 +21,10 @@ public class BossHealthBarUI : MonoBehaviour
         gauge.value = current_hp;
         fill.color = gradient.Evaluate(gauge.normalizedValue);
     }
+
+    public void SetBossBarInvulnerable(float current_hp)
+    {
+        gauge.value = current_hp;
+        fill.color = Color.blue;
+    }
 }

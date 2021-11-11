@@ -476,6 +476,8 @@ MonoBehaviour:
   seeking_rocket: {fileID: 5555543606351691502, guid: d0fd464dcdb5ef048898d64734d826b3, type: 3}
   chance_to_spawn_seeking_rocket: 0
   fire_sfx: {fileID: 8300000, guid: 9cc99277f231e4adbbd91ff1821f526b, type: 3}
+  drones_to_spawn_first_invul_stage: 2
+  drones_to_spawn_second_invul_stage: 2
 --- !u!1 &7330069671502989348
 GameObject:
   m_ObjectHideFlags: 0
