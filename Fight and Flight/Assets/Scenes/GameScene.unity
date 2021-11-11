@@ -1789,7 +1789,7 @@ MonoBehaviour:
   minimum_spawn_drone_proximity_distance: 8
   spawn_sfx: {fileID: 8300000, guid: 7a52f324fbd840546afd8d12a296e9b3, type: 3}
   boss_spawn_sfx: {fileID: 8300000, guid: 6e3f6427a0457c5418bc1780a9f72f64, type: 3}
-  starting_drones: 1
+  starting_drones: 0
   chance_to_spawn_advanced_drone: 100
   waypoints:
   - {fileID: 1426693648}
