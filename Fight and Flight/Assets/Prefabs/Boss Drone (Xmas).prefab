@@ -1731,9 +1731,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu_drone: 0
+  advanced_drone: 0
   rocket_spawn_right: {fileID: 6094457848146331261}
   rocket_spawn_left: {fileID: 6094457849657379323}
   rocket: {fileID: 2878165970455488429, guid: 4ae24c9338f45c545a03cface1a147a4, type: 3}
+  seeking_rocket: {fileID: 5555543606351691502, guid: d0fd464dcdb5ef048898d64734d826b3, type: 3}
+  chance_to_spawn_seeking_rocket: 0
   fire_sfx: {fileID: 8300000, guid: 9cc99277f231e4adbbd91ff1821f526b, type: 3}
 --- !u!1 &8536131154168935692
 GameObject:

@@ -9,6 +9,7 @@ public class DroneBase : MonoBehaviour
     protected GameObject drone_spawner;
     protected float drone_speed;
     public bool menu_drone = false;
+    public bool advanced_drone;
 
     // Firing
     protected float rocket_speed;
@@ -17,6 +18,9 @@ public class DroneBase : MonoBehaviour
     public GameObject rocket_spawn_right;
     public GameObject rocket_spawn_left;
     public GameObject rocket;
+    public GameObject seeking_rocket;
+    [SerializeField]
+    float chance_to_spawn_seeking_rocket;
     public AudioClip fire_sfx;
     protected Vector3 rocket_rotation_offset;
 
@@ -66,7 +70,22 @@ public class DroneBase : MonoBehaviour
     {
         if (elapsed_fire_timer > fire_interval)
         {
-            FireRocket();
+            if (!advanced_drone)
+            {
+                FireRocket(rocket);
+            }
+            else
+            {
+                int randomly_selected_rocket_rack = Random.Range(1, 101);
+                if (randomly_selected_rocket_rack <= chance_to_spawn_seeking_rocket)
+                {
+                    FireRocket(seeking_rocket);
+                }
+                else
+                {
+                    FireRocket(rocket);
+                }
+            }
             elapsed_fire_timer = 0.0f;
         }
         else
@@ -74,19 +93,19 @@ public class DroneBase : MonoBehaviour
             elapsed_fire_timer += Time.deltaTime;
         }
     }
-    public void FireRocket()
+    public void FireRocket(GameObject chosen_rocket)
     {
         int randomly_selected_rocket_rack = Random.Range(0, 2);
         if (randomly_selected_rocket_rack == 0)
         {
-            GameObject rocket_object = Instantiate(rocket, rocket_spawn_right.transform.position, transform.rotation);
+            GameObject rocket_object = Instantiate(chosen_rocket, rocket_spawn_right.transform.position, transform.rotation);
             rocket_object.transform.Rotate(rocket_rotation_offset);
             rocket_object.GetComponent<Rigidbody>().velocity = (player_hit_box.transform.position - rocket_spawn_right.transform.position).normalized * rocket_speed;
             AudioSource.PlayClipAtPoint(fire_sfx, player_hit_box.transform.position, VolumeManager.sfx_volume);
         }
         else
         {
-            GameObject rocket_object = Instantiate(rocket, rocket_spawn_left.transform.position, transform.rotation);
+            GameObject rocket_object = Instantiate(chosen_rocket, rocket_spawn_left.transform.position, transform.rotation);
             rocket_object.transform.Rotate(rocket_rotation_offset);
             rocket_object.GetComponent<Rigidbody>().velocity = (player_hit_box.transform.position - rocket_spawn_left.transform.position).normalized * rocket_speed;
             AudioSource.PlayClipAtPoint(fire_sfx, player_hit_box.transform.position, VolumeManager.sfx_volume);

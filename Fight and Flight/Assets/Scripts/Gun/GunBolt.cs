@@ -10,6 +10,7 @@ public class GunBolt : MonoBehaviour
     public AudioClip explosion_sfx;
     GameObject player;
     int drone_value;
+    int advanced_drone_value;
     int boss_drone_value;
     RightHandController right_hand_controller;
     LeftHandController left_hand_controller;
@@ -42,6 +43,7 @@ public class GunBolt : MonoBehaviour
         right_hand_controller = GameObject.FindGameObjectWithTag("Right Hand Controller").GetComponent<RightHandController>();
         left_hand_controller = GameObject.FindGameObjectWithTag("Left Hand Controller").GetComponent<LeftHandController>();
         drone_value = 5;
+        advanced_drone_value = 7;
         boss_drone_value = 10;
     }
 
@@ -67,7 +69,7 @@ public class GunBolt : MonoBehaviour
         {
             if (collider.gameObject.transform.parent.gameObject.GetComponent<Drone>().current_drone_hp == 1)
             {
-                Player.score += drone_value; // todo might change to more points
+                Player.score += advanced_drone_value;
                 Player.drones_destroyed++;
                 Destroy(collider.gameObject.transform.parent.gameObject);
                 Explode(explosion_fx);

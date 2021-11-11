@@ -142,6 +142,11 @@ public class DroneSpawner : MonoBehaviour
         {
             Destroy(drone);
         }
+        GameObject[] advanced_drones = GameObject.FindGameObjectsWithTag("Advanced Drone");
+        foreach (GameObject advanced_drone in advanced_drones)
+        {
+            Destroy(advanced_drone);
+        }
         GameObject[] rockets = GameObject.FindGameObjectsWithTag("Drone Rocket");
         foreach (GameObject rocket in rockets)
         {

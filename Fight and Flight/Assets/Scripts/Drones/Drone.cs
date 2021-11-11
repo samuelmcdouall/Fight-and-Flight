@@ -4,8 +4,6 @@ using UnityEngine;
 public class Drone : DroneBase
 {
     float difficulty_adjusted_speed;
-    [SerializeField]
-    bool advanced_drone;
     [System.NonSerialized]
     public int current_drone_hp;
     void Start()
