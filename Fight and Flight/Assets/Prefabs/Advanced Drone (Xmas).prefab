@@ -1421,7 +1421,7 @@ MonoBehaviour:
   menu_drone: 0
   rocket_spawn_right: {fileID: 8741091323385786407}
   rocket_spawn_left: {fileID: 8741091324559196065}
-  rocket: {fileID: 5555543606351691502, guid: e4eac51d2e1e3e049a88b66521074ef2, type: 3}
+  rocket: {fileID: 5555543606351691502, guid: d0fd464dcdb5ef048898d64734d826b3, type: 3}
   fire_sfx: {fileID: 8300000, guid: f095ed7fb8ed84caa814c14d6ea51fc0, type: 3}
   advanced_drone: 1
 --- !u!1 &8741091324778508325

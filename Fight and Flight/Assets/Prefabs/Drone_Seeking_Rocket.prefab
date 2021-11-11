@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 587051317279282677}
   - component: {fileID: 5835956039354677326}
   - component: {fileID: 6846789019945106668}
-  - component: {fileID: 226530017628360848}
+  - component: {fileID: 2262483501166590131}
   m_Layer: 0
-  m_Name: Drone_Rocket
+  m_Name: Drone_Seeking_Rocket
   m_TagString: Drone Rocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e941d0d6425697b499256f89933a0df2, type: 2}
+  - {fileID: 2100000, guid: dadefef0edf68504b971d5e8b275586d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -211,7 +211,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &226530017628360848
+--- !u!114 &2262483501166590131
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,12 +220,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5555543606351691502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4880d5fa68b5de8449330ed4104b445b, type: 3}
+  m_Script: {fileID: 11500000, guid: b3f876d1bc75188478f97f788c2e12c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 7.5
   explosion_fx: {fileID: 4666410091753442072, guid: 9067f4200b0798045ace0b9bf068fd12, type: 3}
   explosion_sfx: {fileID: 8300000, guid: c7e572b255e311b479005985ed7f4ba2, type: 3}
+  seeking_rocket_speed: 3
 --- !u!1 &7372485609171363300
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,7 +449,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.3052858, b: 0, a: 1}
+      maxColor: {r: 0.78715515, g: 0, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

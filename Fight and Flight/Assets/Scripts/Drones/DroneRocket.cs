@@ -10,6 +10,11 @@ public class DroneRocket : MonoBehaviour
     GameObject platform_spawner;
     void Start()
     {
+        InitialDroneRocketSetup();
+    }
+
+    public void InitialDroneRocketSetup()
+    {
         player = GameObject.FindGameObjectWithTag("Player");
         platform_spawner = GameObject.FindGameObjectWithTag("Platform Spawner");
         Destroy(gameObject, lifetime);
