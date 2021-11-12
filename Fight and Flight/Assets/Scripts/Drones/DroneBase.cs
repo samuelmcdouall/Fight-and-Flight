@@ -21,7 +21,8 @@ public class DroneBase : MonoBehaviour
     public GameObject seeking_rocket;
     [SerializeField]
     float chance_to_spawn_seeking_rocket;
-    public AudioClip fire_sfx;
+    public AudioClip fire_rocket_sfx;
+    public AudioClip fire_seeking_rocket_sfx;
     protected Vector3 rocket_rotation_offset;
 
     // Waypoint traversing
@@ -72,18 +73,18 @@ public class DroneBase : MonoBehaviour
         {
             if (!advanced_drone)
             {
-                FireRocket(rocket);
+                FireRocket(rocket, fire_rocket_sfx);
             }
             else
             {
                 int randomly_selected_rocket_rack = Random.Range(1, 101);
                 if (randomly_selected_rocket_rack <= chance_to_spawn_seeking_rocket)
                 {
-                    FireRocket(seeking_rocket);
+                    FireRocket(seeking_rocket, fire_seeking_rocket_sfx);
                 }
                 else
                 {
-                    FireRocket(rocket);
+                    FireRocket(rocket, fire_rocket_sfx);
                 }
             }
             elapsed_fire_timer = 0.0f;
@@ -93,7 +94,7 @@ public class DroneBase : MonoBehaviour
             elapsed_fire_timer += Time.deltaTime;
         }
     }
-    public void FireRocket(GameObject chosen_rocket)
+    public void FireRocket(GameObject chosen_rocket, AudioClip fire_sfx)
     {
         int randomly_selected_rocket_rack = Random.Range(0, 2);
         if (randomly_selected_rocket_rack == 0)

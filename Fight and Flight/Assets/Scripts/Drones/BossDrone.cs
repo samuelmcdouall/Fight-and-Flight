@@ -125,7 +125,7 @@ public class BossDrone : DroneBase
     {
         if (elapsed_fire_timer > fire_interval - (15 - current_boss_drone_hp) / 6)
         {
-            FireRocket(rocket);
+            FireRocket(rocket, fire_rocket_sfx);
             elapsed_fire_timer = 0.0f;
         }
         else

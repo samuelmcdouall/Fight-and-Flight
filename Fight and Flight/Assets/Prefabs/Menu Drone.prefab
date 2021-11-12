@@ -805,12 +805,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu_drone: 1
-  rocket_speed: 10
+  advanced_drone: 0
   rocket_spawn_right: {fileID: 1803740204116144149}
   rocket_spawn_left: {fileID: 1803740205088194451}
   rocket: {fileID: 5555543606351691502, guid: e4eac51d2e1e3e049a88b66521074ef2, type: 3}
-  fire_sfx: {fileID: 8300000, guid: f095ed7fb8ed84caa814c14d6ea51fc0, type: 3}
-  waypoint_targets: []
+  seeking_rocket: {fileID: 0}
+  chance_to_spawn_seeking_rocket: 0
+  fire_rocket_sfx: {fileID: 8300000, guid: f095ed7fb8ed84caa814c14d6ea51fc0, type: 3}
+  fire_seeking_rocket_sfx: {fileID: 8300000, guid: f9dc8d9847657423fa659c4a60acf0c6, type: 3}
 --- !u!1 &1803740204805286748
 GameObject:
   m_ObjectHideFlags: 0
