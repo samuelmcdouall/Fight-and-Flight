@@ -193,7 +193,6 @@ public class Player : MonoBehaviour
     private void EnablePauseScreen()
     {
         pause_screen.SetActive(true);
-        statistics.SetActive(false);
         if (player_as.isPlaying)
         {
             player_as.Stop();
@@ -203,7 +202,6 @@ public class Player : MonoBehaviour
     private void DisablePauseScreen()
     {
         pause_screen.SetActive(false);
-        statistics.SetActive(true);
         Time.timeScale = 1.0f;
     }
     private void DetermineCurrentPlayerLevel()
