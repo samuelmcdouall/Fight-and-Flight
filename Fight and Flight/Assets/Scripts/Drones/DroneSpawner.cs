@@ -19,6 +19,8 @@ public class DroneSpawner : MonoBehaviour
 
     // Spawning parameters
     [SerializeField]
+    bool active;
+    [SerializeField]
     [Range(5.0f, 20.0f)]
     float maximum_horizontal_spawn_distance;
     [SerializeField]
@@ -41,6 +43,7 @@ public class DroneSpawner : MonoBehaviour
     bool spawned_in_boss;
     [SerializeField]
     int chance_to_spawn_advanced_drone;
+    
 
     // Waypoints
     public List<Transform> waypoints;
@@ -60,24 +63,27 @@ public class DroneSpawner : MonoBehaviour
 
     void Update()
     {
-        AdjustForDifficultySetting();
-        if (Player.score >= 50)
+        if (active)
         {
-            if (!spawned_in_boss)
+            AdjustForDifficultySetting();
+            if (Player.score >= 50)
             {
-                DestroyAllCurrentDronesAndRockets();
-                SpawnBossDrone();
-                spawned_in_boss = true;
+                if (!spawned_in_boss)
+                {
+                    DestroyAllCurrentDronesAndRockets();
+                    SpawnBossDrone();
+                    spawned_in_boss = true;
+                }
             }
-        }
-        else if (elapsed_drone_spawn_timer > drone_spawn_interval - drone_spawn_difficulty_setting * drone_spawn_difficulty_modifier)
-        {
-            AttemptToSpawnDrone(DroneType.random);
-            elapsed_drone_spawn_timer = 0.0f;
-        }
-        else
-        {
-            elapsed_drone_spawn_timer += Time.deltaTime;
+            else if (elapsed_drone_spawn_timer > drone_spawn_interval - drone_spawn_difficulty_setting * drone_spawn_difficulty_modifier)
+            {
+                AttemptToSpawnDrone(DroneType.random);
+                elapsed_drone_spawn_timer = 0.0f;
+            }
+            else
+            {
+                elapsed_drone_spawn_timer += Time.deltaTime;
+            }
         }
     }
 
