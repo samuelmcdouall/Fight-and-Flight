@@ -22,8 +22,6 @@ public class VolumeValue : MonoBehaviour
 
     public void UpdateVolumeValue()
     {
-        print("sfx vol: " + VolumeManager.sfx_volume);
-        print("music vol: " + VolumeManager.music_volume);
         if (sfx)
         {
             volume_value.text = (Mathf.RoundToInt(VolumeManager.sfx_volume * 10.0f)).ToString();

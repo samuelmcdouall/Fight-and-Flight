@@ -39,6 +39,7 @@ public class Platform : MonoBehaviour
     public GameObject xmas_rare_pickup;
     GameObject currently_selected_common_pickup;
     GameObject currently_selected_rare_pickup;
+    bool destruction_begun;
 
     void Start()
     {
@@ -70,7 +71,10 @@ public class Platform : MonoBehaviour
                 }
                 else
                 {
-                    ReplacePlatform();
+                    if (!destruction_begun)
+                    {
+                        ReplacePlatform();
+                    }
                 }
             }
         }
@@ -132,6 +136,7 @@ public class Platform : MonoBehaviour
         pickup_spawn_range_limit = 2.0f;
         platform_m = GetComponent<Renderer>().material;
         platform_spawner = GameObject.FindGameObjectWithTag("Platform Spawner");
+        destruction_begun = false;
     }
 
     private void ChoosePickups()
@@ -151,7 +156,19 @@ public class Platform : MonoBehaviour
     private void ReplacePlatform()
     {
         platform_spawner.GetComponent<PlatformSpawner>().AttemptToSpawnPlatform();
-        Destroy(gameObject);
+        DestroyPlatform();
+    }
+
+    private void DestroyPlatform()
+    {
+        float offset_trigger_collision_exit = 20.0f;
+        transform.position = new Vector3(transform.position.x, transform.position.y - offset_trigger_collision_exit, transform.position.z);
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+        destruction_begun = true;
+        Destroy(gameObject, 0.1f);
     }
 
     private void ChangePlatformColour()
