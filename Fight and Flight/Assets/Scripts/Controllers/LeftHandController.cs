@@ -39,8 +39,7 @@ public class LeftHandController : MonoBehaviour
         bool trigger_fully_pressed = amount_trigger_pressed == 1.0f;
         if (Player.in_menu && Player.game_over && trigger_fully_pressed)
         {
-            print("QUIT GAME");
-            //Application.Quit();
+            Application.Quit();
         }
         else
         {
