@@ -108,7 +108,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (pause_screen.activeSelf == true)
+            if (pause_screen && pause_screen.activeSelf == true)
             {
                 DisablePauseScreen();
             }

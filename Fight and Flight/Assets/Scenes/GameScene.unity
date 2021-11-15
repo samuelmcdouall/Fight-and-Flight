@@ -1783,6 +1783,7 @@ MonoBehaviour:
   xmas_advanced_drone: {fileID: 8741091324758807470, guid: 031962a6a6b57b24e8e9c573ebd4d769, type: 3}
   boss_drone: {fileID: 7330069671415255019, guid: 24de60364d8e7f3499c4b7a4e13991de, type: 3}
   xmas_boss_drone: {fileID: 6094457849995159028, guid: 8e93ca110a771a742bbcc1dbf8e1fbac, type: 3}
+  active: 1
   maximum_horizontal_spawn_distance: 20
   minimum_vertical_spawn_distance: 15
   maximum_vertical_spawn_distance: 17

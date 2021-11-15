@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class HighScoreTracker : MonoBehaviour
 {
-    string high_score_string;
+    int high_score;
     bool checked_high_score;
 
     private void Start()
@@ -20,18 +20,16 @@ public class HighScoreTracker : MonoBehaviour
             if (!checked_high_score)
             {
                 checked_high_score = true;
-                string path = "Assets/High Score/high_score.txt";
-                StreamReader reader = new StreamReader(path);
-                high_score_string = reader.ReadToEnd();
-                reader.Close();
-                print("current high score: " + high_score_string);
-                if (high_score_string == "")
+                high_score = PlayerPrefs.GetInt("High Score", -1);
+                if (high_score == -1)
                 {
-                    File.WriteAllText(path, Player.score.ToString());
+                    PlayerPrefs.SetInt("High Score", Player.score);
+                    PlayerPrefs.Save();
                 }
-                else if (Player.score > int.Parse(high_score_string))
+                else if (Player.score > high_score)
                 {
-                    File.WriteAllText(path, Player.score.ToString());
+                    PlayerPrefs.SetInt("High Score", Player.score);
+                    PlayerPrefs.Save();
                 }
             }
         }

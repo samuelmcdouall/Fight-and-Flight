@@ -19,8 +19,8 @@ public class VolumeManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
-        sfx_volume = 0.5f;
-        music_volume = 0.5f;
+        sfx_volume = PlayerPrefs.GetFloat("SFX Volume", 0.5f);
+        music_volume = PlayerPrefs.GetFloat("Music Volume", 0.5f);
     }
 
     public static void ChangeSFXVolume(float volume_change)
@@ -28,14 +28,20 @@ public class VolumeManager : MonoBehaviour
         if (sfx_volume + volume_change > 1.0f)
         {
             sfx_volume = 1.0f;
+            PlayerPrefs.SetFloat("SFX Volume", sfx_volume);
+            PlayerPrefs.Save();
         }
         else if (sfx_volume + volume_change < 0.0f)
         {
             sfx_volume = 0.0f;
+            PlayerPrefs.SetFloat("SFX Volume", sfx_volume);
+            PlayerPrefs.Save();
         }
         else
         {
             sfx_volume += volume_change;
+            PlayerPrefs.SetFloat("SFX Volume", sfx_volume);
+            PlayerPrefs.Save();
         }
     }
 
@@ -44,14 +50,20 @@ public class VolumeManager : MonoBehaviour
         if (music_volume + volume_change > 1.0f)
         {
             music_volume = 1.0f;
+            PlayerPrefs.SetFloat("Music Volume", music_volume);
+            PlayerPrefs.Save();
         }
         else if (music_volume + volume_change < 0.0f)
         {
             music_volume = 0.0f;
+            PlayerPrefs.SetFloat("Music Volume", music_volume);
+            PlayerPrefs.Save();
         }
         else
         {
             music_volume += volume_change;
+            PlayerPrefs.SetFloat("Music Volume", music_volume);
+            PlayerPrefs.Save();
         }
     }
 }
