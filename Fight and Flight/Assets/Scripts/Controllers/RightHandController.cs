@@ -9,7 +9,6 @@ public class RightHandController : MonoBehaviour
     float press_threshold;
     private Player player_script;
     private GameObject statistics;
-    public LeftHandController left_hand_controller;
     private bool game_over_haptic_activated;
     void Start()
     {
@@ -69,8 +68,6 @@ public class RightHandController : MonoBehaviour
 
     private void LoadMenuScene()
     {
-        //left_hand_controller.RemoveActions();
-        //RemoveActions();
         SceneManager.LoadScene("MenuScene");
     }
 

@@ -8,7 +8,6 @@ public class LeftHandController : MonoBehaviour
     private float amount_trigger_pressed;
     private Gun gun_script;
     private Player player_script;
-    public RightHandController right_hand_controller;
     bool game_over_haptic_activated;
     void Start()
     {
@@ -57,8 +56,6 @@ public class LeftHandController : MonoBehaviour
 
     private void LoadGameScene()
     {
-        //right_hand_controller.RemoveActions();
-        //RemoveActions();
         SceneManager.LoadScene("GameScene");
     }
 
