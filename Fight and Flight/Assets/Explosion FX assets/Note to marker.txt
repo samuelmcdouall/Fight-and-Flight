@@ -1,0 +1,3 @@
+Due to how this third party asset has been created it had to be stored at this folder level. This is why its not in the imported work folder (stuff in this folder is not my creation)
+
+-Samuel McDouall
