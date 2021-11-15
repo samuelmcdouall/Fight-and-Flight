@@ -11,10 +11,8 @@ public class Platform : MonoBehaviour
     bool deteriorating;
     float max_life_time;
     float current_life_time;
-    float platform_fall_speed;
     Material platform_m;
     float transparency_lerp_time;
-    bool begun_falling;
 
     // Platform Spawning
     GameObject platform_spawner;
@@ -129,9 +127,7 @@ public class Platform : MonoBehaviour
     {
         max_life_time = 10.0f;
         deteriorating = false;
-        platform_fall_speed = 3.0f;
         transparency_lerp_time = 0.0f;
-        begun_falling = false;
         y_out_of_bounds = 0.5f;
         pickup_spawn_range_limit = 2.0f;
         platform_m = GetComponent<Renderer>().material;
