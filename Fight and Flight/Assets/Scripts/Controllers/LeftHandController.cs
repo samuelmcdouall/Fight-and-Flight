@@ -57,8 +57,8 @@ public class LeftHandController : MonoBehaviour
 
     private void LoadGameScene()
     {
-        right_hand_controller.RemoveActions();
-        RemoveActions();
+        //right_hand_controller.RemoveActions();
+        //RemoveActions();
         SceneManager.LoadScene("GameScene");
     }
 
@@ -69,7 +69,7 @@ public class LeftHandController : MonoBehaviour
             player_script.PauseUnpause();
         }
     }
-    public void RemoveActions()
+    void OnDestroy()
     {
         left_controller.selectAction.action.performed -= Trigger_Pressed;
         left_controller.activateAction.action.performed -= Menu_Button_Pressed;

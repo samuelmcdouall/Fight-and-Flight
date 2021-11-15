@@ -69,8 +69,8 @@ public class RightHandController : MonoBehaviour
 
     private void LoadMenuScene()
     {
-        left_hand_controller.RemoveActions();
-        RemoveActions();
+        //left_hand_controller.RemoveActions();
+        //RemoveActions();
         SceneManager.LoadScene("MenuScene");
     }
 
@@ -82,7 +82,7 @@ public class RightHandController : MonoBehaviour
         }
     }
 
-    public void RemoveActions()
+    void OnDestroy()
     {
         right_controller.selectAction.action.performed -= Trigger_Pressed;
         right_controller.activateAction.action.performed -= Menu_Button_Pressed;

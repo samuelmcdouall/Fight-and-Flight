@@ -83,8 +83,8 @@ public class GunBolt : MonoBehaviour
         }
         else if (collider.gameObject.tag == "Menu Drone Hit Box")
         {
-            right_hand_controller.RemoveActions();
-            left_hand_controller.RemoveActions();
+            //right_hand_controller.RemoveActions();
+            //left_hand_controller.RemoveActions();
             SceneManager.LoadScene("GameScene");
         }
         else if (collider.gameObject.tag == "Boss Drone Hit Box")
