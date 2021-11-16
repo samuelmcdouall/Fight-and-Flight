@@ -10,6 +10,10 @@ public class DroneBase : MonoBehaviour
     protected float drone_speed;
     public bool menu_drone = false;
     public bool advanced_drone;
+    [SerializeField]
+    int max_drone_hp;
+    [System.NonSerialized]
+    public int current_drone_hp;
 
     // Firing
     protected float rocket_speed;
@@ -44,6 +48,7 @@ public class DroneBase : MonoBehaviour
             fire_interval = 5.0f;
             elapsed_fire_timer = 0.0f;
             rocket_rotation_offset = new Vector3(90.0f, 0.0f, 0.0f);
+            current_drone_hp = max_drone_hp;
         }
     }
 

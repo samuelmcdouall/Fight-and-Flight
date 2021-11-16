@@ -971,10 +971,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu_drone: 1
   advanced_drone: 0
+  max_drone_hp: 0
   rocket_spawn_right: {fileID: 2353119916698511439}
   rocket_spawn_left: {fileID: 2353119915789510601}
   rocket: {fileID: 5555543606351691502, guid: e4eac51d2e1e3e049a88b66521074ef2, type: 3}
-  seeking_rocket: {fileID: 0}
+  seeking_rocket: {fileID: 5555543606351691502, guid: d0fd464dcdb5ef048898d64734d826b3, type: 3}
   chance_to_spawn_seeking_rocket: 0
   fire_rocket_sfx: {fileID: 8300000, guid: f095ed7fb8ed84caa814c14d6ea51fc0, type: 3}
   fire_seeking_rocket_sfx: {fileID: 8300000, guid: f9dc8d9847657423fa659c4a60acf0c6, type: 3}

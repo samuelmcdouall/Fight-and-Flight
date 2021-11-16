@@ -6,10 +6,6 @@ public class BossDrone : DroneBase
     // General
     BossHealthBarUI boss_healthbar_UI;
     [System.NonSerialized]
-    public int max_boss_drone_hp;
-    [System.NonSerialized]
-    public int current_boss_drone_hp;
-    [System.NonSerialized]
     public bool invulnerable;
     BossState boss_state;
     bool transitioned_to_fighting_state;
@@ -52,9 +48,7 @@ public class BossDrone : DroneBase
         arrived_at_inner_waypoints = false;
         drone_speed = 3.0f;
         boss_healthbar_UI = GameObject.FindGameObjectWithTag("Boss Drone Health Bar").GetComponent<BossHealthBarUI>();
-        max_boss_drone_hp = 15;
-        current_boss_drone_hp = max_boss_drone_hp;
-        boss_healthbar_UI.SetMaxBossBar(current_boss_drone_hp);
+        boss_healthbar_UI.SetMaxBossBar(current_drone_hp);
         invulnerable = false;
         boss_state = BossState.fighting;
         transitioned_to_fighting_state = false;
@@ -80,7 +74,7 @@ public class BossDrone : DroneBase
 
     private void EnterFightingState()
     {
-        boss_healthbar_UI.SetBossBar(current_boss_drone_hp);
+        boss_healthbar_UI.SetBossBar(current_drone_hp);
         invulnerable = false;
         transitioned_to_fighting_state = true;
     }
@@ -89,7 +83,7 @@ public class BossDrone : DroneBase
     {
         if (arrived_at_inner_waypoints)
         {
-            drone_speed = (15 - current_boss_drone_hp) / 3;
+            drone_speed = (15 - current_drone_hp) / 3;
         }
         else
         {
@@ -123,7 +117,7 @@ public class BossDrone : DroneBase
     }
     public override void DetermineIfTimeToFire()
     {
-        if (elapsed_fire_timer > fire_interval - (15 - current_boss_drone_hp) / 6)
+        if (elapsed_fire_timer > fire_interval - (15 - current_drone_hp) / 6)
         {
             FireRocket(rocket, fire_rocket_sfx);
             elapsed_fire_timer = 0.0f;
@@ -136,9 +130,9 @@ public class BossDrone : DroneBase
 
     private void MoveToInvulnerableStateIfHPThresholdReached()
     {
-        if (current_boss_drone_hp == 10 && !transitioned_to_first_invul_state || current_boss_drone_hp == 5 && !transitioned_to_second_invul_state)
+        if (current_drone_hp == 10 && !transitioned_to_first_invul_state || current_drone_hp == 5 && !transitioned_to_second_invul_state)
         {
-            if (current_boss_drone_hp == 10)
+            if (current_drone_hp == 10)
             {
                 transitioned_to_first_invul_state = true;
             }
@@ -164,10 +158,10 @@ public class BossDrone : DroneBase
     private void EnterInvulnerableState()
     {
         drone_speed = 0.0f;
-        boss_healthbar_UI.SetBossBarInvulnerable(current_boss_drone_hp);
+        boss_healthbar_UI.SetBossBarInvulnerable(current_drone_hp);
         invulnerable = true;
         int drones_to_spawn;
-        if (current_boss_drone_hp == 10)
+        if (current_drone_hp == 10)
         {
             drones_to_spawn = drones_to_spawn_first_invul_stage;
 

@@ -563,6 +563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu_drone: 0
   advanced_drone: 1
+  max_drone_hp: 3
   rocket_spawn_right: {fileID: 7777510388353974302}
   rocket_spawn_left: {fileID: 7777510388988252056}
   rocket: {fileID: 5555543606351691502, guid: e4eac51d2e1e3e049a88b66521074ef2, type: 3}
