@@ -21,7 +21,7 @@ public class Spaceship : MonoBehaviour
         transform.Translate(-Vector3.forward * Time.deltaTime * speed);
     }
 
-    private void DetermineFlightPath()
+    void DetermineFlightPath()
     {
         float chosen_angle_arc;
         if (!reverse_spawner)

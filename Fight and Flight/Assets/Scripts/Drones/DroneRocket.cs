@@ -20,7 +20,7 @@ public class DroneRocket : MonoBehaviour
         Destroy(gameObject, lifetime);
     }
 
-    private void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Platform")
         {
@@ -38,7 +38,7 @@ public class DroneRocket : MonoBehaviour
         }
     }
 
-    private void Explode()
+    void Explode()
     {
         AudioSource.PlayClipAtPoint(explosion_sfx, player.transform.position, VolumeManager.sfx_volume);
         Instantiate(explosion_fx, transform.position, Quaternion.identity);

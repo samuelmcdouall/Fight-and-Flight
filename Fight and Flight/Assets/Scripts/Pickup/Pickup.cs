@@ -30,8 +30,12 @@ public class Pickup : MonoBehaviour
             case PickupType.xmas_rare:
                 transform.Rotate(Vector3.up, Time.deltaTime * 360.0f / revolution_time);
                 break;
-            default:
+            case PickupType.common:
+            case PickupType.rare:
                 transform.Rotate(Vector3.forward, Time.deltaTime * 360.0f / revolution_time);
+                break;
+            default:
+                print("defaulted, invalid value");
                 break;
         }
     }
@@ -56,10 +60,14 @@ public class Pickup : MonoBehaviour
                 case PickupType.xmas_common:
                     CollectReward(common_value);
                     break;
-                default:
+                case PickupType.ammo:
                     AudioSource.PlayClipAtPoint(collect_ammo_sfx, transform.position, VolumeManager.sfx_volume);
                     CollectAmmo();
                     break;
+                default:
+                    print("defaulted, invalid value");
+                    break;
+
             }
             Destroy(gameObject);
         }

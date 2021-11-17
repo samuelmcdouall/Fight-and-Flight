@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DifficultyManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     public static Difficulty difficulty;
     void Start()
     {
@@ -26,7 +25,6 @@ public class DifficultyManager : MonoBehaviour
                 print("defaulted, invalid value");
                 return Difficulty.easy;
         }
-                
     }
 
     public enum Difficulty{

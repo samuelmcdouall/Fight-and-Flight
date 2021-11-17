@@ -87,7 +87,7 @@ public class DroneSpawner : MonoBehaviour
         }
     }
 
-    private void AdjustForDifficultySetting()
+    void AdjustForDifficultySetting()
     {
         switch (DifficultyManager.difficulty)
         {
@@ -101,11 +101,13 @@ public class DroneSpawner : MonoBehaviour
                 drone_spawn_difficulty_setting = Player.player_max_level;
                 break;
             default:
+                print("defaulted, invalid value");
+                drone_spawn_difficulty_setting = Player.player_min_level;
                 break;
         }
     }
 
-    private void InitialDroneSpawnerSetup()
+    void InitialDroneSpawnerSetup()
     {
         ChooseDrones();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -132,7 +134,7 @@ public class DroneSpawner : MonoBehaviour
         }
     }
 
-    private void SpawnBossDrone()
+    void SpawnBossDrone()
     {
         boss_spawn_location = Random.Range(0, 4);
         Instantiate(currently_selected_boss_drone, boss_spawn_waypoints[boss_spawn_location].position, Quaternion.identity);
@@ -141,7 +143,7 @@ public class DroneSpawner : MonoBehaviour
         AudioSource.PlayClipAtPoint(boss_spawn_sfx, audio_cue_position, VolumeManager.sfx_volume);
     }
 
-    private static void DestroyAllCurrentDronesAndRockets()
+    void DestroyAllCurrentDronesAndRockets()
     {
         GameObject[] drones = GameObject.FindGameObjectsWithTag("Drone");
         foreach (GameObject drone in drones)
@@ -167,10 +169,6 @@ public class DroneSpawner : MonoBehaviour
 
     bool SpawnedDroneSuccessfully(DroneType drone_type)
     {
-        //if (!currently_selected_drone)
-        //{
-        //    return false;
-        //}
         Vector3 random_chosen_new_starting_position = RandomlyDetermineSpawnPosition();
         Vector3 random_chosen_y_independent_new_starting_position = new Vector3(random_chosen_new_starting_position.x, 0.0f, random_chosen_new_starting_position.z);
 
@@ -209,7 +207,7 @@ public class DroneSpawner : MonoBehaviour
         return false;
     }
 
-    private void SpawnDrone(Vector3 random_chosen_new_starting_position, DroneType drone_type)
+    void SpawnDrone(Vector3 random_chosen_new_starting_position, DroneType drone_type)
     {
         if (drone_type == DroneType.random)
         {

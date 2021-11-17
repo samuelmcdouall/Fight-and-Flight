@@ -5,7 +5,6 @@ using UnityEngine;
 public class DifficultySettingText : MonoBehaviour
 {
     TextMesh difficulty_setting_text;
-    // Start is called before the first frame update
     void Start()
     {
         difficulty_setting_text = GetComponent<TextMesh>();
@@ -24,7 +23,9 @@ public class DifficultySettingText : MonoBehaviour
                 difficulty_setting_text.color = Color.red;
                 break;
             default:
-                difficulty_setting_text.text = "error";
+                print("defaulted, invalid value");
+                difficulty_setting_text.text = "Difficulty: Easy" + "\n" + "\n" + "Difficulty progression is" + "\n" + "always treated as level 1";
+                difficulty_setting_text.color = Color.green;
                 break;
         }
     }
@@ -46,7 +47,9 @@ public class DifficultySettingText : MonoBehaviour
                 difficulty_setting_text.color = Color.red;
                 break;
             default:
-                difficulty_setting_text.text = "error";
+                print("defaulted, invalid value");
+                difficulty_setting_text.text = "Difficulty: Easy" + "\n" + "\n" + "Difficulty progression is" + "\n" + "always treated as level 1";
+                difficulty_setting_text.color = Color.green;
                 break;
         }
     }

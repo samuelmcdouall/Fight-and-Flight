@@ -16,7 +16,6 @@ public class RemoteConfigSettings : MonoBehaviour
     // Remote Config
     public struct user_attributes { }
     public struct app_attributes { }
-    // Start is called before the first frame update
     void Awake()
     {
         if (instance == null)

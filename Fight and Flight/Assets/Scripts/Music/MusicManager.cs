@@ -77,7 +77,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    private void InitialMusicManagerSetup()
+    void InitialMusicManagerSetup()
     {
         music_as = GetComponent<AudioSource>();
         music_as.playOnAwake = true;

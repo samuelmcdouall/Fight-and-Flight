@@ -19,7 +19,7 @@ public class Drone : DroneBase
         }
     }
 
-    private void AdjustForDifficultySetting()
+    void AdjustForDifficultySetting()
     {
         switch (DifficultyManager.difficulty)
         {
@@ -33,6 +33,8 @@ public class Drone : DroneBase
                 drone_speed = Player.player_max_level;
                 break;
             default:
+                print("defaulted, invalid value");
+                drone_speed = Player.player_min_level;
                 break;
         }
     }

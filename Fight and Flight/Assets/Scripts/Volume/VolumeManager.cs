@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class VolumeManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     public static VolumeManager instance;
     public static float sfx_volume;
     public static float music_volume;

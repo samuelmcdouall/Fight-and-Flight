@@ -59,7 +59,7 @@ public class BossDrone : DroneBase
 
     }
 
-    private void FightingState()
+    void FightingState()
     {
         if (!transitioned_to_fighting_state)
         {
@@ -72,14 +72,14 @@ public class BossDrone : DroneBase
         MoveToInvulnerableStateIfHPThresholdReached();
     }
 
-    private void EnterFightingState()
+    void EnterFightingState()
     {
         boss_healthbar_UI.SetBossBar(current_drone_hp);
         invulnerable = false;
         transitioned_to_fighting_state = true;
     }
 
-    private void DetermineCurrentSpeed()
+    void DetermineCurrentSpeed()
     {
         if (arrived_at_inner_waypoints)
         {
@@ -128,7 +128,7 @@ public class BossDrone : DroneBase
         }
     }
 
-    private void MoveToInvulnerableStateIfHPThresholdReached()
+    void MoveToInvulnerableStateIfHPThresholdReached()
     {
         if (current_drone_hp == 10 && !transitioned_to_first_invul_state || current_drone_hp == 5 && !transitioned_to_second_invul_state)
         {
@@ -145,7 +145,7 @@ public class BossDrone : DroneBase
         }
     }
 
-    private void InvulnerableState()
+    void InvulnerableState()
     {
         if (!transitioned_to_invulnerable_state)
         {
@@ -155,7 +155,7 @@ public class BossDrone : DroneBase
         MoveToFightingStateIfNoDronesRemaining();
     }
 
-    private void EnterInvulnerableState()
+    void EnterInvulnerableState()
     {
         drone_speed = 0.0f;
         boss_healthbar_UI.SetBossBarInvulnerable(current_drone_hp);
@@ -182,7 +182,7 @@ public class BossDrone : DroneBase
         transitioned_to_invulnerable_state = true;
     }
 
-    private void MoveToFightingStateIfNoDronesRemaining()
+    void MoveToFightingStateIfNoDronesRemaining()
     {
         GameObject[] drones = GameObject.FindGameObjectsWithTag("Drone");
         GameObject[] advanced_drones = GameObject.FindGameObjectsWithTag("Advanced Drone");

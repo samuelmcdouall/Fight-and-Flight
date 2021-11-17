@@ -204,6 +204,8 @@ public class Platform : MonoBehaviour
                 max_life_time -= Player.player_max_level;
                 break;
             default:
+                print("defaulted, invalid value");
+                max_life_time -= Player.player_min_level;
                 break;
         }
     }

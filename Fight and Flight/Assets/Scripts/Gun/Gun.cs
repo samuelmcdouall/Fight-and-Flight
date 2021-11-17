@@ -40,7 +40,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    private void InitialGunSetup()
+    void InitialGunSetup()
     {
         max_ammo = 10;
         ammo = max_ammo;
@@ -48,7 +48,7 @@ public class Gun : MonoBehaviour
         gun_trigger_pressed = false;
     }
 
-    private void FireGunRocket()
+    void FireGunRocket()
     {
         Quaternion rotation_spawn_offset = gun_barrel_outer.transform.rotation * gun_ammo_offset;
         GameObject ammo_object = Instantiate(gun_bolt, gun_barrel_outer.transform.position, rotation_spawn_offset);

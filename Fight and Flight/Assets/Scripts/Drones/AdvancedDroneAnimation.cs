@@ -6,13 +6,12 @@ public class AdvancedDroneAnimation : MonoBehaviour
 {
     Animator drone_ani;
     bool ready_to_trigger_damage_animation;
-    // Start is called before the first frame update
     void Start()
     {
         drone_ani = GetComponent<Animator>();
         ready_to_trigger_damage_animation = true;
     }
-    private void Update()
+    void Update()
     {
         if (!ready_to_trigger_damage_animation)
         {

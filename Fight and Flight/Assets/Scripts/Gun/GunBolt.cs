@@ -35,7 +35,7 @@ public class GunBolt : MonoBehaviour
         }
     }
 
-    private void InitialGunBoltSetup()
+    void InitialGunBoltSetup()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         drone_value = 5;
@@ -43,7 +43,7 @@ public class GunBolt : MonoBehaviour
         boss_drone_value = 10;
     }
 
-    private void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider collider)
     {
         switch (collider.gameObject.tag)
         {
@@ -117,17 +117,19 @@ public class GunBolt : MonoBehaviour
                 AudioSource.PlayClipAtPoint(explosion_sfx, player.transform.position, VolumeManager.sfx_volume);
                 Destroy(gameObject);
                 break;
+            default:
+                break;
         }
     }
 
-    private void Explode(GameObject explosion_fx)
+    void Explode(GameObject explosion_fx)
     {
         AudioSource.PlayClipAtPoint(explosion_sfx, player.transform.position, VolumeManager.sfx_volume);
         Instantiate(explosion_fx, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
-    private static void DestroyAllCurrentBossRockets()
+    void DestroyAllCurrentBossRockets()
     {
         GameObject[] rockets = GameObject.FindGameObjectsWithTag("Boss Drone Rocket");
         foreach (GameObject rocket in rockets)

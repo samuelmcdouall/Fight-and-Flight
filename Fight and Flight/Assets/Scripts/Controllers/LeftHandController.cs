@@ -4,17 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class LeftHandController : MonoBehaviour
 {
-    private ActionBasedController left_controller;
-    private float amount_trigger_pressed;
-    private Gun gun_script;
-    private Player player_script;
+    ActionBasedController left_controller;
+    float amount_trigger_pressed;
+    Gun gun_script;
+    Player player_script;
     bool game_over_haptic_activated;
     void Start()
     {
         InitialSetupLeftController();
     }
 
-    private void Update()
+    void Update()
     {
         if (Player.game_over && !game_over_haptic_activated)
         {
@@ -23,7 +23,7 @@ public class LeftHandController : MonoBehaviour
         }
     }
 
-    private void InitialSetupLeftController()
+    void InitialSetupLeftController()
     {
         left_controller = GetComponent<ActionBasedController>();
         left_controller.selectAction.action.performed += Trigger_Pressed;
@@ -32,7 +32,7 @@ public class LeftHandController : MonoBehaviour
         player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         game_over_haptic_activated = false;
     }
-    private void Trigger_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    void Trigger_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         amount_trigger_pressed = left_controller.selectAction.action.ReadValue<float>();
         bool trigger_fully_pressed = amount_trigger_pressed == 1.0f;
@@ -54,7 +54,7 @@ public class LeftHandController : MonoBehaviour
         }
     }
 
-    private void LoadGameScene()
+    void LoadGameScene()
     {
         SceneManager.LoadScene("GameScene");
     }
