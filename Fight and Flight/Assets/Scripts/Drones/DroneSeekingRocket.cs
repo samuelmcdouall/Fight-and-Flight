@@ -19,6 +19,9 @@ public class DroneSeekingRocket : DroneRocket
         transform.LookAt(player_hit_box.transform);
         Vector3 rocket_rotation_offset = new Vector3(90.0f, 0.0f, 0.0f);
         transform.Rotate(rocket_rotation_offset);
+    }
+    void FixedUpdate()
+    {
         drone_rocket_rb.velocity = (player_hit_box.transform.position - transform.position).normalized * seeking_rocket_speed;
     }
 }

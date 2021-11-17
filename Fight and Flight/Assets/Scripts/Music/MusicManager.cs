@@ -35,37 +35,27 @@ public class MusicManager : MonoBehaviour
 
     void Update()
     {
-        
         if (Player.in_menu)
         {
-            if (!started_playing_menu_music && currently_selected_menu_music)
+            if (!started_playing_menu_music)
             {
-                music_as.Stop();
-                music_as.clip = currently_selected_menu_music;
-                music_as.loop = true;
-                music_as.Play();
+                StartPlayingMusicClip(currently_selected_menu_music);
                 started_playing_menu_music = true;
             }
         }
         else if (Player.score < 50)
         {
-            if (!started_playing_game_music && currently_selected_game_music)
+            if (!started_playing_game_music)
             {
-                music_as.Stop();
-                music_as.clip = currently_selected_game_music;
-                music_as.loop = true;
-                music_as.Play();
+                StartPlayingMusicClip(currently_selected_game_music);
                 started_playing_game_music = true;
             }
         }
         else
         {
-            if (!started_playing_boss_music && currently_selected_boss_music)
+            if (!started_playing_boss_music)
             {
-                music_as.Stop();
-                music_as.clip = currently_selected_boss_music;
-                music_as.loop = true;
-                music_as.Play();
+                StartPlayingMusicClip(currently_selected_boss_music);
                 started_playing_boss_music = true;
             }
             if (!Player.victory && Player.victory_countdown_begun)
@@ -78,12 +68,9 @@ public class MusicManager : MonoBehaviour
             }
             if (Player.victory)
             {
-                if (!started_playing_victory_music && currently_selected_victory_music)
+                if (!started_playing_victory_music)
                 {
-                    music_as.Stop();
-                    music_as.clip = currently_selected_victory_music;
-                    music_as.loop = true;
-                    music_as.Play();
+                    StartPlayingMusicClip(currently_selected_victory_music);
                     started_playing_victory_music = true;
                 }
             }
@@ -102,7 +89,6 @@ public class MusicManager : MonoBehaviour
         started_victory_music_gap = false;
         started_playing_victory_music = false;
         ChooseMusic();
-
     }
 
     void ChooseMusic()
@@ -113,7 +99,6 @@ public class MusicManager : MonoBehaviour
             currently_selected_game_music = xmas_game_music;
             currently_selected_boss_music = xmas_boss_music;
             currently_selected_victory_music = xmas_victory_music;
-            //music_as.volume = 0.15f;
         }
         else
         {
@@ -122,6 +107,13 @@ public class MusicManager : MonoBehaviour
             currently_selected_boss_music = boss_music;
             currently_selected_victory_music = victory_music;
         }
+    }
+
+    void StartPlayingMusicClip(AudioClip music_clip)
+    {
+        music_as.Stop();
+        music_as.clip = music_clip;
+        music_as.Play();
     }
 
     public static void UpdateMusicVolume()

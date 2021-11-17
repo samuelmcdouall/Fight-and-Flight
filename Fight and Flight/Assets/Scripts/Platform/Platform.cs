@@ -12,7 +12,7 @@ public class Platform : MonoBehaviour
     float max_life_time;
     float current_life_time;
     Material platform_m;
-    float transparency_lerp_time;
+    float opacity_lerp_time;
 
     // Platform Spawning
     GameObject platform_spawner;
@@ -61,7 +61,7 @@ public class Platform : MonoBehaviour
                 if (current_life_time > 0.0f)
                 {
                     current_life_time -= Time.deltaTime;
-                    ChangePlatformColour();
+                    ChangePlatformOpacity();
                 }
                 else if (current_life_time < 0.0f)
                 {
@@ -78,7 +78,7 @@ public class Platform : MonoBehaviour
         }
     }
 
-    private void DetermineIfPickUpSpawnedOnPlatform()
+    void DetermineIfPickUpSpawnedOnPlatform()
     {
         if (!Player.boss_spawned)
         {
@@ -114,7 +114,7 @@ public class Platform : MonoBehaviour
         }
     }
 
-    private void SpawnPickUp(GameObject pickup)
+    void SpawnPickUp(GameObject pickup)
     {
         float pickup_random_x_location = Random.Range(-pickup_spawn_range_limit, pickup_spawn_range_limit);
         float pickup_random_z_location = Random.Range(-pickup_spawn_range_limit, pickup_spawn_range_limit);
@@ -123,11 +123,11 @@ public class Platform : MonoBehaviour
         new_pickup.transform.SetParent(gameObject.transform);
     }
 
-    private void InitialPlatformSetup()
+    void InitialPlatformSetup()
     {
         max_life_time = 10.0f;
         deteriorating = false;
-        transparency_lerp_time = 0.0f;
+        opacity_lerp_time = 0.0f;
         y_out_of_bounds = 0.5f;
         pickup_spawn_range_limit = 2.0f;
         platform_m = GetComponent<Renderer>().material;
@@ -135,7 +135,7 @@ public class Platform : MonoBehaviour
         destruction_begun = false;
     }
 
-    private void ChoosePickups()
+    void ChoosePickups()
     {
         if (RemoteConfigSettings.instance.xmas)
         {
@@ -149,14 +149,16 @@ public class Platform : MonoBehaviour
         }
     }
 
-    private void ReplacePlatform()
+    void ReplacePlatform()
     {
         platform_spawner.GetComponent<PlatformSpawner>().AttemptToSpawnPlatform();
         DestroyPlatform();
     }
 
-    private void DestroyPlatform()
+    void DestroyPlatform()
     {
+        // Work around for issue with OnCollisionExit not working when object is destroyed
+        // Moving it just before it is destroyed (and destroying any pickup on it)
         float offset_trigger_collision_exit = 20.0f;
         transform.position = new Vector3(transform.position.x, transform.position.y - offset_trigger_collision_exit, transform.position.z);
         foreach (Transform child in transform)
@@ -167,15 +169,15 @@ public class Platform : MonoBehaviour
         Destroy(gameObject, 0.1f);
     }
 
-    private void ChangePlatformColour()
+    void ChangePlatformOpacity()
     {
-        float current_transparency = Mathf.Lerp(1.0f, 0.0f, transparency_lerp_time / max_life_time);
-        Color current_color = new Color(platform_m.color.r, platform_m.color.g, platform_m.color.b, current_transparency);
+        float current_opacity = Mathf.Lerp(1.0f, 0.0f, opacity_lerp_time / max_life_time);
+        Color current_color = new Color(platform_m.color.r, platform_m.color.g, platform_m.color.b, current_opacity);
         platform_m.SetColor("_Color", current_color);
-        transparency_lerp_time += Time.deltaTime;
+        opacity_lerp_time += Time.deltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -188,7 +190,7 @@ public class Platform : MonoBehaviour
         }
     }
 
-    private void AdjustForDifficultySetting()
+    void AdjustForDifficultySetting()
     {
         switch (DifficultyManager.difficulty)
         {

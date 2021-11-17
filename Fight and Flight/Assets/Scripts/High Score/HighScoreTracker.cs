@@ -6,32 +6,20 @@ using UnityEngine;
 
 public class HighScoreTracker : MonoBehaviour
 {
-    int high_score;
-    bool checked_high_score;
+    public static int high_score;
 
-    private void Start()
+    public static void CheckAgainstCurrentHighScore()
     {
-        checked_high_score = false;
-    }
-    void Update()
-    {
-        if (Player.game_over || Player.victory)
+        high_score = PlayerPrefs.GetInt("High Score", -1);
+        if (high_score == -1)
         {
-            if (!checked_high_score)
-            {
-                checked_high_score = true;
-                high_score = PlayerPrefs.GetInt("High Score", -1);
-                if (high_score == -1)
-                {
-                    PlayerPrefs.SetInt("High Score", Player.score);
-                    PlayerPrefs.Save();
-                }
-                else if (Player.score > high_score)
-                {
-                    PlayerPrefs.SetInt("High Score", Player.score);
-                    PlayerPrefs.Save();
-                }
-            }
+            PlayerPrefs.SetInt("High Score", Player.score);
+            PlayerPrefs.Save();
+        }
+        else if (Player.score > high_score)
+        {
+            PlayerPrefs.SetInt("High Score", Player.score);
+            PlayerPrefs.Save();
         }
     }
 }

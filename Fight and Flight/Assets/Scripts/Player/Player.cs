@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
             if (victory_countdown_timer <= 0.0f)
             {
                 victory = true;
+                HighScoreTracker.CheckAgainstCurrentHighScore();
             }
             else
             {
@@ -115,10 +116,14 @@ public class Player : MonoBehaviour
             DetermineCurrentPlayerLevel();
             CheckIfOutOfBounds();
             CheckIfAbleToRechargeEnergy();
-            DetermineFlightSpeedAndDirection();
         }
     }
-    private void InitialPlayerSetup()
+
+    void FixedUpdate()
+    {
+        DetermineFlightSpeedAndDirection();
+    }
+    void InitialPlayerSetup()
     {
         GetPlayerComponents();
         InitialFuelSetup();
@@ -135,13 +140,13 @@ public class Player : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
-    private void GetPlayerComponents()
+    void GetPlayerComponents()
     {
         player_as = GetComponent<AudioSource>();
         player_rb = GetComponent<Rigidbody>();
         ground_check = GameObject.FindGameObjectWithTag("GroundCheck").GetComponent<GroundCheck>();
     }
-    private void InitialFuelSetup()
+    void InitialFuelSetup()
     {
         fuel = max_fuel;
         fuel_gauge.SetMaxFuelGauge(max_fuel);
@@ -150,7 +155,7 @@ public class Player : MonoBehaviour
         throttle = false;
         current_throttle = 0.0f;
 }
-    private void InitialProgressionSetup()
+    void InitialProgressionSetup()
     {
         boss_spawned = false;
         y_out_of_bounds = 0.5f;
@@ -170,13 +175,13 @@ public class Player : MonoBehaviour
         drones_destroyed = 0;
         level_increase_rate = 10;
 }
-    private static void InitialUISetup()
+    void InitialUISetup()
     {
         game_over = false;
         paused = false;
         victory = false;
     }
-    private void EnableGameOverScreen()
+    void EnableGameOverScreen()
     {
         game_over_screen.SetActive(true);
         if (statistics)
@@ -190,7 +195,7 @@ public class Player : MonoBehaviour
         player_as.PlayOneShot(game_over_sfx, VolumeManager.sfx_volume);
         Time.timeScale = 0.0f;
     }
-    private void EnablePauseScreen()
+    void EnablePauseScreen()
     {
         pause_screen.SetActive(true);
         if (player_as.isPlaying)
@@ -199,12 +204,12 @@ public class Player : MonoBehaviour
         }
         Time.timeScale = 0.0f;
     }
-    private void DisablePauseScreen()
+    void DisablePauseScreen()
     {
         pause_screen.SetActive(false);
         Time.timeScale = 1.0f;
     }
-    private void DetermineCurrentPlayerLevel()
+    void DetermineCurrentPlayerLevel()
     {
         if (score / level_increase_rate <= 4)
         {
@@ -215,14 +220,15 @@ public class Player : MonoBehaviour
             player_current_level = 4;
         }
     }
-    private void CheckIfOutOfBounds()
+    void CheckIfOutOfBounds()
     {
         if (transform.position.y <= y_out_of_bounds)
         {
             game_over = true;
+            HighScoreTracker.CheckAgainstCurrentHighScore();
         }
     }
-    private void CheckIfAbleToRechargeEnergy()
+    void CheckIfAbleToRechargeEnergy()
     {
         if (ground_check.is_grounded)
         {
@@ -248,7 +254,7 @@ public class Player : MonoBehaviour
             elapsed_fuel_recharge_delay = 0.0f;
         }
     }
-    private void DetermineFlightSpeedAndDirection()
+    void DetermineFlightSpeedAndDirection()
     {
         if (throttle && fuel != 0.0f)
         {
@@ -265,7 +271,7 @@ public class Player : MonoBehaviour
             player_as.Stop();
         }
     }
-    private void Fly()
+    void Fly()
     {
         player_rb.velocity = current_direction * current_throttle * fly_speed;
         fuel -= current_throttle;
@@ -280,7 +286,7 @@ public class Player : MonoBehaviour
             player_as.PlayOneShot(flying_sfx, VolumeManager.sfx_volume);
         }
     }
-    private void Glide()
+    void Glide()
     {
         player_rb.velocity = new Vector3(current_direction.x * glide_speed, -1.0f, current_direction.z * glide_speed);
         fuel_meter.SetGlidingColour();
@@ -298,11 +304,12 @@ public class Player : MonoBehaviour
     {
         paused = !paused;
     }
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Drone Hit Box" || collision.gameObject.tag == "Boss Drone Hit Box" || collision.gameObject.tag == "Advanced Drone Hit Box")
         {
             game_over = true;
+            HighScoreTracker.CheckAgainstCurrentHighScore();
         }
     }
 }

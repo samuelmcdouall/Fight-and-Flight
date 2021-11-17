@@ -4,20 +4,23 @@ using UnityEngine.SceneManagement;
 
 public class RightHandController : MonoBehaviour
 {
-    private ActionBasedController right_controller;
-    private float amount_trigger_pressed;
+    ActionBasedController right_controller;
+    float amount_trigger_pressed;
     float press_threshold;
-    private Player player_script;
-    private GameObject statistics;
-    private bool game_over_haptic_activated;
+    Player player_script;
+    GameObject statistics;
+    bool game_over_haptic_activated;
     void Start()
     {
         InitialSetupRightController();
     }
-    void Update()
+    void FixedUpdate()
     {
         Vector3 controller_facing_direction = gameObject.transform.rotation * Vector3.forward;
         player_script.UpdateDirection(controller_facing_direction);
+    }
+    void Update()
+    {
         if (Player.game_over && !game_over_haptic_activated)
         {
             game_over_haptic_activated = true;
@@ -25,7 +28,7 @@ public class RightHandController : MonoBehaviour
         }
     }
 
-    private void InitialSetupRightController()
+    void InitialSetupRightController()
     {
         right_controller = GetComponent<ActionBasedController>();
         right_controller.selectAction.action.performed += Trigger_Pressed;
@@ -66,7 +69,7 @@ public class RightHandController : MonoBehaviour
         }
     }
 
-    private void LoadMenuScene()
+    void LoadMenuScene()
     {
         SceneManager.LoadScene("MenuScene");
     }

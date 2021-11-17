@@ -23,50 +23,55 @@ public class Pickup : MonoBehaviour
 
     void Update()
     {
-        if (pickup_type == PickupType.ammo || pickup_type == PickupType.xmas_common || pickup_type == PickupType.xmas_rare)
+        switch (pickup_type)
         {
-            transform.Rotate(Vector3.up, Time.deltaTime * 360.0f / revolution_time);
-        }
-        else
-        {
-            transform.Rotate(Vector3.forward, Time.deltaTime * 360.0f / revolution_time);
+            case PickupType.ammo:
+            case PickupType.xmas_common:
+            case PickupType.xmas_rare:
+                transform.Rotate(Vector3.up, Time.deltaTime * 360.0f / revolution_time);
+                break;
+            default:
+                transform.Rotate(Vector3.forward, Time.deltaTime * 360.0f / revolution_time);
+                break;
         }
     }
 
-    private void InitialPickupSetup()
+    void InitialPickupSetup()
     {
         rare_value = 3;
         common_value = 1;
         ammo_value = 5;
     }
 
-    private void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Player") {
-            if (pickup_type == PickupType.rare || pickup_type == PickupType.xmas_rare)
+            switch (pickup_type)
             {
-                CollectReward(rare_value);
-            }
-            else if (pickup_type == PickupType.common || pickup_type == PickupType.xmas_common)
-            {
-                CollectReward(common_value);
-            }
-            else
-            {
-                AudioSource.PlayClipAtPoint(collect_ammo_sfx, transform.position, VolumeManager.sfx_volume);
-                CollectAmmo();
+                case PickupType.rare:
+                case PickupType.xmas_rare:
+                    CollectReward(rare_value);
+                    break;
+                case PickupType.common:
+                case PickupType.xmas_common:
+                    CollectReward(common_value);
+                    break;
+                default:
+                    AudioSource.PlayClipAtPoint(collect_ammo_sfx, transform.position, VolumeManager.sfx_volume);
+                    CollectAmmo();
+                    break;
             }
             Destroy(gameObject);
         }
     }
 
-    private void CollectReward(int value)
+    void CollectReward(int value)
     {
         AudioSource.PlayClipAtPoint(collect_reward_sfx, transform.position, VolumeManager.sfx_volume);
         Player.score += value;
     }
 
-    private void CollectAmmo()
+    void CollectAmmo()
     {
         if (Gun.ammo + ammo_value > Gun.max_ammo)
         {

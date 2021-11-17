@@ -22,7 +22,7 @@ public class GunUI : MonoBehaviour
         }
     }
 
-    private void DetermineGunColour()
+    void DetermineGunColour()
     {
         if (Gun.ammo <= 2)
         {

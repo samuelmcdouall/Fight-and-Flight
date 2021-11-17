@@ -46,7 +46,7 @@ public class RemoteConfigSettings : MonoBehaviour
             print("Regular theme");
         }
     }
-    private void Update()
+    void Update()
     {
         if (!loaded_menu && remote_config_settings_obtained)
         {
@@ -59,7 +59,7 @@ public class RemoteConfigSettings : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
         ConfigManager.FetchCompleted -= ObtainRemoteConfigSettings;
     }
