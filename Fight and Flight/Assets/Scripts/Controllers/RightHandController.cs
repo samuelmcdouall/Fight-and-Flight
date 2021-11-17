@@ -14,13 +14,11 @@ public class RightHandController : MonoBehaviour
     {
         InitialSetupRightController();
     }
-    void FixedUpdate()
+
+    void Update()
     {
         Vector3 controller_facing_direction = gameObject.transform.rotation * Vector3.forward;
         player_script.UpdateDirection(controller_facing_direction);
-    }
-    void Update()
-    {
         if (Player.game_over && !game_over_haptic_activated)
         {
             game_over_haptic_activated = true;
