@@ -66,7 +66,7 @@ public class DroneSpawner : MonoBehaviour
         if (active)
         {
             AdjustForDifficultySetting();
-            if (Player.score >= 50)
+            if (PlayerPCTest.score >= 50)
             {
                 if (!spawned_in_boss)
                 {
@@ -92,17 +92,17 @@ public class DroneSpawner : MonoBehaviour
         switch (DifficultyManager.difficulty)
         {
             case DifficultyManager.Difficulty.easy:
-                drone_spawn_difficulty_setting = Player.player_min_level;
+                drone_spawn_difficulty_setting = PlayerPCTest.player_min_level;
                 break;
             case DifficultyManager.Difficulty.normal:
-                drone_spawn_difficulty_setting = Player.player_current_level;
+                drone_spawn_difficulty_setting = PlayerPCTest.player_current_level;
                 break;
             case DifficultyManager.Difficulty.hard:
-                drone_spawn_difficulty_setting = Player.player_max_level;
+                drone_spawn_difficulty_setting = PlayerPCTest.player_max_level;
                 break;
             default:
                 print("defaulted, invalid value");
-                drone_spawn_difficulty_setting = Player.player_min_level;
+                drone_spawn_difficulty_setting = PlayerPCTest.player_min_level;
                 break;
         }
     }

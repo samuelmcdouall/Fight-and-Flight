@@ -10,7 +10,7 @@ public class VictoryUI : MonoBehaviour
     {
         gamer_over_text = GetComponent<Text>();
         gamer_over_text.text = "You win!" + "\n" + "\n" +
-                               "Final Score: " + Player.score + "\n" +
-                               "Drones Destroyed: " + (Player.drones_destroyed);
+                               "Final Score: " + PlayerPCTest.score + "\n" +
+                               "Drones Destroyed: " + (PlayerPCTest.drones_destroyed);
     }
 }

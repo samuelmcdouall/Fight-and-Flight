@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class GunPCTest : MonoBehaviour
 {
     // Ammo
     public static int max_ammo;
@@ -23,7 +23,7 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (gun_trigger_pressed)
+        if (Input.GetMouseButtonDown(0))
         {
             if (!PlayerPCTest.game_over && !PlayerPCTest.paused)
             {

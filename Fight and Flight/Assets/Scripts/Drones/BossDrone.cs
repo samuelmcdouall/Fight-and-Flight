@@ -55,7 +55,7 @@ public class BossDrone : DroneBase
         transitioned_to_invulnerable_state = false;
         transitioned_to_first_invul_state = false;
         transitioned_to_second_invul_state = false;
-        Player.boss_spawned = true;
+        PlayerPCTest.boss_spawned = true;
 
     }
 
