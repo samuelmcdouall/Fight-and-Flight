@@ -11,16 +11,16 @@ public class ScoreUI : MonoBehaviour
     }
     void Update()
     {
-        if (PlayerPCTest.boss_spawned)
+        if (Player.boss_spawned)
         {
             current_level = "BOSS";
         }
         else
         {
-            current_level = "Level: " + (PlayerPCTest.player_current_level + 1);
+            current_level = "Level: " + (Player.player_current_level + 1);
         }
-        score_text.text = "Score: " + PlayerPCTest.score + "\n" +
+        score_text.text = "Score: " + Player.score + "\n" +
                           current_level + "\n" +
-                          "Drones : " + (PlayerPCTest.drones_destroyed);
+                          "Drones : " + (Player.drones_destroyed);
     }
 }

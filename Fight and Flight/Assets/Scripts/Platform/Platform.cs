@@ -80,7 +80,7 @@ public class Platform : MonoBehaviour
 
     void DetermineIfPickUpSpawnedOnPlatform()
     {
-        if (!PlayerPCTest.boss_spawned)
+        if (!Player.boss_spawned)
         {
             int random_spawn_chance = Random.Range(1, 101);
             if (random_spawn_chance < percentage_chance_to_spawn_common_pickup + 1)
@@ -195,17 +195,17 @@ public class Platform : MonoBehaviour
         switch (DifficultyManager.difficulty)
         {
             case DifficultyManager.Difficulty.easy:
-                max_life_time -= PlayerPCTest.player_min_level;
+                max_life_time -= Player.player_min_level;
                 break;
             case DifficultyManager.Difficulty.normal:
-                max_life_time -= PlayerPCTest.player_current_level;
+                max_life_time -= Player.player_current_level;
                 break;
             case DifficultyManager.Difficulty.hard:
-                max_life_time -= PlayerPCTest.player_max_level;
+                max_life_time -= Player.player_max_level;
                 break;
             default:
                 print("defaulted, invalid value");
-                max_life_time -= PlayerPCTest.player_min_level;
+                max_life_time -= Player.player_min_level;
                 break;
         }
     }

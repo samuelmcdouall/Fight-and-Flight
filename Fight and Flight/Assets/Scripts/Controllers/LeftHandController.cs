@@ -16,7 +16,7 @@ public class LeftHandController : MonoBehaviour
 
     void Update()
     {
-        if (PlayerPCTest.game_over && !game_over_haptic_activated)
+        if (Player.game_over && !game_over_haptic_activated)
         {
             game_over_haptic_activated = true;
             left_controller.SendHapticImpulse(0.7f, 0.5f);
@@ -36,17 +36,17 @@ public class LeftHandController : MonoBehaviour
     {
         amount_trigger_pressed = left_controller.selectAction.action.ReadValue<float>();
         bool trigger_fully_pressed = amount_trigger_pressed == 1.0f;
-        if (PlayerPCTest.in_menu && PlayerPCTest.game_over && trigger_fully_pressed)
+        if (Player.in_menu && Player.game_over && trigger_fully_pressed)
         {
             Application.Quit();
         }
         else
         {
-            if ((PlayerPCTest.game_over || PlayerPCTest.victory) && trigger_fully_pressed)
+            if ((Player.game_over || Player.victory) && trigger_fully_pressed)
             {
                 LoadGameScene();
             }
-            else if (Gun.ammo != 0 && !PlayerPCTest.paused && trigger_fully_pressed)
+            else if (Gun.ammo != 0 && !Player.paused && trigger_fully_pressed)
             {
                 gun_script.gun_trigger_pressed = true;
                 left_controller.SendHapticImpulse(0.7f, 0.1f);
@@ -61,7 +61,7 @@ public class LeftHandController : MonoBehaviour
 
     public void Menu_Button_Pressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        if (!PlayerPCTest.in_menu)
+        if (!Player.in_menu)
         {
             player_script.PauseUnpause();
         }

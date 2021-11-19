@@ -24,17 +24,17 @@ public class Drone : DroneBase
         switch (DifficultyManager.difficulty)
         {
             case DifficultyManager.Difficulty.easy:
-                drone_speed = PlayerPCTest.player_min_level;
+                drone_speed = Player.player_min_level;
                 break;
             case DifficultyManager.Difficulty.normal:
-                drone_speed = PlayerPCTest.player_current_level;
+                drone_speed = Player.player_current_level;
                 break;
             case DifficultyManager.Difficulty.hard:
-                drone_speed = PlayerPCTest.player_max_level;
+                drone_speed = Player.player_max_level;
                 break;
             default:
                 print("defaulted, invalid value");
-                drone_speed = PlayerPCTest.player_min_level;
+                drone_speed = Player.player_min_level;
                 break;
         }
     }

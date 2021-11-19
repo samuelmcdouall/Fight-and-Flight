@@ -232,7 +232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1043852688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,63 +430,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b199b8298a32554e8301c7636849f2f, type: 3}
---- !u!1001 &6044463939891786504
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6044463940599361169, guid: 3142e3e31d849e44f9fe8ea8235556a6, type: 3}
-      propertyPath: m_Name
-      value: (PC Test) Player (Loading Scene)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6044463940599361175, guid: 3142e3e31d849e44f9fe8ea8235556a6, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6044463940599361175, guid: 3142e3e31d849e44f9fe8ea8235556a6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6044463940599361175, guid: 3142e3e31d849e44f9fe8ea8235556a6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6044463940599361175, guid: 3142e3e31d849e44f9fe8ea8235556a6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6044463940599361175, guid: 3142e3e31d849e44f9fe8ea8235556a6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6044463940599361175, guid: 3142e3e31d849e44f9fe8ea8235556a6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6044463940599361175, guid: 3142e3e31d849e44f9fe8ea8235556a6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6044463940599361175, guid: 3142e3e31d849e44f9fe8ea8235556a6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6044463940599361175, guid: 3142e3e31d849e44f9fe8ea8235556a6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6044463940599361175, guid: 3142e3e31d849e44f9fe8ea8235556a6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6044463940599361175, guid: 3142e3e31d849e44f9fe8ea8235556a6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3142e3e31d849e44f9fe8ea8235556a6, type: 3}
 --- !u!1001 &6781711398813443918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -497,10 +440,6 @@ PrefabInstance:
     - target: {fileID: 7270190002687543718, guid: 5891f553319031649b435dc6b532db5f, type: 3}
       propertyPath: m_Name
       value: Player (Loading Scene)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7270190002687543718, guid: 5891f553319031649b435dc6b532db5f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7364193557922667519, guid: 5891f553319031649b435dc6b532db5f, type: 3}
       propertyPath: m_RootOrder

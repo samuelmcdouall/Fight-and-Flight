@@ -16,7 +16,7 @@ public class GunBolt : MonoBehaviour
     void Start()
     {
         InitialGunBoltSetup();
-        if (PlayerPCTest.boss_spawned)
+        if (Player.boss_spawned)
         {
             boss_healthbar = GameObject.FindGameObjectWithTag("Boss Drone Health Bar").GetComponent<BossHealthBarUI>();
         }
@@ -25,7 +25,7 @@ public class GunBolt : MonoBehaviour
 
     void Update()
     {
-        if (PlayerPCTest.boss_spawned && boss_healthbar == null)
+        if (Player.boss_spawned && boss_healthbar == null)
         {
             GameObject boss = GameObject.FindGameObjectWithTag("Boss Drone Health Bar");
             if (boss)
@@ -57,8 +57,8 @@ public class GunBolt : MonoBehaviour
                 break;
 
             case "Drone Hit Box":
-                PlayerPCTest.score += drone_value;
-                PlayerPCTest.drones_destroyed++;
+                Player.score += drone_value;
+                Player.drones_destroyed++;
                 Destroy(collider.gameObject.transform.parent.gameObject);
                 Explode(explosion_fx);
                 break;
@@ -66,8 +66,8 @@ public class GunBolt : MonoBehaviour
             case "Advanced Drone Hit Box":
                 if (collider.gameObject.transform.parent.gameObject.GetComponent<Drone>().current_drone_hp == 1)
                 {
-                    PlayerPCTest.score += advanced_drone_value;
-                    PlayerPCTest.drones_destroyed++;
+                    Player.score += advanced_drone_value;
+                    Player.drones_destroyed++;
                     Destroy(collider.gameObject.transform.parent.gameObject);
                     Explode(explosion_fx);
                 }
@@ -88,9 +88,9 @@ public class GunBolt : MonoBehaviour
                 {
                     collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().current_drone_hp--;
                     boss_healthbar.SetBossBar(collider.gameObject.transform.parent.gameObject.GetComponent<BossDrone>().current_drone_hp);
-                    PlayerPCTest.score += boss_drone_value;
-                    PlayerPCTest.drones_destroyed++;
-                    PlayerPCTest.victory_countdown_begun = true;
+                    Player.score += boss_drone_value;
+                    Player.drones_destroyed++;
+                    Player.victory_countdown_begun = true;
                     DestroyAllCurrentBossRockets();
                     Destroy(collider.gameObject.transform.parent.gameObject);
                     Explode(boss_explosion_fx);

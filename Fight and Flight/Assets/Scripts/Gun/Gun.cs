@@ -25,12 +25,12 @@ public class Gun : MonoBehaviour
     {
         if (gun_trigger_pressed)
         {
-            if (!PlayerPCTest.game_over && !PlayerPCTest.paused)
+            if (!Player.game_over && !Player.paused)
             {
                 if (ammo != 0)
                 {
                     FireGunRocket();
-                    if (!PlayerPCTest.in_menu)
+                    if (!Player.in_menu)
                     {
                         ammo--;
                     }

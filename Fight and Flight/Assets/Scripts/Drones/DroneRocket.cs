@@ -33,7 +33,7 @@ public class DroneRocket : MonoBehaviour
         }
         else if (collider.gameObject.tag == "Player")
         {
-            PlayerPCTest.game_over = true;
+            Player.game_over = true;
             HighScoreTracker.CheckAgainstCurrentHighScore();
         }
     }

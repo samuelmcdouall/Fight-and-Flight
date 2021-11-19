@@ -35,7 +35,7 @@ public class MusicManager : MonoBehaviour
 
     void Update()
     {
-        if (PlayerPCTest.in_menu)
+        if (Player.in_menu)
         {
             if (!started_playing_menu_music)
             {
@@ -43,7 +43,7 @@ public class MusicManager : MonoBehaviour
                 started_playing_menu_music = true;
             }
         }
-        else if (PlayerPCTest.score < 50)
+        else if (Player.score < 50)
         {
             if (!started_playing_game_music)
             {
@@ -58,7 +58,7 @@ public class MusicManager : MonoBehaviour
                 StartPlayingMusicClip(currently_selected_boss_music);
                 started_playing_boss_music = true;
             }
-            if (!PlayerPCTest.victory && PlayerPCTest.victory_countdown_begun)
+            if (!Player.victory && Player.victory_countdown_begun)
             {
                 if (!started_victory_music_gap)
                 {
@@ -66,7 +66,7 @@ public class MusicManager : MonoBehaviour
                     music_as.Stop();
                 }
             }
-            if (PlayerPCTest.victory)
+            if (Player.victory)
             {
                 if (!started_playing_victory_music)
                 {

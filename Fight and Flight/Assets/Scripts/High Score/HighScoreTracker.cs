@@ -13,12 +13,12 @@ public class HighScoreTracker : MonoBehaviour
         high_score = PlayerPrefs.GetInt("High Score", -1);
         if (high_score == -1)
         {
-            PlayerPrefs.SetInt("High Score", PlayerPCTest.score);
+            PlayerPrefs.SetInt("High Score", Player.score);
             PlayerPrefs.Save();
         }
-        else if (PlayerPCTest.score > high_score)
+        else if (Player.score > high_score)
         {
-            PlayerPrefs.SetInt("High Score", PlayerPCTest.score);
+            PlayerPrefs.SetInt("High Score", Player.score);
             PlayerPrefs.Save();
         }
     }

@@ -76,18 +76,18 @@ public class Pickup : MonoBehaviour
     void CollectReward(int value)
     {
         AudioSource.PlayClipAtPoint(collect_reward_sfx, transform.position, VolumeManager.sfx_volume);
-        PlayerPCTest.score += value;
+        Player.score += value;
     }
 
     void CollectAmmo()
     {
-        if (GunPCTest.ammo + ammo_value > GunPCTest.max_ammo)
+        if (Gun.ammo + ammo_value > Gun.max_ammo)
         {
-            GunPCTest.ammo = GunPCTest.max_ammo;
+            Gun.ammo = Gun.max_ammo;
         }
         else
         {
-            GunPCTest.ammo += ammo_value;
+            Gun.ammo += ammo_value;
         }
     }
 
