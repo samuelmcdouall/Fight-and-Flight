@@ -155,19 +155,8 @@ public class PlayerPCTest : MonoBehaviour
             DetermineCurrentPlayerLevel();
             CheckIfOutOfBounds();
             CheckIfAbleToRechargeEnergy();
-
-            mouse_h += Input.GetAxis("Mouse X") * rotation_speed;
-            mouse_v -= Input.GetAxis("Mouse Y") * rotation_speed;
-            mouse_v = Mathf.Clamp(mouse_v, mouse_v_min_clamp, mouse_v_max_clamp);
-            transform.rotation = Quaternion.Euler(mouse_v, mouse_h, 0.0f);
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                PauseUnpause();
-            }
-            if (Input.GetKeyDown(KeyCode.Space) && !in_menu)
-            {
-                statistics.SetActive(!statistics.activeSelf);
-            }
+            DetermineRotation();
+            HandleInputs();
         }
     }
 
@@ -305,6 +294,24 @@ public class PlayerPCTest : MonoBehaviour
         else
         {
             elapsed_fuel_recharge_delay = 0.0f;
+        }
+    }
+    void DetermineRotation()
+    {
+        mouse_h += Input.GetAxis("Mouse X") * rotation_speed;
+        mouse_v -= Input.GetAxis("Mouse Y") * rotation_speed;
+        mouse_v = Mathf.Clamp(mouse_v, mouse_v_min_clamp, mouse_v_max_clamp);
+        transform.rotation = Quaternion.Euler(mouse_v, mouse_h, 0.0f);
+    }
+    void HandleInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseUnpause();
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && !in_menu)
+        {
+            statistics.SetActive(!statistics.activeSelf);
         }
     }
     void DetermineFlightSpeedAndDirection()
