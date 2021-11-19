@@ -305,7 +305,7 @@ public class PlayerPCTest : MonoBehaviour
     }
     void HandleInputs()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !in_menu)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseUnpause();
         }
